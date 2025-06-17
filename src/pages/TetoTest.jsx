@@ -20,6 +20,8 @@ const questions = [
   { id: 12, text: '다음 중 더 끌리는 이성은', a: '가슴크고 이쁜 / 키크고 잘생긴', b: '가치관, 코드, 정서적으로 완벽한 케미' }
 ];
 
+const [copied, setCopied] = useState(false);
+
 const handleShare = () => {
   if (navigator.share) {
     navigator.share({
