@@ -20,6 +20,22 @@ const questions = [
   { id: 12, text: '다음 중 더 끌리는 이성은', a: '가슴크고 이쁜 / 키크고 잘생긴', b: '가치관, 코드, 정서적으로 완벽한 케미' }
 ];
 
+const handleShare = () => {
+  if (navigator.share) {
+    navigator.share({
+      title: "테토/테겐/에겐 테스트 결과",
+      text: "나도 호르몬 유형 테스트 해봤어! 😄",
+      url: window.location.href
+    })
+    .catch(() => {}); // 사용자 취소 등 무시
+  } else {
+    // 지원 안되면 복사 fallback
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1800);
+  }
+};
+
 const calculateResult = (gender, answers) => {
   const aCount = Object.values(answers).filter(v => v === 'a').length;
   const bCount = Object.values(answers).filter(v => v === 'b').length;
