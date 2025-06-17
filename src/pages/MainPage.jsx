@@ -13,12 +13,12 @@ const tests = [
 export default function MainPage() {
     return (
         <div className="min-h-screen flex flex-col bg-white">
-            <header className="py-8 flex flex-col items-center">
-                <h1 className="font-serif text-3xl md:text-4xl tracking-widest text-gray-800 font-semibold mb-8">
-                    TEST / 休
-                    <span className="block text-green-500 font-semibold text-xl mt-1">잠시 쉬어가며 서로를 알아보는 시간 </span>
-                </h1>
+            <header className="w-full bg-white/90 border-b border-gray-200 shadow-sm sticky top-0 z-40">
+                <div className="max-w-2xl mx-auto py-3 flex justify-center items-center">
+                    <span className="text-2xl font-serif tracking-widest text-green-700">TEST / <span className="text-xl align-super">休</span></span>
+                </div>
             </header>
+
             <div className="flex-1 flex flex-col items-center justify-center px-4">
                 <div className="w-full max-w-2xl flex flex-col gap-8">
                     {tests.map(test => (
