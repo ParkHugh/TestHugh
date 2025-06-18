@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import questions from './questions'; 
 import resultImages from './resultImages';
-import 메인이미지 from './images/main.png';
+import mainImage from './images/main.png';
 import resultDescriptions from './resultDescriptions';
 
 
@@ -83,7 +83,7 @@ function TetoTest() {
             style={{ minHeight: '80vh' }}
           >
             <img
-              src={메인이미지}
+              src={mainImage}
               alt="메인"
               className="w-full max-w-2xl h-[40vh] object-contain mb-2"
               style={{
