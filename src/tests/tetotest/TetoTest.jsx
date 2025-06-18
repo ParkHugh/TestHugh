@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import questions from './questions'; 
 import resultImages from './resultImages';
-import 메인이미지 from './images/메인.png';
+import 메인이미지 from './images/main.png';
 import resultDescriptions from './resultDescriptions';
 
 
