@@ -1,10 +1,19 @@
+// src/App.js
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './pages/MainPage';
-import TetoTest from './pages/TetoTest'; // PersonalityTest에서 파일명만 변경!
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Contact from './pages/Contact';
-import './index.css'; // CSS 그대로 사용
+import About from './pages/About';
+
+// 테스트 import 경로! (폴더구조 기준)
+// 앞으로 다른 테스트도 import만 추가하면 됨
+import TetoTest from './tests/tetotest/TetoTest';
+
+// 예시: 두번째 테스트 추가시
+// import SociopathTest from './tests/sociopathtest/SociopathTest';
+
+import './index.css';
 
 function App() {
   return (
@@ -12,12 +21,14 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/tetotest" element={<TetoTest />} />
-        <Route path="/privacy" element={<PrivacyPolicy />} />
+        {/* <Route path="/sociopathtest" element={<SociopathTest />} /> */}
+        <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/contact" element={<Contact />} />
-        {/* 앞으로 다른 테스트도 아래에 계속 추가하면 됨 */}
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
+
