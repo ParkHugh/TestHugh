@@ -1,10 +1,11 @@
 // pages/TetoTest.jsx
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import questions from './questions'; 
+import questions from './questions';
 import resultImages from './resultImages';
 import mainImage from './images/main.png';
 import resultDescriptions from './resultDescriptions';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -23,6 +24,7 @@ function TetoTest() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [copied, setCopied] = useState(false);
+  const navigate = useNavigate();
 
   // 결과 로딩
   const [loadingTime, setLoadingTime] = useState(0);
@@ -60,7 +62,7 @@ function TetoTest() {
         title: "테토/테겐/에겐 테스트 결과",
         text: "나도 호르몬 유형 테스트 해봤어! 😄",
         url: window.location.href
-      }).catch(() => {});
+      }).catch(() => { });
     } else {
       navigator.clipboard.writeText(window.location.href);
       setCopied(true);
@@ -264,6 +266,12 @@ function TetoTest() {
               className="bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded-lg ml-2 mt-8"
             >
               공유하기
+            </button>
+            <button
+              onClick={() => navigate('/')}
+              className="bg-emerald-800 hover:bg-emerald-900 text-white py-2 px-4 rounded-lg ml-2 mt-8"
+            >
+              다른 테스트 해보기
             </button>
             {copied && (
               <div className="mt-2 text-sm text-green-600 animate-fade-in">URL이 복사되었습니다!</div>
