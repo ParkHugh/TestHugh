@@ -5,7 +5,7 @@ import MainPage from './pages/MainPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Contact from './pages/Contact';
 import About from './pages/About';
-
+import TestsResults from './pages/TestsResults';
 // 테스트 import 경로! (폴더구조 기준)
 // 앞으로 다른 테스트도 import만 추가하면 됨
 import TetoTest from './tests/tetotest/TetoTest';
@@ -20,6 +20,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/results" element={<TestsResults />} />
         <Route path="/tetotest" element={<TetoTest />} />
         <Route path="/sociopath" element={<SocioTest />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />

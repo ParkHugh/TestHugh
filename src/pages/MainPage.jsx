@@ -1,20 +1,15 @@
 // src/pages/MainPage.jsx
 import { Link } from 'react-router-dom';
-
 import tetotestMeta from '../tests/tetotest/meta';
 import sociopathMeta from '../tests/sociopathtest/meta';
 
-const tests = [
-    tetotestMeta,
-    sociopathMeta,
-    // ...다른 테스트 추가 가능
-];
+const tests = [tetotestMeta, sociopathMeta];
 
 export default function MainPage() {
     return (
         <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 via-white to-emerald-50">
-            {/* 헤더 */}
-            <header className="w-full border-b border-gray-100 bg-white py-8 mb-10">
+            {/* 헤더 (중앙 정렬) */}
+            <header className="w-full border-b border-gray-100 bg-white py-8 mb-3">
                 <div className="max-w-xl mx-auto flex flex-col items-center">
                     <h1 className="font-brand font-extrabold tracking-tight mb-2 select-none drop-shadow-sm flex items-end gap-2">
                         <span className="text-5xl md:text-6xl text-gray-900">TEST /</span>
@@ -26,6 +21,17 @@ export default function MainPage() {
                 </div>
             </header>
 
+            {/* 👉 헤더 하단, 우측에 버튼 딱! */}
+            <div className="w-full max-w-2xl mx-auto flex justify-center px-2 mb-6">
+                <Link
+                    to="/results"
+                    className="font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-100 px-5 py-2 rounded-xl shadow-sm transition text-base md:text-lg whitespace-nowrap"
+                >
+                    📝 테스트별 결과 유형 보기
+                </Link>
+            </div>
+
+            {/* 카드 리스트 */}
             <div className="flex-1 flex flex-col items-center justify-center px-4">
                 <div className="w-full max-w-2xl flex flex-col gap-8">
                     {tests.map(test => (
@@ -56,7 +62,6 @@ export default function MainPage() {
                                 `}>
                                     {test.title}
                                 </h2>
-                                {/* 소시오패스 테스트엔 레이블 배지 강조 */}
                                 {test.id === 'sociopathtest' && (
                                     <div className="mb-2">
                                         <span className="inline-block bg-red-800 text-white text-xs px-3 py-1 rounded-full shadow font-semibold tracking-wide">
@@ -75,6 +80,8 @@ export default function MainPage() {
                     ))}
                 </div>
             </div>
+
+            {/* 푸터 */}
             <footer className="w-full border-t bg-gray-50 py-6 mt-10 text-center text-gray-500 text-sm">
                 <div className="flex justify-center space-x-4">
                     <a href="/about" className="hover:underline">About</a>
