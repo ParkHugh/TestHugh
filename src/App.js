@@ -1,4 +1,3 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './pages/MainPage';
@@ -6,12 +5,9 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import TestsResults from './pages/TestsResults';
-// 테스트 import 경로! (폴더구조 기준)
-// 앞으로 다른 테스트도 import만 추가하면 됨
 import TetoTest from './tests/tetotest/TetoTest';
 import SocioTest from './tests/sociopathtest/SocioTest';
-// 예시: 두번째 테스트 추가시
-// import SociopathTest from './tests/sociopathtest/SociopathTest';
+import RomanticTest from './tests/romantictest/RomanticTest'; // ⭐️ 추가!
 
 import './index.css';
 
@@ -23,6 +19,7 @@ function App() {
         <Route path="/results" element={<TestsResults />} />
         <Route path="/tetotest" element={<TetoTest />} />
         <Route path="/sociopath" element={<SocioTest />} />
+        <Route path="/romantic" element={<RomanticTest />} /> {/* ⭐️ 추가! */}
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
@@ -32,4 +29,3 @@ function App() {
 }
 
 export default App;
-
