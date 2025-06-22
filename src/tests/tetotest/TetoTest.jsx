@@ -5,6 +5,9 @@ import resultImages from './resultImages';
 import mainImage from './images/main.png';
 import resultDescriptions from './resultDescriptions';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+// ...기존 import
+
 
 const calculateResult = (gender, answers) => {
   const aCount = Object.values(answers).filter(v => v === 'a').length;
@@ -16,6 +19,14 @@ const calculateResult = (gender, answers) => {
 };
 
 function TetoTest() {
+  <Helmet>
+    <title>테토/테겐/에겐 호르몬 테스트 | Test 休</title>
+    <meta name="description" content="나의 호르몬 성향을 12문항으로 알아보는 테토/테겐/에겐 테스트. 당신의 성향을 쉽고 빠르게 확인하세요!" />
+    <meta property="og:title" content="테토/테겐/에겐 호르몬 테스트 | Test 休" />
+    <meta property="og:description" content="나의 호르몬 유형이 궁금하다면? 1분만에 결과 확인! 재미와 통찰을 동시에." />
+    <meta property="og:image" content="https://test-hugh.co.kr/tests/tetotest/images/main.png" />
+    <meta property="og:url" content="https://test-hugh.co.kr/tetotest" />
+  </Helmet>
   const [step, setStep] = useState('intro');
   const [gender, setGender] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
