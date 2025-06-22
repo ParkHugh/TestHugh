@@ -50,18 +50,20 @@ function TetoTest() {
   };
 
   const handleShare = () => {
+    const shareUrl = `${window.location.origin}/tetotest/result/${encodeURIComponent(result)}`;
     if (navigator.share) {
       navigator.share({
-        title: "테토/테겐/에겐 테스트 결과",
-        text: "나도 호르몬 유형 테스트 해봤어! 😄",
-        url: window.location.href
+        title: "나의 테토/테겐/에겐 테스트 결과",
+        text: `나도 호르몬 유형 테스트 해봤어! 😄 `,
+        url: shareUrl
       }).catch(() => { });
     } else {
-      navigator.clipboard.writeText(window.location.href);
+      navigator.clipboard.writeText(shareUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     }
   };
+
 
   const result = calculateResult(gender, answers);
 
@@ -286,7 +288,7 @@ function TetoTest() {
               onClick={handleShare}
               className="bg-gradient-to-r from-emerald-400 via-yellow-300 to-orange-300 hover:from-emerald-500 hover:to-yellow-400 text-white py-2 px-6 rounded-xl font-bold ml-2 mt-3 shadow-md"
             >
-              공유하기
+              결과 공유하기
             </button>
             <button
               onClick={() => navigate('/')}

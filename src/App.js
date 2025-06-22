@@ -8,7 +8,7 @@ import TestsResults from './pages/TestsResults';
 import TetoTest from './tests/tetotest/TetoTest';
 import SocioTest from './tests/sociopathtest/SocioTest';
 import RomanticTest from './tests/romantictest/RomanticTest'; // ⭐️ 추가!
-
+import TetoTestResultPage from './tests/tetotest/TetoTestResultPage';
 import './index.css';
 
 function App() {
@@ -18,6 +18,8 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/results" element={<TestsResults />} />
         <Route path="/tetotest" element={<TetoTest />} />
+        <Route path="/tetotest/result/:type" element={<TetoTestResultPage />} />
+
         <Route path="/sociopath" element={<SocioTest />} />
         <Route path="/romantic" element={<RomanticTest />} /> {/* ⭐️ 추가! */}
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
