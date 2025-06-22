@@ -223,7 +223,7 @@ function SocioTest() {
                             onClick={handleShare}
                             className="bg-gradient-to-r from-red-600 via-pink-500 to-pink-400 hover:from-red-700 hover:to-pink-600 text-white py-2 px-6 rounded-xl font-bold ml-2 mt-3 shadow-md"
                         >
-                            결과 공유하기
+                            공유하기
                         </button>
                         <button
                             onClick={() => navigate('/')}
