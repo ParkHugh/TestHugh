@@ -118,7 +118,7 @@ function SocioTest() {
                                 background: '#23272b'
                             }}
                         />
-                        <h2 className="text-3xl font-black mt-2 mb-2 text-red-400 tracking-tight drop-shadow-lg">
+                        <h2 className="text-3xl font-black mt-2 mb-2 text-red-400 tracking-tight drop-shadow-lg animate-bounce">
                             직장 소시오패스 테스트
                         </h2>
                         <p className="mb-8 text-gray-200 text-lg text-center font-medium max-w-xl shadow-inner">
