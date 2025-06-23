@@ -10,7 +10,7 @@ import sociopathImages from "../tests/sociopathtest/resultImages";
 
 import romanticMeta from "../tests/romantictest/meta";
 import romanticResults from "../tests/romantictest/result"; // 배열 (image 포함)
- 
+
 const testResultSets = [
   {
     meta: tetotestMeta,
@@ -73,55 +73,54 @@ export default function TestsResults() {
                 <div className="grid gap-6">
                   {isObject
                     ? Object.entries(results).map(([key, res], idx) => (
-                        <div key={key} className="flex items-center gap-4 border-b py-3 last:border-b-0">
-                          {images && images[key] && (
-                            <img
-                              src={images[key]}
-                              alt={key}
-                              className="w-16 h-16 object-cover rounded-xl border border-emerald-100 bg-gray-50"
-                            />
-                          )}
-                          <div className="flex-1">
-                            <div className="font-bold text-base mb-1 text-emerald-800">{key}</div>
-                            <div className="mb-1">
-                              <span className="font-semibold text-green-600 text-xs mr-1">성격적 특성</span>
-                              <span className="text-gray-700 text-xs">{res.성격적특성?.join(' / ')}</span>
-                            </div>
-                            <div className="mb-1">
-                              <span className="font-semibold text-blue-600 text-xs mr-1">행동적 특성</span>
-                              <span className="text-gray-700 text-xs">{res.행동적특성?.join(' / ')}</span>
-                            </div>
-                            <div>
-                              <span className="font-semibold text-pink-600 text-xs mr-1">연애스타일</span>
-                              <span className="text-gray-700 text-xs">{res.연애스타일?.join(' / ')}</span>
-                            </div>
+                      <div key={key} className="flex items-center gap-4 border-b py-3 last:border-b-0">
+                        {images && images[key] && (
+                          <img
+                            src={images[key]}
+                            alt={key}
+                            className="w-16 h-16 object-cover rounded-xl border border-emerald-100 bg-gray-50"
+                          />
+                        )}
+                        <div className="flex-1">
+                          <div className="font-bold text-base mb-1 text-emerald-800">{key}</div>
+                          <div className="mb-1">
+                            <span className="font-semibold text-green-600 text-xs mr-1">성격적 특성</span>
+                            <span className="text-gray-700 text-xs">{res.성격적특성?.join(' / ')}</span>
                           </div>
-                        </div>
-                      ))
-                    : results.map((res, idx) => (
-                        <div key={res.id || res.name} className="flex items-center gap-4 border-b py-3 last:border-b-0">
-                          {/* 이미지 처리 (romanticResults는 res.image) */}
-                          {images
-                            ? (images[res.id || idx] || images[idx]) && (
-                                <img
-                                  src={images[res.id || idx] || images[idx]}
-                                  alt={res.name}
-                                  className="w-16 h-16 object-cover rounded-xl border border-red-100 bg-gray-50"
-                                />
-                              )
-                            : res.image && (
-                                <img
-                                  src={res.image}
-                                  alt={res.name}
-                                  className="w-16 h-16 object-cover rounded-xl border border-pink-100 bg-pink-50"
-                                />
-                              )}
+                          <div className="mb-1">
+                            <span className="font-semibold text-blue-600 text-xs mr-1">행동적 특성</span>
+                            <span className="text-gray-700 text-xs">{res.행동적특성?.join(' / ')}</span>
+                          </div>
                           <div>
-                            <div className={`font-bold text-base mb-1 ${color(accent)}`}>{res.name}</div>
-                            <div className="text-gray-700 text-xs">{res.description}</div>
+                            <span className="font-semibold text-pink-600 text-xs mr-1">연애스타일</span>
+                            <span className="text-gray-700 text-xs">{res.연애스타일?.join(' / ')}</span>
                           </div>
                         </div>
-                      ))}
+                      </div>
+                    ))
+                    : results.map((res, idx) => (
+                      <div key={res.id || res.name} className="flex items-center gap-4 border-b py-3 last:border-b-0">
+                        {/* 이미지 처리 (romanticResults는 res.image) */}
+                        {images && images[idx] && (
+                          <img
+                            src={images[idx]}
+                            alt={res.name}
+                            className="w-16 h-16 object-cover rounded-xl border border-red-100 bg-gray-50"
+                          />
+                        )}
+                        {!images && res.image && (
+                          <img
+                            src={res.image}
+                            alt={res.name}
+                            className="w-16 h-16 object-cover rounded-xl border border-pink-100 bg-pink-50"
+                          />
+                        )}
+                        <div>
+                          <div className={`font-bold text-base mb-1 ${color(accent)}`}>{res.name}</div>
+                          <div className="text-gray-700 text-xs">{res.description}</div>
+                        </div>
+                      </div>
+                    ))}
                 </div>
               </div>
             )}
