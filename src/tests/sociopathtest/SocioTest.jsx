@@ -45,7 +45,6 @@ function SocioTest() {
     // 시작 버튼: 참여자 수 증가 + 문제화면 진입
     const startTest = async () => {
         const ref = doc(db, 'testCounts', 'socioTest');
-        await setDoc(ref, { count: 0 }, { merge: true });
         await updateDoc(ref, { count: increment(1) });
         setStep('question');
     };
