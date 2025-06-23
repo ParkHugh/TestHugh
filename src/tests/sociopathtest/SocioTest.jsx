@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import questions from './questions';
 import answers from './answers';
@@ -6,6 +6,10 @@ import resultDescriptions from './resultDescriptions';
 import resultImages, { mainImage } from './resultImages';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+
+// Firebase 관련 추가
+import { doc, getDoc, setDoc, updateDoc, increment } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 // 점수 계산 함수
 const calculateResultIdx = (userAnswers) => {
@@ -18,22 +22,33 @@ const calculateResultIdx = (userAnswers) => {
 };
 
 function SocioTest() {
-    <Helmet>
-        <title>직장인 소시오패스 테스트 | Test 休</title>
-        <meta name="description" content="나는 직장에서 천사일까, 소시오패스일까? 현실적인 13가지 질문으로 직장 내 민낯을 밝혀보세요." />
-        <meta property="og:title" content="소시오패스 테스트 | Test 休" />
-        <meta property="og:description" content="13문항으로 알아보는 직장인 소시오패스 진단! 익명으로 빠르게 결과 확인." />
-        <meta property="og:image" content="https://test-hugh.co.kr/tests/sociopathtest/images/main.png" />
-        <meta property="og:url" content="https://test-hugh.co.kr/sociopathtest" />
-    </Helmet>
+    const INITIAL_COUNT = 128300;
     const [step, setStep] = useState('intro');
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [userAnswers, setUserAnswers] = useState({});
     const [copied, setCopied] = useState(false);
+    const [count, setCount] = useState(INITIAL_COUNT);
     const navigate = useNavigate();
 
+    // 참여자 수 불러오기
+    useEffect(() => {
+        async function fetchCount() {
+            const ref = doc(db, 'testCounts', 'socioTest');
+            const snap = await getDoc(ref);
+            if (snap.exists()) {
+                setCount(INITIAL_COUNT + (snap.data().count || 0));
+            }
+        }
+        fetchCount();
+    }, []);
 
-    const startTest = () => setStep('question');
+    // 시작 버튼: 참여자 수 증가 + 문제화면 진입
+    const startTest = async () => {
+        const ref = doc(db, 'testCounts', 'socioTest');
+        await setDoc(ref, { count: 0 }, { merge: true });
+        await updateDoc(ref, { count: increment(1) });
+        setStep('question');
+    };
 
     const handleAnswer = (value) => {
         const qid = questions[currentQuestion].id;
@@ -74,6 +89,15 @@ function SocioTest() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-zinc-900 flex flex-col items-center justify-center px-4 py-2">
+            <Helmet>
+                <title>직장인 소시오패스 테스트 | Test 休</title>
+                <meta name="description" content="나는 직장에서 천사일까, 소시오패스일까? 현실적인 13가지 질문으로 직장 내 민낯을 밝혀보세요." />
+                <meta property="og:title" content="소시오패스 테스트 | Test 休" />
+                <meta property="og:description" content="13문항으로 알아보는 직장인 소시오패스 진단! 익명으로 빠르게 결과 확인." />
+                <meta property="og:image" content="https://test-hugh.co.kr/tests/sociopathtest/images/main.png" />
+                <meta property="og:url" content="https://test-hugh.co.kr/sociopathtest" />
+            </Helmet>
+
             <AnimatePresence mode="wait">
                 {/* 인트로 */}
                 {step === 'intro' && (
@@ -101,6 +125,9 @@ function SocioTest() {
                         <p className="mb-8 text-gray-200 text-lg text-center font-medium max-w-xl shadow-inner">
                             회사에서 나는 진짜 천사일까, 혹시 소시오패스...? <br />
                             13가지 현실적인 질문으로 직장 내 민낯을 밝혀보세요.
+                        </p>
+                        <p className="mb-6 text-red-400 text-sm font-semibold">
+                            🔥 {count.toLocaleString()}명이 참여했어요
                         </p>
                         <button
                             onClick={startTest}

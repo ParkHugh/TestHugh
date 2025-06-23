@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import questions from './questions';
 import answers from './answers';
 import results, { mainImage } from './result';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-// ...기존 import
+// Firebase 연동
+import { doc, getDoc, setDoc, updateDoc, increment } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 // 점수로 결과 찾기
 const getResultByScore = (score) => {
@@ -15,21 +17,33 @@ const getResultByScore = (score) => {
 };
 
 function RomanticTest() {
-    <Helmet>
-        <title>낭만 vs 현실 밸런스 게임 | Test 休</title>
-        <meta name="description" content="나는 낭만파일까, 현실파일까? 12가지 인생 선택, 내 안의 밸런스를 지금 테스트하세요!" />
-        <meta property="og:title" content="낭만 vs 현실 밸런스 게임 | Test 休" />
-        <meta property="og:description" content="당신의 선택에는 어떤 밸런스가 있을까? 낭만과 현실의 경계, 12가지 질문으로 진단!" />
-        <meta property="og:image" content="https://test-hugh.co.kr/tests/romantictest/images/main.png" />
-        <meta property="og:url" content="https://test-hugh.co.kr/romantictest" />
-    </Helmet>
+    const INITIAL_COUNT = 58791;
     const [step, setStep] = useState('intro');
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [userAnswers, setUserAnswers] = useState({});
     const [copied, setCopied] = useState(false);
+    const [count, setCount] = useState(INITIAL_COUNT);
     const navigate = useNavigate();
 
-    const startTest = () => setStep('question');
+    // 참여자 수 불러오기
+    useEffect(() => {
+        async function fetchCount() {
+            const ref = doc(db, 'testCounts', 'romanticTest');
+            const snap = await getDoc(ref);
+            if (snap.exists()) {
+                setCount(INITIAL_COUNT + (snap.data().count || 0));
+            }
+        }
+        fetchCount();
+    }, []);
+
+    // 시작 버튼: 참여자 수 증가 + 문제 화면 진입
+    const startTest = async () => {
+        const ref = doc(db, 'testCounts', 'romanticTest');
+        await setDoc(ref, { count: 0 }, { merge: true });
+        await updateDoc(ref, { count: increment(1) });
+        setStep('question');
+    };
 
     const handleAnswer = (value) => {
         const qid = questions[currentQuestion].id;
@@ -71,6 +85,14 @@ function RomanticTest() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-pink-100 via-yellow-50 to-pink-200 flex flex-col items-center justify-center px-4 py-2">
+            <Helmet>
+                <title>낭만 vs 현실 밸런스 게임 | Test 休</title>
+                <meta name="description" content="나는 낭만파일까, 현실파일까? 12가지 인생 선택, 내 안의 밸런스를 지금 테스트하세요!" />
+                <meta property="og:title" content="낭만 vs 현실 밸런스 게임 | Test 休" />
+                <meta property="og:description" content="당신의 선택에는 어떤 밸런스가 있을까? 낭만과 현실의 경계, 12가지 질문으로 진단!" />
+                <meta property="og:image" content="https://test-hugh.co.kr/tests/romantictest/images/main.png" />
+                <meta property="og:url" content="https://test-hugh.co.kr/romantictest" />
+            </Helmet>
             <AnimatePresence mode="wait">
                 {/* 인트로 */}
                 {step === 'intro' && (
@@ -95,9 +117,12 @@ function RomanticTest() {
                         <h2 className="text-3xl font-extrabold mt-2 mb-2 text-pink-500 tracking-tight drop-shadow-lg animate-bounce">
                             낭만 vs 현실 밸런스게임
                         </h2>
-                        <p className="mb-8 text-pink-500 text-lg text-center font-medium max-w-xl shadow-inner">
+                        <p className="mb-2 text-pink-500 text-lg text-center font-medium max-w-xl shadow-inner">
                             나는 낭만파일까, 현실파일까?<br />
                             12가지 인생 선택!<br /> 당신의 인생 밸런스를 테스트해보세요.
+                        </p>
+                        <p className="mb-6 text-pink-400 text-sm font-semibold">
+                            🔥 {count.toLocaleString()}명이 참여했어요
                         </p>
                         <button
                             onClick={startTest}
@@ -108,7 +133,7 @@ function RomanticTest() {
                     </motion.div>
                 )}
 
-                {/* 질문 */}
+                {/* 이하 기존 코드 그대로 */}
                 {step === 'question' && questions[currentQuestion] && (
                     <motion.div
                         key={currentQuestion}
@@ -170,7 +195,6 @@ function RomanticTest() {
                     </motion.div>
                 )}
 
-                {/* 로딩 */}
                 {step === 'loading' && (
                     <motion.div
                         key="loading"
@@ -219,7 +243,6 @@ function RomanticTest() {
                     </motion.div>
                 )}
 
-                {/* 결과 */}
                 {step === 'result' && result && (
                     <motion.div
                         key="result"

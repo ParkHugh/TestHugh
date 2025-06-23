@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import questions from './questions';
 import resultImages from './resultImages';
@@ -6,8 +6,9 @@ import mainImage from './images/main.png';
 import resultDescriptions from './resultDescriptions';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-// ...기존 import
-
+// Firebase 연동
+import { doc, getDoc, setDoc, updateDoc, increment } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 const calculateResult = (gender, answers) => {
   const aCount = Object.values(answers).filter(v => v === 'a').length;
@@ -19,22 +20,35 @@ const calculateResult = (gender, answers) => {
 };
 
 function TetoTest() {
-  <Helmet>
-    <title>테토/테겐/에겐 호르몬 테스트 | Test 休</title>
-    <meta name="description" content="나의 호르몬 성향을 12문항으로 알아보는 테토/테겐/에겐 테스트. 당신의 성향을 쉽고 빠르게 확인하세요!" />
-    <meta property="og:title" content="테토남 에겐녀 테겐남 테스트 | Test 休" />
-    <meta property="og:description" content="나의 호르몬 유형이 궁금하다면? 1분만에 결과 확인! 재미와 통찰을 동시에." />
-    <meta property="og:image" content="https://test-hugh.co.kr/tests/tetotest/images/main.png" />
-    <meta property="og:url" content="https://test-hugh.co.kr/tetotest" />
-  </Helmet>
+  const INITIAL_COUNT = 72950;
   const [step, setStep] = useState('intro');
   const [gender, setGender] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [copied, setCopied] = useState(false);
+  const [count, setCount] = useState(INITIAL_COUNT);
   const navigate = useNavigate();
 
-  const startTest = () => setStep('gender');
+  // 참여자 수 불러오기
+  useEffect(() => {
+    async function fetchCount() {
+      const ref = doc(db, 'testCounts', 'tetoTest');
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        setCount(INITIAL_COUNT + (snap.data().count || 0));
+      }
+    }
+    fetchCount();
+  }, []);
+
+  // 시작 버튼: 참여자 수 증가 + 성별 선택 화면 진입
+  const startTest = async () => {
+    const ref = doc(db, 'testCounts', 'tetoTest');
+    await setDoc(ref, { count: 0 }, { merge: true });
+    await updateDoc(ref, { count: increment(1) });
+    setStep('gender');
+  };
+
   const selectGender = (selected) => {
     setGender(selected);
     setStep('question');
@@ -60,6 +74,8 @@ function TetoTest() {
     setCopied(false);
   };
 
+  const result = calculateResult(gender, answers);
+
   const handleShare = () => {
     const shareUrl = `${window.location.origin}/tetotest/result/${encodeURIComponent(result)}`;
     if (navigator.share) {
@@ -75,13 +91,17 @@ function TetoTest() {
     }
   };
 
-
-  const result = calculateResult(gender, answers);
-
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-2
-      bg-gradient-to-br from-emerald-50 via-yellow-50 to-orange-50"
-    >
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-2 bg-gradient-to-br from-emerald-50 via-yellow-50 to-orange-50">
+      <Helmet>
+        <title>테토/테겐/에겐 호르몬 테스트 | Test 休</title>
+        <meta name="description" content="나의 호르몬 성향을 12문항으로 알아보는 테토/테겐/에겐 테스트. 당신의 성향을 쉽고 빠르게 확인하세요!" />
+        <meta property="og:title" content="테토남 에겐녀 테겐남 테스트 | Test 休" />
+        <meta property="og:description" content="나의 호르몬 유형이 궁금하다면? 1분만에 결과 확인! 재미와 통찰을 동시에." />
+        <meta property="og:image" content="https://test-hugh.co.kr/tests/tetotest/images/main.png" />
+        <meta property="og:url" content="https://test-hugh.co.kr/tetotest" />
+      </Helmet>
+
       <AnimatePresence mode="wait">
         {/* 인트로 */}
         {step === 'intro' && (
@@ -106,9 +126,12 @@ function TetoTest() {
             <h2 className="text-4xl md:text-5xl font-extrabold mt-2 mb-3 text-emerald-700 tracking-tight drop-shadow animate-bounce">
               테토 / 테겐 / 에겐 테스트
             </h2>
-            <p className="mb-9 text-emerald-700 text-lg text-center font-semibold max-w-xl shadow-inner">
+            <p className="mb-3 text-emerald-700 text-lg text-center font-semibold max-w-xl shadow-inner">
               나의 호르몬 성향을 알아보자!<br />
-              16가지 질문으로 당신의 호르몬 세계를 탐험해요!
+              12가지 질문으로 당신의 호르몬 세계를 탐험해요!
+            </p>
+            <p className="mb-6 text-emerald-400 text-sm font-semibold">
+              🔥 {count.toLocaleString()}명이 참여했어요
             </p>
             <button
               onClick={startTest}
@@ -119,7 +142,7 @@ function TetoTest() {
           </motion.div>
         )}
 
-        {/* 성별 선택 */}
+        {/* 이하 기존 코드(성별선택, 질문, 결과, 로딩 등) 완전 동일 */}
         {step === 'gender' && (
           <motion.div
             key="gender"
@@ -146,7 +169,6 @@ function TetoTest() {
           </motion.div>
         )}
 
-        {/* 질문 */}
         {step === 'question' && questions[currentQuestion] && (
           <motion.div
             key={currentQuestion}
@@ -189,7 +211,6 @@ function TetoTest() {
           </motion.div>
         )}
 
-        {/* 로딩 */}
         {step === 'loading' && (
           <motion.div
             key="loading"
@@ -238,7 +259,6 @@ function TetoTest() {
           </motion.div>
         )}
 
-        {/* 결과 */}
         {step === 'result' && (
           <motion.div
             key="result"
