@@ -107,7 +107,7 @@ export default function MainPage() {
                 {test.id === 'traveltest' && (
                   <div className="mb-2">
                     <span className="inline-block bg-blue-500 text-white text-xs px-3 py-1 rounded-full shadow font-semibold tracking-wide">
-                      NEW! 여행 성향 유형
+                      NEW! 여행 성향 MBTI
                     </span>
                   </div>
                 )}
