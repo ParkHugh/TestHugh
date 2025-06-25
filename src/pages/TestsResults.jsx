@@ -9,7 +9,10 @@ import sociopathResults from "../tests/sociopathtest/resultDescriptions";
 import sociopathImages from "../tests/sociopathtest/resultImages";
 
 import romanticMeta from "../tests/romantictest/meta";
-import romanticResults from "../tests/romantictest/result"; // 배열 (image 포함)
+import romanticResults from "../tests/romantictest/result";
+
+import travelMeta from "../tests/traveltest/meta";
+import travelResults from "../tests/traveltest/result";
 
 const testResultSets = [
   {
@@ -18,7 +21,7 @@ const testResultSets = [
     images: tetotestImages,
     isObject: true,
     description: "호르몬 유형 테스트의 다양한 결과와 상세 특성을 확인할 수 있습니다.",
-    accent: 'emerald',  // 추가
+    accent: 'emerald',
   },
   {
     meta: sociopathMeta,
@@ -26,25 +29,33 @@ const testResultSets = [
     images: sociopathImages,
     isObject: false,
     description: "직장인 소시오패스 테스트의 결과별 해설과 이미지를 한 눈에!",
-    accent: 'red', // 추가
+    accent: 'red',
   },
   {
     meta: romanticMeta,
     results: romanticResults,
-    images: null, // 이미지가 results 배열에 포함됨!
+    images: null,
     isObject: false,
     description: "낭만 vs 현실 밸런스게임의 나의 결과와 설명을 볼 수 있습니다.",
-    accent: 'pink', // 추가
+    accent: 'pink',
   },
+  {
+    meta: travelMeta,
+    results: travelResults,
+    images: null,
+    isObject: false,
+    description: "여행 성향 테스트의 결과별 특징과 추천 여행지를 확인해보세요!",
+    accent: 'blue',
+  }
 ];
 
 export default function TestsResults() {
   const [openIndex, setOpenIndex] = useState(null);
 
-  // 각 테스트별 테마(색상) 처리
   const color = (accent, type = 'text') => {
     if (accent === 'red') return type === 'bg' ? 'bg-red-50' : 'text-red-500';
     if (accent === 'pink') return type === 'bg' ? 'bg-pink-50' : 'text-pink-400';
+    if (accent === 'blue') return type === 'bg' ? 'bg-blue-50' : 'text-blue-500';
     return type === 'bg' ? 'bg-emerald-50' : 'text-emerald-700';
   };
 
@@ -55,7 +66,6 @@ export default function TestsResults() {
       <div className="space-y-4">
         {testResultSets.map(({ meta, results, images, isObject, description, accent }, i) => (
           <div key={meta.id} className={`border rounded-xl shadow ${color(accent, 'bg')} bg-white`}>
-            {/* 테스트 목록 아코디언 헤더 */}
             <button
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
               className={`flex w-full items-center justify-between px-6 py-4 font-bold text-lg ${color(accent)} focus:outline-none`}
@@ -66,13 +76,12 @@ export default function TestsResults() {
               </span>
               <span className="text-xl">{openIndex === i ? "▲" : "▼"}</span>
             </button>
-            {/* 펼쳐진 결과 상세 */}
             {openIndex === i && (
               <div className="px-6 pb-6">
                 <p className={`mb-4 ${color(accent)}`}>{description}</p>
                 <div className="grid gap-6">
                   {isObject
-                    ? Object.entries(results).map(([key, res], idx) => (
+                    ? Object.entries(results).map(([key, res]) => (
                       <div key={key} className="flex items-center gap-4 border-b py-3 last:border-b-0">
                         {images && images[key] && (
                           <img
@@ -100,7 +109,6 @@ export default function TestsResults() {
                     ))
                     : results.map((res, idx) => (
                       <div key={res.id || res.name} className="flex items-center gap-4 border-b py-3 last:border-b-0">
-                        {/* 이미지 처리 (romanticResults는 res.image) */}
                         {images && images[idx] && (
                           <img
                             src={images[idx]}
@@ -112,12 +120,12 @@ export default function TestsResults() {
                           <img
                             src={res.image}
                             alt={res.name}
-                            className="w-16 h-16 object-cover rounded-xl border border-pink-100 bg-pink-50"
+                            className="w-16 h-16 object-cover rounded-xl border border-blue-100 bg-blue-50"
                           />
                         )}
                         <div>
                           <div className={`font-bold text-base mb-1 ${color(accent)}`}>{res.name}</div>
-                          <div className="text-gray-700 text-xs">{res.description}</div>
+                          <div className="text-gray-700 text-xs" dangerouslySetInnerHTML={{ __html: res.description }} />
                         </div>
                       </div>
                     ))}
