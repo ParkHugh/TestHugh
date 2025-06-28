@@ -1,26 +1,25 @@
-// src/tests/tetotest/TetoTestResultPage.jsx
-
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import resultImages from "./resultImages";
 import resultDescriptions from "./resultDescriptions";
 
 function TetoTestResultPage() {
-  const { type } = useParams(); // 예: '테토남'
+  const { type } = useParams();
   const navigate = useNavigate();
 
   const result = type;
   const desc = resultDescriptions[result];
   const image = resultImages[result];
 
-  if (!desc) return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="bg-white rounded-xl shadow p-8">
-        <h2 className="text-2xl font-bold mb-2">잘못된 결과 값입니다.</h2>
-        <button onClick={() => navigate('/tetotest')} className="text-blue-600 underline">테스트 하러가기</button>
+  if (!desc)
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="bg-white rounded-xl shadow p-8">
+          <h2 className="text-2xl font-bold mb-2">잘못된 결과 값입니다.</h2>
+          <button onClick={() => navigate('/tetotest')} className="text-blue-600 underline">테스트 하러가기</button>
+        </div>
       </div>
-    </div>
-  );
+    );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-yellow-50 to-orange-50 flex flex-col items-center justify-center px-4 py-2">
@@ -56,18 +55,21 @@ function TetoTestResultPage() {
           </ul>
         </div>
       </div>
-      <button
-        onClick={() => navigate('/tetotest')}
-        className="bg-white hover:bg-emerald-100 text-emerald-400 py-2 px-6 rounded-xl font-bold mt-8 shadow-md border border-emerald-200"
-      >
-        나도 테스트 해보기
-      </button>
-      <button
-        onClick={() => navigate('/')}
-        className="bg-emerald-500 hover:bg-emerald-600 text-white py-2 px-6 rounded-xl font-bold ml-2 mt-8 shadow-md"
-      >
-        다른 테스트
-      </button>
+      {/* 버튼 그룹 */}
+      <div className="flex flex-col md:flex-row gap-3 md:gap-6 justify-center items-center mt-8">
+        <button
+          onClick={() => navigate('/tetotest')}
+          className="bg-white hover:bg-emerald-100 text-emerald-400 py-2 px-7 rounded-xl font-bold shadow-md border border-emerald-200 transition-all duration-200 focus:ring-2 focus:ring-emerald-200"
+        >
+          나도 테스트 해보기
+        </button>
+        <button
+          onClick={() => navigate('/')}
+          className="bg-emerald-500 hover:bg-emerald-600 text-white py-2 px-7 rounded-xl font-bold shadow-md transition-all duration-200 focus:ring-2 focus:ring-emerald-200"
+        >
+          다른 테스트
+        </button>
+      </div>
     </div>
   );
 }
