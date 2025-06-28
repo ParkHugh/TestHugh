@@ -163,7 +163,7 @@ export default function MainPage() {
       {/* 푸터 */}
       <footer className={`w-full border-t ${footerBg} py-6 mt-10 text-center text-orange-300 text-sm`}>
         <div className="flex justify-center space-x-4">
-          <a href="/policy" className="hover:underline">개인정보처리방침</a>
+          <a href="/privacy" className="hover:underline">개인정보처리방침</a>
           <a href="/contact" className="hover:underline">Contact</a>
         </div>
         <div className="mt-2">© {new Date().getFullYear()} TEST 休. ALL RIGHTS RESERVED</div>

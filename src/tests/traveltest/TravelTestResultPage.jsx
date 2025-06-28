@@ -52,14 +52,14 @@ export default function TravelTestResultPage() {
         <div className="flex flex-col md:flex-row items-center justify-center gap-5 mb-4 mt-2">
           {best && (
             <div className="flex flex-col items-center">
-              <span className="text-sm text-cyan-500 font-semibold mb-1">환상의 여행메이트</span>
+              <span className="text-sm text-cyan-500 font-semibold mb-1">👩‍❤️‍👨 환상의 여행메이트</span>
               <img src={best.image} alt={best.name} className="w-20 h-20 rounded-xl mb-1 border-2 border-cyan-200" />
               <span className="text-xs font-bold text-cyan-500">{best.name}</span>
             </div>
           )}
           {worst && (
             <div className="flex flex-col items-center">
-              <span className="text-sm text-gray-400 font-semibold mb-1">환장의 여행메이트</span>
+              <span className="text-sm text-gray-400 font-semibold mb-1">🤦‍♀️ 환장의 여행메이트</span>
               <img src={worst.image} alt={worst.name} className="w-20 h-20 rounded-xl mb-1 border-2 border-gray-200" />
               <span className="text-xs font-bold text-gray-500">{worst.name}</span>
             </div>

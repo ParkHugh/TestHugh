@@ -37,7 +37,7 @@ function App() {
           <Route path="/runnertest" element={<RunnerTest />} />
           <Route path="/runnertest/result/:type" element={<RunnerTestResultPage />} />
 
-          <Route path="/policy" element={<PrivacyPolicy />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
         </Routes>
