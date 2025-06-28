@@ -60,13 +60,13 @@ function TetoTestResultPage() {
         onClick={() => navigate('/tetotest')}
         className="bg-white hover:bg-emerald-100 text-emerald-400 py-2 px-6 rounded-xl font-bold mt-8 shadow-md border border-emerald-200"
       >
-        다시 하기
+        나도 테스트 해보기
       </button>
       <button
         onClick={() => navigate('/')}
         className="bg-emerald-500 hover:bg-emerald-600 text-white py-2 px-6 rounded-xl font-bold ml-2 mt-8 shadow-md"
       >
-        다른 테스트 해보기
+        다른 테스트
       </button>
     </div>
   );

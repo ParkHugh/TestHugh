@@ -60,7 +60,7 @@ export default function RunnerTestResultPage() {
           )}
         </div>
         <button
-          onClick={() => navigate('/runner')}
+          onClick={() => navigate('/runnertest')}
           className="bg-pink-400 hover:bg-pink-500 text-white py-2 px-6 rounded-xl font-bold ml-2 mt-3 shadow-md"
         >
           나도 테스트 해보기
