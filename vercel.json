@@ -1,22 +1,5 @@
 {
-  "routes": [
-    {
-      "src": "/(.*)",
-      "headers": {
-        "x-prerender-token": "BcYmV7sB8bdfoeuWBGeK"
-      },
-      "dest": "https://service.prerender.io/$1",
-      "has": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": ".*(facebook|twitter|discord|whatsapp|telegram|slack|kakaotalk|google|bingbot|yeti|naver|daum|zum).*"
-        }
-      ]
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
