@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+
 import tetotestMeta from "../tests/tetotest/meta";
 import tetotestResults from "../tests/tetotest/resultDescriptions";
 import tetotestImages from "../tests/tetotest/resultImages";
@@ -13,6 +14,10 @@ import romanticResults from "../tests/romantictest/result";
 
 import travelMeta from "../tests/traveltest/meta";
 import travelResults from "../tests/traveltest/result";
+
+import runnerMeta from "../tests/runnertest/meta";
+import runnerResults from "../tests/runnertest/result";
+
 
 const testResultSets = [
   {
@@ -46,18 +51,80 @@ const testResultSets = [
     isObject: false,
     description: "여행 성향 테스트의 결과별 특징과 추천 여행지를 확인해보세요!",
     accent: 'blue',
+  },
+  {
+    meta: runnerMeta,
+    results: runnerResults,
+    images: null,
+    isObject: false,
+    description: "러닝 성향 테스트의 8가지 유형별 특징과 매칭 궁합까지 한 눈에!",
+    accent: 'pink', // 또는 'rose'로 커스텀 가능
   }
 ];
 
+const color = (accent, type = 'text') => {
+  const colors = {
+    red: { bg: 'bg-red-50', text: 'text-red-500' },
+    pink: { bg: 'bg-pink-50', text: 'text-pink-400' },
+    blue: { bg: 'bg-blue-50', text: 'text-blue-500' },
+    emerald: { bg: 'bg-emerald-50', text: 'text-emerald-700' },
+    rose: { bg: 'bg-rose-50', text: 'text-rose-500' },
+  };
+  return colors[accent]?.[type] || '';
+};
+
+const ObjectResultItem = ({ keyName, res, image }) => (
+  <div key={keyName} className="flex items-center gap-4 border-b py-3 last:border-b-0">
+    {image && (
+      <img
+        src={image}
+        alt={keyName}
+        className="w-16 h-16 object-cover rounded-xl border border-emerald-100 bg-gray-50"
+      />
+    )}
+    <div className="flex-1">
+      <div className="font-bold text-base mb-1 text-emerald-800">{keyName}</div>
+      <div className="mb-1">
+        <span className="font-semibold text-green-600 text-xs mr-1">성격적 특성</span>
+        <span className="text-gray-700 text-xs">{res.성격적특성?.join(' / ')}</span>
+      </div>
+      <div className="mb-1">
+        <span className="font-semibold text-blue-600 text-xs mr-1">행동적 특성</span>
+        <span className="text-gray-700 text-xs">{res.행동적특성?.join(' / ')}</span>
+      </div>
+      <div>
+        <span className="font-semibold text-pink-600 text-xs mr-1">연애스타일</span>
+        <span className="text-gray-700 text-xs">{res.연애스타일?.join(' / ')}</span>
+      </div>
+    </div>
+  </div>
+);
+
+const ArrayResultItem = ({ res, image, accent }) => (
+  <div key={res.id || res.name} className="flex items-center gap-4 border-b py-3 last:border-b-0">
+    {image && (
+      <img
+        src={image}
+        alt={res.name}
+        className="w-16 h-16 object-cover rounded-xl border border-red-100 bg-gray-50"
+      />
+    )}
+    {!image && res.image && (
+      <img
+        src={res.image}
+        alt={res.name}
+        className="w-16 h-16 object-cover rounded-xl border border-blue-100 bg-blue-50"
+      />
+    )}
+    <div>
+      <div className={`font-bold text-base mb-1 ${color(accent)}`}>{res.name}</div>
+      <div className="text-gray-700 text-xs" dangerouslySetInnerHTML={{ __html: res.description }} />
+    </div>
+  </div>
+);
+
 export default function TestsResults() {
   const [openIndex, setOpenIndex] = useState(null);
-
-  const color = (accent, type = 'text') => {
-    if (accent === 'red') return type === 'bg' ? 'bg-red-50' : 'text-red-500';
-    if (accent === 'pink') return type === 'bg' ? 'bg-pink-50' : 'text-pink-400';
-    if (accent === 'blue') return type === 'bg' ? 'bg-blue-50' : 'text-blue-500';
-    return type === 'bg' ? 'bg-emerald-50' : 'text-emerald-700';
-  };
 
   return (
     <div className="max-w-2xl mx-auto p-6 pb-16">
@@ -82,52 +149,10 @@ export default function TestsResults() {
                 <div className="grid gap-6">
                   {isObject
                     ? Object.entries(results).map(([key, res]) => (
-                      <div key={key} className="flex items-center gap-4 border-b py-3 last:border-b-0">
-                        {images && images[key] && (
-                          <img
-                            src={images[key]}
-                            alt={key}
-                            className="w-16 h-16 object-cover rounded-xl border border-emerald-100 bg-gray-50"
-                          />
-                        )}
-                        <div className="flex-1">
-                          <div className="font-bold text-base mb-1 text-emerald-800">{key}</div>
-                          <div className="mb-1">
-                            <span className="font-semibold text-green-600 text-xs mr-1">성격적 특성</span>
-                            <span className="text-gray-700 text-xs">{res.성격적특성?.join(' / ')}</span>
-                          </div>
-                          <div className="mb-1">
-                            <span className="font-semibold text-blue-600 text-xs mr-1">행동적 특성</span>
-                            <span className="text-gray-700 text-xs">{res.행동적특성?.join(' / ')}</span>
-                          </div>
-                          <div>
-                            <span className="font-semibold text-pink-600 text-xs mr-1">연애스타일</span>
-                            <span className="text-gray-700 text-xs">{res.연애스타일?.join(' / ')}</span>
-                          </div>
-                        </div>
-                      </div>
+                      <ObjectResultItem key={key} keyName={key} res={res} image={images?.[key]} />
                     ))
                     : results.map((res, idx) => (
-                      <div key={res.id || res.name} className="flex items-center gap-4 border-b py-3 last:border-b-0">
-                        {images && images[idx] && (
-                          <img
-                            src={images[idx]}
-                            alt={res.name}
-                            className="w-16 h-16 object-cover rounded-xl border border-red-100 bg-gray-50"
-                          />
-                        )}
-                        {!images && res.image && (
-                          <img
-                            src={res.image}
-                            alt={res.name}
-                            className="w-16 h-16 object-cover rounded-xl border border-blue-100 bg-blue-50"
-                          />
-                        )}
-                        <div>
-                          <div className={`font-bold text-base mb-1 ${color(accent)}`}>{res.name}</div>
-                          <div className="text-gray-700 text-xs" dangerouslySetInnerHTML={{ __html: res.description }} />
-                        </div>
-                      </div>
+                      <ArrayResultItem key={res.id || res.name} res={res} image={images?.[idx]} accent={accent} />
                     ))}
                 </div>
               </div>

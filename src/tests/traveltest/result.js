@@ -1,5 +1,3 @@
-// src/tests/traveltest/result.js
-
 import inp from './images/inp.png';
 import inj from './images/inj.png';
 import isp from './images/isp.png';
@@ -23,6 +21,8 @@ const results = [
       <b>추천 여행지:</b> 교토, 포르투, 프라하, 몽마르트 언덕, 제주 애월
     `,
     image: inp,
+    bestMatch: 'ISP',      // 조용한 감성 힐링러
+    worstMatch: 'ENJ',     // 사교적 완벽 플래너 (극단적 그룹 여행, 완벽 플랜 추구)
   },
   {
     id: 'INJ',
@@ -36,6 +36,8 @@ const results = [
       <b>추천 여행지:</b> 아이슬란드, 스위스 인터라켄, 발리 우붓, 오키나와, 설악산
     `,
     image: inj,
+    bestMatch: 'ISJ',      // 조용한 계획러
+    worstMatch: 'ESP',     // 현장 체험 마니아 (즉흥, 액티비티, 그룹 위주)
   },
   {
     id: 'ISP',
@@ -49,6 +51,8 @@ const results = [
       <b>추천 여행지:</b> 제주 조천, 아오모리, 치앙마이, 유후인, 고흥
     `,
     image: isp,
+    bestMatch: 'INP',      // 홀로여행 로맨티스트
+    worstMatch: 'ESJ',     // 체계적인 팀 여행가 (단체, 효율, 빡빡 플랜)
   },
   {
     id: 'ISJ',
@@ -59,9 +63,11 @@ const results = [
       • 🧾 숙소와 음식, 경로 등 여행의 모든 요소를 꼼꼼히 따집니다.<br />
       • 🧍‍♀️ 단체보다는 1~2인의 소수여행이나 혼행에 안정감을 느낍니다.<br />
       • 🧖 스스로를 케어할 수 있는 정적인 일정이 필요해요<br />
-      <b>추천 여행지:</b> 남해 독일마을, 하코네, 홋카이도, 푸꾸옥, 통영
+      <b>추천 여행지:</b> 비엔나, 하코네, 홋카이도, 푸꾸옥, 통영
     `,
     image: isj,
+    bestMatch: 'INJ',      // 계획형 내면 탐험가
+    worstMatch: 'ENP',     // 에너지 폭발 플렉서 (즉흥, 그룹, 이벤트)
   },
   {
     id: 'ENP',
@@ -72,9 +78,11 @@ const results = [
       • 📸 인스타/틱톡에 올릴 핫플과 감각적인 장소를 탐색합니다.<br />
       • 😆 모험, 유쾌한 실수, 새로운 만남이 여행의 묘미라 생각해요.<br />
       • 🙈 계획은 거의 안 짜거나, 다른 사람에게 맡기고 뛰어다닙니다<br />
-      <b>추천 여행지:</b> 바르셀로나, 방콕, 뉴욕 브루클린, 멜버른, 도쿄 시부야
+      <b>추천 여행지:</b> 멕시코, 방콕, 뉴욕 브루클린, 멜버른, 도쿄 시부야
     `,
     image: enp,
+    bestMatch: 'ESP',      // 현장 체험 마니아
+    worstMatch: 'ISJ',     // 조용한 계획러 (정적, 소수, 플랜 중심)
   },
   {
     id: 'ENJ',
@@ -88,6 +96,8 @@ const results = [
       <b>추천 여행지:</b> 런던, 홍콩, 파리, 로마, 시드니
     `,
     image: enj,
+    bestMatch: 'ESJ',      // 체계적인 팀 여행가
+    worstMatch: 'INP',     // 홀로여행 로맨티스트 (즉흥+혼행+감성 극단)
   },
   {
     id: 'ESP',
@@ -101,6 +111,8 @@ const results = [
       <b>추천 여행지:</b> 대만, 홍콩, 다낭, 오사카, 말레이시아 페낭
     `,
     image: esp,
+    bestMatch: 'ENP',      // 에너지 폭발 플렉서
+    worstMatch: 'INJ',     // 계획형 내면 탐험가 (계획/내향/정적)
   },
   {
     id: 'ESJ',
@@ -114,6 +126,8 @@ const results = [
       <b>추천 여행지:</b> 싱가포르, 타이베이, 괌, 나트랑, 도쿄
     `,
     image: esj,
+    bestMatch: 'ENJ',      // 사교적 완벽 플래너
+    worstMatch: 'ISP',     // 감성 힐링러 (정적+혼행+즉흥)
   }
 ];
 

@@ -9,9 +9,12 @@ import TetoTest from './tests/tetotest/TetoTest';
 import SocioTest from './tests/sociopathtest/SocioTest';
 import RomanticTest from './tests/romantictest/RomanticTest';
 import TetoTestResultPage from './tests/tetotest/TetoTestResultPage';
-
-// ⭐️ TravelTest 추가
 import TravelTest from './tests/traveltest/TravelTest';
+import TravelTestResultPage from './tests/traveltest/TravelTestResultPage';
+
+// ⭐️ 러너테스트 import
+import RunnerTest from './tests/runnertest/RunnerTest';
+import RunnerTestResultPage from './tests/runnertest/RunnerTestResultPage';
 
 import './index.css';
 import { HelmetProvider } from 'react-helmet-async';
@@ -27,11 +30,14 @@ function App() {
           <Route path="/tetotest/result/:type" element={<TetoTestResultPage />} />
           <Route path="/sociopath" element={<SocioTest />} />
           <Route path="/romantic" element={<RomanticTest />} />
-
-          {/* ⭐️ traveltest 경로 추가 */}
           <Route path="/traveltest" element={<TravelTest />} />
+          <Route path="/traveltest/result/:type" element={<TravelTestResultPage />} />
 
-          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          {/* 👟 러너테스트 경로 추가 */}
+          <Route path="/runnertest" element={<RunnerTest />} />
+          <Route path="/runnertest/result/:type" element={<RunnerTestResultPage />} />
+
+          <Route path="/policy" element={<PrivacyPolicy />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
         </Routes>

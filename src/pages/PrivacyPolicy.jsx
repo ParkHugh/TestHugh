@@ -25,7 +25,7 @@ function PrivacyPolicy() {
       <ul className="list-disc pl-6 mb-4 text-sm">
         <li>기타 문의 사항은 이메일(hughparkhere@gmail.com)로 연락해 주시기 바랍니다.</li>
       </ul>
-      <div className="mt-6 text-gray-500 text-xs">시행일: 2024년 6월 21일</div>
+      <div className="mt-6 text-gray-500 text-xs">시행일: 2024년 7월 6일</div>
     </div>
   );
 }
