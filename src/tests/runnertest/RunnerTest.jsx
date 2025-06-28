@@ -14,8 +14,8 @@ function getRunnerType(userAnswers) {
     if (v && cnt.hasOwnProperty(v)) cnt[v]++;
   });
   const EI = cnt.E >= cnt.I ? 'E' : 'I';
-  const NS = cnt.N > cnt.S ? 'N' : (cnt.N < cnt.S ? 'S' : 'S');
-  const PJ = cnt.P > cnt.J ? 'P' : (cnt.P < cnt.J ? 'J' : 'J');
+  const NS = cnt.N > cnt.S ? 'N' : 'S';
+  const PJ = cnt.P > cnt.J ? 'P' : 'J';
   return EI + NS + PJ;
 }
 

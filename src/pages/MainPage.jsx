@@ -103,21 +103,21 @@ export default function MainPage() {
                 {test.id === 'tetotest' && (
                   <div className="mb-2">
                     <span className="inline-block bg-emerald-500 text-white text-xs px-3 py-1 rounded-full shadow font-semibold tracking-wide">
-                      NEW! 호르몬 유형
+                     💞 NEW! 호르몬 유형
                     </span>
                   </div>
                 )}
                 {test.id === 'sociopathtest' && (
                   <div className="mb-2">
                     <span className="inline-block bg-red-800 text-white text-xs px-3 py-1 rounded-full shadow font-semibold tracking-wide">
-                      NEW! 직장 소시오패스
+                      🤡 NEW! 직장 소시오패스
                     </span>
                   </div>
                 )}
                 {test.id === 'romantictest' && (
                   <div className="mb-2">
                     <span className="inline-block bg-pink-400 text-white text-xs px-3 py-1 rounded-full shadow font-semibold tracking-wide">
-                      NEW! 낭만 vs 현실 유형
+                      🧚 NEW! 낭만 vs 현실 유형
                     </span>
                   </div>
                 )}
