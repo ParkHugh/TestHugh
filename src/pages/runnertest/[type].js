@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import results from "@/tests/runnertest/result"; // result.js에서 import
+import results from "../../tests/runnertest/result"; // result.js에서 import
 
 function getResultByType(type) {
   return results.find(r => r.id === type) || results[0];

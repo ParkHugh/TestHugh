@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import resultImages from '@/tests/sociopathtest/resultImages';
-import resultDescriptions from '@/tests/sociopathtest/resultDescriptions';
+import resultImages from '../../tests/sociopathtest/resultImages';
+import resultDescriptions from '../../tests/sociopathtest/resultDescriptions';
 
 export default function SocioTestResultPage() {
   const router = useRouter();

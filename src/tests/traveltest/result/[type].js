@@ -1,7 +1,7 @@
 // pages/traveltest/result/[type].js
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import results from '@/tests/traveltest/result'; // 경로 맞춰줘!
+import results from '../../tests/traveltest/result'; // 경로 맞춰줘!
 
 function getResultByType(type) {
   return results.find((res) => res.id === type) || results[0];
