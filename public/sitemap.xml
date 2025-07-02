@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://test-hugh.co.kr/</loc></url>
+  <url><loc>https://test-hugh.co.kr/about</loc></url>
+  <url><loc>https://test-hugh.co.kr/contact</loc></url>
+  <url><loc>https://test-hugh.co.kr/privacy</loc></url>
+  <url><loc>https://test-hugh.co.kr/results</loc></url>
+
+  <!-- 러닝 테스트 -->
+  <url><loc>https://test-hugh.co.kr/runnertest</loc></url>
+  <url><loc>https://test-hugh.co.kr/runnertest/result/INP</loc></url>
+  <url><loc>https://test-hugh.co.kr/runnertest/result/INJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/runnertest/result/ISP</loc></url>
+  <url><loc>https://test-hugh.co.kr/runnertest/result/ISJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/runnertest/result/ENP</loc></url>
+  <url><loc>https://test-hugh.co.kr/runnertest/result/ENJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/runnertest/result/ESP</loc></url>
+  <url><loc>https://test-hugh.co.kr/runnertest/result/ESJ</loc></url>
+
+  <!-- 직장 소시오패스 테스트 -->
+  <url><loc>https://test-hugh.co.kr/sociopath</loc></url>
+  <url><loc>https://test-hugh.co.kr/sociopath/result/0</loc></url>
+  <url><loc>https://test-hugh.co.kr/sociopath/result/1</loc></url>
+  <url><loc>https://test-hugh.co.kr/sociopath/result/2</loc></url>
+  <url><loc>https://test-hugh.co.kr/sociopath/result/3</loc></url>
+  <url><loc>https://test-hugh.co.kr/sociopath/result/4</loc></url>
+
+  <!-- 호르몬 유형 테스트 -->
+  <url><loc>https://test-hugh.co.kr/tetotest</loc></url>
+  <url><loc>https://test-hugh.co.kr/tetotest/result/INP</loc></url>
+  <url><loc>https://test-hugh.co.kr/tetotest/result/INJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/tetotest/result/ISP</loc></url>
+  <url><loc>https://test-hugh.co.kr/tetotest/result/ISJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/tetotest/result/ENP</loc></url>
+  <url><loc>https://test-hugh.co.kr/tetotest/result/ENJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/tetotest/result/ESP</loc></url>
+  <url><loc>https://test-hugh.co.kr/tetotest/result/ESJ</loc></url>
+
+  <!-- 여행 테스트 -->
+  <url><loc>https://test-hugh.co.kr/traveltest</loc></url>
+  <url><loc>https://test-hugh.co.kr/traveltest/result/INP</loc></url>
+  <url><loc>https://test-hugh.co.kr/traveltest/result/INJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/traveltest/result/ISP</loc></url>
+  <url><loc>https://test-hugh.co.kr/traveltest/result/ISJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/traveltest/result/ENP</loc></url>
+  <url><loc>https://test-hugh.co.kr/traveltest/result/ENJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/traveltest/result/ESP</loc></url>
+  <url><loc>https://test-hugh.co.kr/traveltest/result/ESJ</loc></url>
+
+  <!-- 낭만 vs 현실 밸런스 테스트 -->
+  <url><loc>https://test-hugh.co.kr/romantictest</loc></url>
+  <url><loc>https://test-hugh.co.kr/romantictest/result/1</loc></url>
+  <url><loc>https://test-hugh.co.kr/romantictest/result/2</loc></url>
+  <url><loc>https://test-hugh.co.kr/romantictest/result/3</loc></url>
+  <url><loc>https://test-hugh.co.kr/romantictest/result/4</loc></url>
+</urlset>
