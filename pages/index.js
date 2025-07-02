@@ -21,7 +21,7 @@ export default function HomePage() {
       {/* 👇 SEO 및 OG 정보 추가 */}
       <Head>
         <title>Test 休 | 최신 성격/심리테스트, 밸런스게임 모음</title>
-        <meta name="description" content="테토녀, 소시오패스, 에겐남, 러너, 여행유형 등 모든 심리테스트를 한 곳에서! 빠르고 정확한 유형 검사, 결과 공유, 재미와 자기이해를 한 번에. Test 休에서 새로운 나를 발견하세요!" />
+        <meta name="description" content="테토 테스트, 소시오패스, 성격유형, 러너 유형, 여행성향 모든 심리테스트를 한 곳에서! Test 休에서 새로운 나를 발견하세요!" />
         <meta name="keywords" content="테토 테스트, 소시오패스, 성격유형, 러너 유형, 여행성향, 에겐남, 여행 MBTI, 심리 테스트, 무료테스트, 밸런스게임, MBTI, 직장 테스트" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Test 休 | 최신 심리테스트 & 성격유형, 밸런스게임 총집합" />

@@ -20,7 +20,7 @@ function calculateResultIdx(userAnswers) {
   if (total <= 5) return 0;
   if (total <= 10) return 1;
   if (total <= 15) return 2;
-  if (total <= 19) return 3;
+  if (total <= 20) return 3;
   return 4;
 }
 
