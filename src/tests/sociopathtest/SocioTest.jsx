@@ -22,7 +22,7 @@ function calculateResultIdx(userAnswers) {
 }
 
 export default function SocioTest() {
-    const INITIAL_COUNT = 128300;
+    const INITIAL_COUNT = 28300;
     const [step, setStep] = useState('intro');
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [userAnswers, setUserAnswers] = useState({});
@@ -35,7 +35,7 @@ export default function SocioTest() {
     useEffect(() => {
         async function fetchCount() {
             try {
-                const ref = doc(db, 'testCounts', 'sociopathtest'); // ★ 여기!
+                const ref = doc(db, 'testCounts', 'sociopathTest'); // ★ 여기!
                 const snap = await getDoc(ref);
                 if (snap.exists()) {
                     setCount(INITIAL_COUNT + (snap.data().count || 0));
@@ -48,7 +48,7 @@ export default function SocioTest() {
     // 시작
     const startTest = async () => {
         try {
-            const ref = doc(db, 'testCounts', 'sociopathtest'); // ★ 여기!
+            const ref = doc(db, 'testCounts', 'sociopathTest'); // ★ 여기!
             await updateDoc(ref, { count: increment(1) });
         } catch (e) { /* 무시 */ }
         setStep('question');
