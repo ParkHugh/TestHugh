@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from 'next/link';
 import tetotestMeta from '@/tests/tetotest/meta';
 import sociopathMeta from '@/tests/sociopathtest/meta';
@@ -17,6 +18,20 @@ const tests = [
 export default function HomePage() {
   return (
     <div className="bg-[#fcf8ee] min-h-screen flex flex-col">
+      {/* 👇 SEO 및 OG 정보 추가 */}
+      <Head>
+        <title>Test 休 | 최신 성격/심리테스트, 밸런스게임 모음</title>
+        <meta name="description" content="테토녀, 소시오패스, 에겐남, 러너, 여행유형 등 모든 심리테스트를 한 곳에서! 빠르고 정확한 유형 검사, 결과 공유, 재미와 자기이해를 한 번에. Test 休에서 새로운 나를 발견하세요!" />
+        <meta name="keywords" content="테토 테스트, 소시오패스, 성격유형, 러너 유형, 여행성향, 에겐남, 여행 MBTI, 심리 테스트, 무료테스트, 밸런스게임, MBTI, 직장 테스트" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Test 休 | 최신 심리테스트 & 성격유형, 밸런스게임 총집합" />
+        <meta property="og:description" content="테토에겐, 소시오패스, 여행 성향, MBTI 최신 유형 심리테스트와 밸런스게임! 1분 만에 결과 확인 & 공유 가능!" />
+        <meta property="og:image" content="/ogimage.png" />
+        <meta property="og:url" content="https://test-hugh.co.kr" />
+        <link rel="canonical" href="https://test-hugh.co.kr" />
+        {/* 피비콘/매니페스트는 이미 _document.js에 있으니 중복X */}
+      </Head>
+      {/* ---- 여기부터 기존 코드와 동일 ---- */}
       <header className="w-full border-b border-orange-100 bg-white py-8 mb-3 relative">
         <div className="max-w-xl mx-auto flex flex-col items-center">
           <h1 className="font-brand font-extrabold tracking-tight mb-2 select-none drop-shadow-sm flex items-end gap-2">
@@ -83,6 +98,7 @@ export default function HomePage() {
   );
 }
 
+// 아래 유틸함수들은 그대로 두면 됨!
 function getTestBgClass(id) {
   if (id === 'sociopathtest') return 'bg-gradient-to-br from-gray-900 via-gray-800 to-red-900 border-red-200 hover:from-gray-950 hover:to-red-800';
   if (id === 'tetotest') return 'bg-gradient-to-br from-emerald-100 via-yellow-50 to-yellow-100 border-emerald-100 hover:from-emerald-200 hover:to-yellow-200';

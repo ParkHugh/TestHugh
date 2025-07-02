@@ -1,3 +1,3 @@
-import dynamic from 'next/dynamic';
-const TetoTest = dynamic(() => import('../../src/tests/tetotest/TetoTest'), { ssr: false });
+// pages/tetotest/index.js
+import TetoTest from '@/tests/tetotest/TetoTest';
 export default TetoTest;

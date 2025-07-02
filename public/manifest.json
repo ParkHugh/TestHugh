@@ -1,0 +1,22 @@
+{
+  "name": "Test 休",
+  "short_name": "테스트 휴",
+  "description": "최신 심리테스트 성격테스트 밸런스게임 1분 만에 나의 성향을 확인해보세요.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fcf8ee",
+  "theme_color": "#00997b",
+  "lang": "ko-KR",
+  "icons": [
+    {
+      "src": "/favicon192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

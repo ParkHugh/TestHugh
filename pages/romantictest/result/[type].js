@@ -75,7 +75,7 @@ export default function RomanticTestResultPage() {
             href="/romantictest"
             className="bg-white hover:bg-pink-100 text-pink-400 py-2 px-7 rounded-xl font-bold shadow-md border border-pink-200 transition"
           >
-            다시 하기
+            나도 테스트 해보기
           </Link>
           <Link
             href="/"

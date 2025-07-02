@@ -88,7 +88,7 @@ export default function TravelTestResultPage() {
               href="/traveltest"
               className="bg-cyan-400 hover:bg-cyan-500 text-white py-2 px-6 rounded-xl font-bold shadow-md transition"
             >
-              나도 다시 테스트하기
+              나도 테스트 해보기
             </Link>
             <Link
               href="/"
