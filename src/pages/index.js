@@ -35,38 +35,38 @@ export default function HomePage() {
       <main className="flex-1 flex flex-col items-center justify-center px-4">
         <div className="w-full max-w-2xl flex flex-col gap-8">
           {tests.map((test) => (
-            <Link key={test.id} href={test.path} legacyBehavior>
-              <a
+            <Link
+              key={test.id}
+              href={test.path}
+              className={`
+                transition rounded-2xl shadow flex flex-col border overflow-hidden
+                duration-200 hover:scale-[1.033] hover:shadow-2xl hover:z-10
+                ${getTestBgClass(test.id)}
+              `}
+              style={{
+                width: 420,
+                maxWidth: '100%',
+                minHeight: 320,
+                margin: '0 auto',
+                cursor: 'pointer',
+              }}
+            >
+              <img
+                src={test.image}
+                alt={test.title}
                 className={`
-                  transition rounded-2xl shadow flex flex-col border overflow-hidden
-                  duration-200 hover:scale-[1.033] hover:shadow-2xl hover:z-10
-                  ${getTestBgClass(test.id)}
+                  w-full h-44 md:h-56 object-cover rounded-t-2xl
+                  ${test.id === 'sociopathtest' ? 'bg-black' : ''}
                 `}
-                style={{
-                  width: 420,
-                  maxWidth: '100%',
-                  minHeight: 320,
-                  margin: '0 auto',
-                  cursor: 'pointer',
-                }}
-              >
-                <img
-                  src={test.image}
-                  alt={test.title}
-                  className={`
-                    w-full h-44 md:h-56 object-cover rounded-t-2xl
-                    ${test.id === 'sociopathtest' ? 'bg-black' : ''}
-                  `}
-                  style={{ aspectRatio: '2.4/1' }}
-                />
-                <div className="flex-1 flex flex-col justify-center items-center p-6">
-                  <h2 className={`text-2xl font-bold mb-1 ${getTitleColor(test.id)}`}>
-                    {test.title}
-                  </h2>
-                  {renderBadge(test.id)}
-                  <p className={getDescriptionColor(test.id)}>{test.description}</p>
-                </div>
-              </a>
+                style={{ aspectRatio: '2.4/1' }}
+              />
+              <div className="flex-1 flex flex-col justify-center items-center p-6">
+                <h2 className={`text-2xl font-bold mb-1 ${getTitleColor(test.id)}`}>
+                  {test.title}
+                </h2>
+                {renderBadge(test.id)}
+                <p className={getDescriptionColor(test.id)}>{test.description}</p>
+              </div>
             </Link>
           ))}
         </div>
@@ -74,8 +74,8 @@ export default function HomePage() {
 
       <footer className="w-full border-t bg-[#fcf8ee] py-6 mt-10 text-center text-orange-300 text-sm">
         <div className="flex justify-center space-x-4">
-          <a href="/privacy" className="hover:underline">개인정보처리방침</a>
-          <a href="/contact" className="hover:underline">Contact</a>
+          <Link href="/privacy" className="hover:underline">개인정보처리방침</Link>
+          <Link href="/contact" className="hover:underline">Contact</Link>
         </div>
         <div className="mt-2">© {new Date().getFullYear()} TEST 休. ALL RIGHTS RESERVED</div>
       </footer>

@@ -1,5 +1,5 @@
-// pages/privacy.js
 import Head from 'next/head';
+import Link from 'next/link';
 
 export default function PrivacyPage() {
   return (
@@ -25,7 +25,14 @@ export default function PrivacyPage() {
           <li>본 사이트는 별도의 쿠키, 로그, 웹비콘, 트래킹 도구를 사용하지 않습니다.</li>
           <li>
             단, 구글 애드센스 등 광고를 위해 외부 서비스의 쿠키가 사용될 수 있습니다. 해당 내용은 구글의&nbsp;
-            <a className="underline text-blue-700" href="https://policies.google.com/technologies/ads?hl=ko" target="_blank" rel="noopener noreferrer">광고정책</a>
+            <a
+              className="underline text-blue-700"
+              href="https://policies.google.com/technologies/ads?hl=ko"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              광고정책
+            </a>
             을 참고 바랍니다.
           </li>
         </ul>

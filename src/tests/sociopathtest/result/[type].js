@@ -1,13 +1,13 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import resultImages from '../../tests/sociopathtest/resultImages';
-import resultDescriptions from '../../tests/sociopathtest/resultDescriptions';
+import Link from 'next/link';
+import resultImages from '@/tests/sociopathtest/resultImages';
+import resultDescriptions from '@/tests/sociopathtest/resultDescriptions';
 
 export default function SocioTestResultPage() {
   const router = useRouter();
   const { type } = router.query;
 
-  // 결과 인덱스(0~4)로 변환
   const idx = Number(type);
   const desc = resultDescriptions[idx];
   const image =
@@ -20,15 +20,17 @@ export default function SocioTestResultPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="bg-white rounded-xl shadow p-8">
           <h2 className="text-2xl font-bold mb-2">잘못된 결과 값입니다.</h2>
-          <a href="/sociopathtest" className="text-blue-600 underline">
+          <Link href="/sociopathtest" className="text-blue-600 underline">
             테스트 하러가기
-          </a>
+          </Link>
         </div>
       </div>
     );
   }
 
-  // 👇 type별로 OG 태그도 변경
+  const resultUrl = `https://test-hugh.co.kr/sociopathtest/result/${idx}`;
+  const resultImgUrl = `https://test-hugh.co.kr${image}`;
+
   return (
     <>
       <Head>
@@ -36,8 +38,8 @@ export default function SocioTestResultPage() {
         <meta name="description" content={desc.description} />
         <meta property="og:title" content={`[${desc.name}] 직장 소시오패스 테스트 | Test 休`} />
         <meta property="og:description" content={desc.description} />
-        <meta property="og:image" content={`https://test-hugh.co.kr/images/sociopathtest/${resultImages[idx]}`} />
-        <meta property="og:url" content={`https://test-hugh.co.kr/sociopathtest/result/${idx}`} />
+        <meta property="og:image" content={resultImgUrl} />
+        <meta property="og:url" content={resultUrl} />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-zinc-900 flex flex-col items-center justify-center px-4 py-2">
@@ -48,7 +50,7 @@ export default function SocioTestResultPage() {
           당신은 <span className="font-extrabold">{desc.name}</span> 입니다!
         </p>
         <img
-          src={`/images/sociopathtest/${resultImages[idx]}`}
+          src={image}
           alt={desc.name}
           className="w-44 h-44 mx-auto mb-7 rounded-2xl shadow-xl object-cover border-4 border-red-600/60 bg-black"
           style={{ filter: 'drop-shadow(0 0 15px #fa2a55cc)' }}
@@ -60,18 +62,18 @@ export default function SocioTestResultPage() {
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-3 md:gap-6 justify-center items-center mt-8">
-          <a
+          <Link
             href="/sociopathtest"
             className="bg-white hover:bg-gray-100 text-red-400 py-2 px-7 rounded-xl font-bold shadow-md border border-red-200 transition-all duration-200"
           >
             나도 테스트 해보기
-          </a>
-          <a
+          </Link>
+          <Link
             href="/"
             className="bg-emerald-800 hover:bg-emerald-900 text-white py-2 px-7 rounded-xl font-bold shadow-md transition-all duration-200"
           >
             다른 테스트
-          </a>
+          </Link>
         </div>
       </div>
     </>

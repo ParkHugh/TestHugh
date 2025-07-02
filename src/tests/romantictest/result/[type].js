@@ -1,9 +1,8 @@
-// pages/romantictest/result/[type].js
-
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
-// 결과 데이터 (string import 방식)
+// 결과 데이터
 const results = [
   {
     id: '1',
@@ -35,20 +34,19 @@ export default function RomanticTestResultPage() {
   const router = useRouter();
   const { type } = router.query;
 
-  // type이 "1", "2", "3", "4" 문자열로 들어옴
   const result = results.find(r => r.id === type);
+  const resultUrl = `https://test-hugh.co.kr/romantictest/result/${result?.id}`;
 
   if (!result) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center">
         <h1 className="text-2xl font-bold mb-3">잘못된 결과 값입니다.</h1>
-        <a href="/romantictest" className="text-blue-500 underline">테스트 다시 하기</a>
+        <Link href="/romantictest" className="text-blue-500 underline">
+          테스트 다시 하기
+        </Link>
       </div>
     );
   }
-
-  // og:url 동적 생성
-  const resultUrl = `https://test-hugh.co.kr/romantictest/result/${result.id}`;
 
   return (
     <>
@@ -60,25 +58,32 @@ export default function RomanticTestResultPage() {
         <meta property="og:image" content={`https://test-hugh.co.kr${result.image}`} />
         <meta property="og:url" content={resultUrl} />
       </Head>
+
       <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-pink-100 via-yellow-50 to-pink-200 px-4 py-8">
         <h2 className="text-2xl font-bold mb-4 text-pink-400 drop-shadow">당신의 밸런스 결과</h2>
-        <img src={result.image} alt={result.name} className="w-44 h-44 mb-7 rounded-2xl shadow-xl object-cover border-4 border-pink-300 bg-white" />
+        <img
+          src={result.image}
+          alt={result.name}
+          className="w-44 h-44 mb-7 rounded-2xl shadow-xl object-cover border-4 border-pink-300 bg-white"
+        />
         <div className="bg-white/90 rounded-2xl shadow-lg px-5 py-5 text-left mx-auto max-w-lg mb-6 border-l-4 border-pink-300">
           <div className="text-lg font-bold text-pink-400 mb-2">{result.name}</div>
           <div className="text-base text-gray-700">{result.description}</div>
         </div>
-        <a
-          href="/romantictest"
-          className="bg-white hover:bg-pink-100 text-pink-400 py-2 px-7 rounded-xl font-bold mt-3 shadow-md border border-pink-200 transition"
-        >
-          다시 하기
-        </a>
-        <a
-          href="/"
-          className="bg-pink-400 hover:bg-pink-500 text-white py-2 px-7 rounded-xl font-bold ml-2 mt-3 shadow-md transition"
-        >
-          다른 테스트 해보기
-        </a>
+        <div className="flex gap-2 mt-3">
+          <Link
+            href="/romantictest"
+            className="bg-white hover:bg-pink-100 text-pink-400 py-2 px-7 rounded-xl font-bold shadow-md border border-pink-200 transition"
+          >
+            다시 하기
+          </Link>
+          <Link
+            href="/"
+            className="bg-pink-400 hover:bg-pink-500 text-white py-2 px-7 rounded-xl font-bold shadow-md transition"
+          >
+            다른 테스트 해보기
+          </Link>
+        </div>
       </div>
     </>
   );

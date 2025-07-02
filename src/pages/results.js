@@ -1,40 +1,79 @@
-// pages/results.js
-import { useState } from "react";
-import Link from "next/link";
+import { useState } from 'react';
+import Link from 'next/link';
 
-// 실제 경로에 맞게 수정!
-import tetotestMeta from "@/tests/tetotest/meta";
-import tetotestResults from "@/tests/tetotest/resultDescriptions";
-import tetotestImages from "@/tests/tetotest/resultImages";
+import tetotestMeta from '@/tests/tetotest/meta';
+import tetotestResults from '@/tests/tetotest/resultDescriptions';
+import tetotestImages from '@/tests/tetotest/resultImages';
 
-import sociopathMeta from "@/tests/sociopathtest/meta";
-import sociopathResults from "@/tests/sociopathtest/resultDescriptions";
-import sociopathImages from "@/tests/sociopathtest/resultImages";
+import sociopathMeta from '@/tests/sociopathtest/meta';
+import sociopathResults from '@/tests/sociopathtest/resultDescriptions';
+import sociopathImages from '@/tests/sociopathtest/resultImages';
 
-import romanticMeta from "@/tests/romantictest/meta";
-import romanticResults from "@/tests/romantictest/result";
+import romanticMeta from '@/tests/romantictest/meta';
+import romanticResults from '@/tests/romantictest/result';
 
-import travelMeta from "@/tests/traveltest/meta";
-import travelResults from "@/tests/traveltest/result";
+import travelMeta from '@/tests/traveltest/meta';
+import travelResults from '@/tests/traveltest/result';
 
-import runnerMeta from "@/tests/runnertest/meta";
-import runnerResults from "@/tests/runnertest/result";
+import runnerMeta from '@/tests/runnertest/meta';
+import runnerResults from '@/tests/runnertest/result';
 
-// (색상 헬퍼)
-const color = (accent, type = "text") => {
+const testResultSets = [
+  {
+    meta: tetotestMeta,
+    results: tetotestResults,
+    images: tetotestImages,
+    isObject: true,
+    description: '호르몬 유형 테스트의 다양한 결과와 상세 특성을 확인할 수 있습니다.',
+    accent: 'emerald',
+  },
+  {
+    meta: sociopathMeta,
+    results: sociopathResults,
+    images: sociopathImages,
+    isObject: false,
+    description: '직장인 소시오패스 테스트의 결과별 해설과 이미지를 한 눈에!',
+    accent: 'red',
+  },
+  {
+    meta: romanticMeta,
+    results: romanticResults,
+    images: null,
+    isObject: false,
+    description: '낭만 vs 현실 밸런스게임의 나의 결과와 설명을 볼 수 있습니다.',
+    accent: 'pink',
+  },
+  {
+    meta: travelMeta,
+    results: travelResults,
+    images: null,
+    isObject: false,
+    description: '여행 성향 테스트의 결과별 특징과 추천 여행지를 확인해보세요!',
+    accent: 'blue',
+  },
+  {
+    meta: runnerMeta,
+    results: runnerResults,
+    images: null,
+    isObject: false,
+    description: '러닝 성향 테스트의 8가지 유형별 특징과 매칭 궁합까지 한 눈에!',
+    accent: 'pink',
+  },
+];
+
+const color = (accent, type = 'text') => {
   const colors = {
-    red: { bg: "bg-red-50", text: "text-red-500" },
-    pink: { bg: "bg-pink-50", text: "text-pink-400" },
-    blue: { bg: "bg-blue-50", text: "text-blue-500" },
-    emerald: { bg: "bg-emerald-50", text: "text-emerald-700" },
-    rose: { bg: "bg-rose-50", text: "text-rose-500" },
+    red: { bg: 'bg-red-50', text: 'text-red-500' },
+    pink: { bg: 'bg-pink-50', text: 'text-pink-400' },
+    blue: { bg: 'bg-blue-50', text: 'text-blue-500' },
+    emerald: { bg: 'bg-emerald-50', text: 'text-emerald-700' },
+    rose: { bg: 'bg-rose-50', text: 'text-rose-500' },
   };
-  return colors[accent]?.[type] || "";
+  return colors[accent]?.[type] || '';
 };
 
-// 오브젝트형 결과 렌더
 const ObjectResultItem = ({ keyName, res, image }) => (
-  <div key={keyName} className="flex items-center gap-4 border-b py-3 last:border-b-0">
+  <div className="flex items-center gap-4 border-b py-3 last:border-b-0">
     {image && (
       <img
         src={image}
@@ -46,23 +85,22 @@ const ObjectResultItem = ({ keyName, res, image }) => (
       <div className="font-bold text-base mb-1 text-emerald-800">{keyName}</div>
       <div className="mb-1">
         <span className="font-semibold text-green-600 text-xs mr-1">성격적 특성</span>
-        <span className="text-gray-700 text-xs">{res.성격적특성?.join(" / ")}</span>
+        <span className="text-gray-700 text-xs">{res.성격적특성?.join(' / ')}</span>
       </div>
       <div className="mb-1">
         <span className="font-semibold text-blue-600 text-xs mr-1">행동적 특성</span>
-        <span className="text-gray-700 text-xs">{res.행동적특성?.join(" / ")}</span>
+        <span className="text-gray-700 text-xs">{res.행동적특성?.join(' / ')}</span>
       </div>
       <div>
         <span className="font-semibold text-pink-600 text-xs mr-1">연애스타일</span>
-        <span className="text-gray-700 text-xs">{res.연애스타일?.join(" / ")}</span>
+        <span className="text-gray-700 text-xs">{res.연애스타일?.join(' / ')}</span>
       </div>
     </div>
   </div>
 );
 
-// 배열형 결과 렌더
 const ArrayResultItem = ({ res, image, accent }) => (
-  <div key={res.id || res.name} className="flex items-center gap-4 border-b py-3 last:border-b-0">
+  <div className="flex items-center gap-4 border-b py-3 last:border-b-0">
     {image && (
       <img
         src={image}
@@ -79,58 +117,12 @@ const ArrayResultItem = ({ res, image, accent }) => (
     )}
     <div>
       <div className={`font-bold text-base mb-1 ${color(accent)}`}>{res.name}</div>
-      <div
-        className="text-gray-700 text-xs"
-        dangerouslySetInnerHTML={{ __html: res.description }}
-      />
+      <div className="text-gray-700 text-xs" dangerouslySetInnerHTML={{ __html: res.description }} />
     </div>
   </div>
 );
 
-const testResultSets = [
-  {
-    meta: tetotestMeta,
-    results: tetotestResults,
-    images: tetotestImages,
-    isObject: true,
-    description: "호르몬 유형 테스트의 다양한 결과와 상세 특성을 확인할 수 있습니다.",
-    accent: "emerald",
-  },
-  {
-    meta: sociopathMeta,
-    results: sociopathResults,
-    images: sociopathImages,
-    isObject: false,
-    description: "직장인 소시오패스 테스트의 결과별 해설과 이미지를 한 눈에!",
-    accent: "red",
-  },
-  {
-    meta: romanticMeta,
-    results: romanticResults,
-    images: null,
-    isObject: false,
-    description: "낭만 vs 현실 밸런스게임의 나의 결과와 설명을 볼 수 있습니다.",
-    accent: "pink",
-  },
-  {
-    meta: travelMeta,
-    results: travelResults,
-    images: null,
-    isObject: false,
-    description: "여행 성향 테스트의 결과별 특징과 추천 여행지를 확인해보세요!",
-    accent: "blue",
-  },
-  {
-    meta: runnerMeta,
-    results: runnerResults,
-    images: null,
-    isObject: false,
-    description: "러닝 성향 테스트의 8가지 유형별 특징과 매칭 궁합까지 한 눈에!",
-    accent: "pink",
-  },
-];
-
-export default function ResultsPage() {
+export default function TestsResults() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
@@ -139,7 +131,7 @@ export default function ResultsPage() {
       <p className="mb-9 text-black-400">각 테스트별 결과를 클릭해서 상세 해설과 이미지를 볼 수 있습니다.</p>
       <div className="space-y-4">
         {testResultSets.map(({ meta, results, images, isObject, description, accent }, i) => (
-          <div key={meta.id} className={`border rounded-xl shadow ${color(accent, "bg")} bg-white`}>
+          <div key={meta.id} className={`border rounded-xl shadow ${color(accent, 'bg')} bg-white`}>
             <button
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
               className={`flex w-full items-center justify-between px-6 py-4 font-bold text-lg ${color(accent)} focus:outline-none`}
@@ -148,7 +140,7 @@ export default function ResultsPage() {
                 <img src={meta.image} alt={meta.title} className="w-8 h-8 rounded-md object-cover border border-emerald-200" />
                 {meta.title}
               </span>
-              <span className="text-xl">{openIndex === i ? "▲" : "▼"}</span>
+              <span className="text-xl">{openIndex === i ? '▲' : '▼'}</span>
             </button>
             {openIndex === i && (
               <div className="px-6 pb-6">
