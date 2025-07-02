@@ -8,12 +8,12 @@ export default function SocioTestResultPage() {
   const router = useRouter();
   const { type } = router.query;
 
+  // 0~4 사이 정수 아니면 잘못된 접근으로 처리
   const idx = Number(type);
-  const desc = resultDescriptions[idx];
-  const image =
-    idx >= 0 && idx < resultImages.length
-      ? `/images/sociopathtest/${resultImages[idx]}`
-      : '';
+  const validIdx = !isNaN(idx) && idx >= 0 && idx < resultDescriptions.length;
+
+  const desc = validIdx ? resultDescriptions[idx] : null;
+  const image = validIdx ? `/images/sociopathtest/${resultImages[idx]}` : '';
 
   if (!desc) {
     return (
@@ -58,7 +58,7 @@ export default function SocioTestResultPage() {
         <div className="mx-auto max-w-lg space-y-5 text-left">
           <div className="bg-zinc-900/80 rounded-2xl shadow-lg px-5 py-5 text-left mx-auto max-w-lg mb-6 border-l-4 border-red-400">
             <div className="text-lg font-bold text-red-300 mb-2">{desc.name}</div>
-            <div className="text-base text-gray-200">{desc.description}</div>
+            <div className="text-base text-gray-200" dangerouslySetInnerHTML={{ __html: desc.description }} />
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-3 md:gap-6 justify-center items-center mt-8">
@@ -80,7 +80,7 @@ export default function SocioTestResultPage() {
   );
 }
 
-// 👇 이거 각 [type].js 파일 아래에 추가
+// 서버사이드에서 빈 props라도 리턴해줘야 동적 라우트 SSR 정상작동
 export async function getServerSideProps() {
   return { props: {} };
 }
