@@ -13,9 +13,9 @@ export default function Document() {
         <meta name="keywords" content="심리테스트, 성격테스트, MBTI, 파시스트, 테스트, 소시오패스, 테토녀, 에겐남,러너유형, 여행 성향, 밸런스게임, 무료 검사" />
 
         {/* Favicon & Manifest */}
-        <link rel="icon" type="image/png" href="/images/favicon/favicon.png" />
-        <link rel="apple-touch-icon" sizes="192x192" href="/images/favicon/favicon192.png" />
-        <link rel="apple-touch-icon" sizes="512x512" href="/images/favicon/favicon512.png" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" sizes="192x192" href="/favicon192.png" />
+        <link rel="apple-touch-icon" sizes="512x512" href="/favicon512.png" />
         <link rel="manifest" href="/manifest.json" />
 
         {/* OG/카톡/네이버톡/페북 미리보기 (메인페이지용) */}
