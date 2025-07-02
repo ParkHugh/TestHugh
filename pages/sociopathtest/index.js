@@ -1,2 +1,3 @@
-import SocioTest from '@/tests/sociopathtest/SocioTest';
+// pages/sociopathtest/index.js
+import SocioTest from '../../src/tests/sociopathtest/SocioTest';
 export default SocioTest;

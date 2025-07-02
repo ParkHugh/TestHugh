@@ -9,8 +9,8 @@ import resultDescriptions from '@/tests/sociopathtest/resultDescriptions';
 import resultImages, { mainImage } from '@/tests/sociopathtest/resultImages';
 
 // Firebase 연동 (문서 이름도 맞추면 좋음!)
-// import { doc, getDoc, updateDoc, increment } from 'firebase/firestore';
-// import { db } from '@/firebase';
+import { doc, getDoc, updateDoc, increment } from 'firebase/firestore';
+import { db } from '@/firebase';
 
 function calculateResultIdx(userAnswers) {
     const total = Object.values(userAnswers).reduce((sum, v) => sum + v, 0);
