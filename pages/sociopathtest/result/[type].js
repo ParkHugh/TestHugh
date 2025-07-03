@@ -13,7 +13,7 @@ export default function SocioTestResultPage() {
   const validIdx = !isNaN(idx) && idx >= 0 && idx < resultDescriptions.length;
 
   const desc = validIdx ? resultDescriptions[idx] : null;
-  const image = validIdx ? `/images/sociopathtest/${resultImages[idx]}` : '';
+  const image = validIdx ? resultImages[idx] : '';
 
   if (!desc) {
     return (
