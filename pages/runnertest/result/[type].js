@@ -41,7 +41,7 @@ export default function RunnerTestResultPage() {
         <meta property="og:url" content={resultUrl} />
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-br from-pink-100 via-pink-200 to-rose-200 flex flex-col items-center justify-center px-4 py-2">
+      <div className="min-h-screen bg-gradient-to-br from-green-100 via-blue-50 to-yellow-50 flex flex-col items-center justify-center px-4 py-2">
         <div className="text-center">
           <h2 className="text-2xl font-black text-pink-400 mb-3 drop-shadow-lg animate-bounce">
             🏅 {result.name} 🏅

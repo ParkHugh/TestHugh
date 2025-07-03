@@ -104,7 +104,7 @@ function getTestBgClass(id) {
   if (id === 'tetotest') return 'bg-gradient-to-br from-emerald-100 via-yellow-50 to-yellow-100 border-emerald-100 hover:from-emerald-200 hover:to-yellow-200';
   if (id === 'romantictest') return 'bg-gradient-to-br from-pink-50 via-yellow-50 to-pink-100 border-pink-100 hover:from-pink-100 hover:to-yellow-100';
   if (id === 'traveltest') return 'bg-gradient-to-br from-blue-50 via-blue-100 to-cyan-100 border-blue-100 hover:from-blue-100 hover:to-cyan-200';
-  if (id === 'runnertest') return 'bg-gradient-to-br from-pink-100 via-rose-100 to-yellow-100 border-pink-100 hover:from-pink-200 hover:to-yellow-200';
+  if (id === 'runnertest') return 'bg-gradient-to-br from-green-100 via-emerald-100 to-yellow-100 border-pink-100 hover:from-green-200 hover:to-yellow-200';
   return 'bg-white hover:bg-orange-50 border-orange-100';
 }
 
@@ -112,7 +112,7 @@ function getTitleColor(id) {
   if (id === 'sociopathtest') return 'text-red-400 drop-shadow';
   if (id === 'romantictest') return 'text-pink-500';
   if (id === 'traveltest') return 'text-blue-700';
-  if (id === 'runnertest') return 'text-pink-700';
+  if (id === 'runnertest') return 'text-green-700';
   return 'text-emerald-700';
 }
 
@@ -120,7 +120,7 @@ function getDescriptionColor(id) {
   if (id === 'sociopathtest') return 'text-gray-200';
   if (id === 'romantictest') return 'text-pink-500';
   if (id === 'traveltest') return 'text-sky-700 drop-shadow-sm';
-  if (id === 'runnertest') return 'text-pink-700 drop-shadow-sm';
+  if (id === 'runnertest') return 'text-yellow-700 drop-shadow-sm';
   return 'text-emerald-700';
 }
 
@@ -155,7 +155,7 @@ function renderBadge(id) {
   );
   if (id === 'runnertest') return (
     <div className="mb-2">
-      <span className="inline-block bg-pink-400 text-white text-xs px-3 py-1 rounded-full shadow font-semibold tracking-wide animate-bounce-slow">
+      <span className="inline-block bg-emerald-400 text-white text-xs px-3 py-1 rounded-full shadow font-semibold tracking-wide animate-bounce-slow">
         🏃‍♂️ NEW! 러닝 성향 유형
       </span>
     </div>

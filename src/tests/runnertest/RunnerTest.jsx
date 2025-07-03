@@ -308,6 +308,12 @@ export default function RunnerTest() {
             >
               다른 테스트 해보기
             </button>
+            <button
+              onClick={() => router.push('/results')}
+              className="bg-yellow-300 hover:bg-yellow-500 text-green-500 py-2 px-6 rounded-xl font-bold ml-2 mt-3 shadow-md"
+            >
+              결과 설명 보기
+            </button>
             {copied && (
               <div className="mt-2 text-sm text-green-500 animate-fade-in">
                 URL이 복사되었습니다!
