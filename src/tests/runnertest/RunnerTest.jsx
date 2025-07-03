@@ -1,3 +1,4 @@
+// src/pages/runnertest/index.js
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -6,15 +7,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import questions from '@/tests/runnertest/questions';
 import results, { mainImage } from '@/tests/runnertest/result';
 
-// Firebase 연동
 import { doc, getDoc, updateDoc, increment } from 'firebase/firestore';
 import { db } from '@/firebase';
 
-// MBTI 로직: userAnswers -> type string 계산
+// MBTI 로직
 function getRunnerType(userAnswers) {
   let E = 0, I = 0, N = 0, S = 0, P = 0, J = 0;
   Object.entries(userAnswers).forEach(([qid, v]) => {
-    const q = questions.find(q => q.id === qid); // string 비교!
+    const q = questions.find(q => q.id === qid);
     if (!q) return;
     const choice = v === 'a' ? q.a : q.b;
     if (choice.type === 'E') E++;
@@ -30,7 +30,6 @@ function getRunnerType(userAnswers) {
   return ie + ns + pj;
 }
 
-
 export default function RunnerTest() {
   const INITIAL_COUNT = 10210;
   const [step, setStep] = useState('intro');
@@ -38,7 +37,6 @@ export default function RunnerTest() {
   const [userAnswers, setUserAnswers] = useState({});
   const [copied, setCopied] = useState(false);
   const [count, setCount] = useState(INITIAL_COUNT);
-
   const router = useRouter();
 
   useEffect(() => {
@@ -47,7 +45,7 @@ export default function RunnerTest() {
         const ref = doc(db, 'testCounts', 'runnerTest');
         const snap = await getDoc(ref);
         if (snap.exists()) setCount(INITIAL_COUNT + (snap.data().count || 0));
-      } catch (e) { }
+      } catch (e) {}
     }
     fetchCount();
   }, []);
@@ -56,15 +54,13 @@ export default function RunnerTest() {
     try {
       const ref = doc(db, 'testCounts', 'runnerTest');
       await updateDoc(ref, { count: increment(1) });
-    } catch (e) { }
+    } catch (e) {}
     setStep('question');
   };
 
-  // 답변 처리 (a/b)
   const handleAnswer = (value) => {
     const qid = questions[currentQuestion].id;
     setUserAnswers(prev => ({ ...prev, [qid]: value }));
-
     if (currentQuestion + 1 < questions.length) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
@@ -80,9 +76,11 @@ export default function RunnerTest() {
     setCopied(false);
   };
 
-  // 최종 타입 및 결과
+  // 결과
   const type = step === 'result' ? getRunnerType(userAnswers) : null;
   const result = type ? results.find(r => r.id === type) : null;
+  const bestMatch = result ? results.find(r => r.id === result.bestMatch) : null;
+  const worstMatch = result ? results.find(r => r.id === result.worstMatch) : null;
 
   const handleShare = () => {
     if (!result) return;
@@ -179,7 +177,6 @@ export default function RunnerTest() {
                 />
               </div>
             </div>
-            {/* vs 분할 렌더링 */}
             <div className="flex items-center justify-center gap-2 mb-6">
               <span className="flex-1 text-right font-bold text-base md:text-lg text-green-600 pr-2 break-keep">
                 {questions[currentQuestion].a.label}
@@ -288,7 +285,31 @@ export default function RunnerTest() {
                 className="text-base text-gray-700"
                 dangerouslySetInnerHTML={{ __html: result.description }}
               />
-
+            </div>
+            {/* Best/Worst match */}
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center mt-10 mb-3">
+              {bestMatch && (
+                <div className="bg-green-50 rounded-xl p-4 flex flex-col items-center border-2 border-green-200 shadow">
+                  <div className="text-xs font-semibold text-green-600 mb-1">🙆‍♂️환상의 러닝메이트</div>
+                  <img
+                    src={bestMatch.image}
+                    alt={bestMatch.name}
+                    className="w-16 h-16 rounded-xl mb-2 border-2 border-green-300 shadow"
+                  />
+                  <div className="font-bold text-green-700 text-sm">{bestMatch.name}</div>
+                </div>
+              )}
+              {worstMatch && (
+                <div className="bg-red-50 rounded-xl p-4 flex flex-col items-center border-2 border-red-200 shadow">
+                  <div className="text-xs font-semibold text-red-600 mb-1">🤦‍♀️환장의 러닝메이트</div>
+                  <img
+                    src={worstMatch.image}
+                    alt={worstMatch.name}
+                    className="w-16 h-16 rounded-xl mb-2 border-2 border-red-300 shadow"
+                  />
+                  <div className="font-bold text-red-700 text-sm">{worstMatch.name}</div>
+                </div>
+              )}
             </div>
             <button
               onClick={restart}

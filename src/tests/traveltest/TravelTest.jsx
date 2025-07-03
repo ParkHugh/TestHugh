@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import questions from '@/tests/traveltest/questions';
 import results, { mainImage } from '@/tests/traveltest/result';
 
-// Firebase 연동
 import { doc, getDoc, updateDoc, increment } from 'firebase/firestore';
 import { db } from '@/firebase';
 
@@ -14,7 +13,7 @@ import { db } from '@/firebase';
 function getTravelType(userAnswers) {
   let E = 0, I = 0, N = 0, S = 0, P = 0, J = 0;
   Object.entries(userAnswers).forEach(([qid, v]) => {
-    const q = questions.find(q => q.id === qid); // string 비교!
+    const q = questions.find(q => q.id === qid);
     if (!q) return;
     const choice = v === 'a' ? q.a : q.b;
     if (choice.type === 'E') E++;
@@ -29,7 +28,6 @@ function getTravelType(userAnswers) {
   const pj = P >= J ? 'P' : 'J';
   return ie + ns + pj;
 }
-
 
 export default function TravelTest() {
   const INITIAL_COUNT = 42195;
@@ -60,7 +58,6 @@ export default function TravelTest() {
     setStep('question');
   };
 
-  // a/b 선택
   const handleAnswer = (value) => {
     const qid = questions[currentQuestion].id;
     setUserAnswers(prev => ({ ...prev, [qid]: value }));
@@ -83,6 +80,8 @@ export default function TravelTest() {
   // 결과 유형 계산 (MBTI처럼)
   const type = step === 'result' ? getTravelType(userAnswers) : null;
   const result = type ? results.find(r => r.id === type) : null;
+  const bestMatch = result ? results.find(r => r.id === result.bestMatch) : null;
+  const worstMatch = result ? results.find(r => r.id === result.worstMatch) : null;
 
   const handleShare = () => {
     if (!result) return;
@@ -152,7 +151,6 @@ export default function TravelTest() {
           </motion.div>
         )}
 
-        {/* 질문 */}
         {step === 'question' && questions[currentQuestion] && (
           <motion.div
             key={currentQuestion}
@@ -190,7 +188,6 @@ export default function TravelTest() {
                 {questions[currentQuestion].b.label}
               </span>
             </div>
-
             <div className="space-y-3">
               <button
                 onClick={() => handleAnswer('a')}
@@ -208,7 +205,6 @@ export default function TravelTest() {
           </motion.div>
         )}
 
-        {/* 로딩 */}
         {step === 'loading' && (
           <motion.div
             key="loading"
@@ -257,7 +253,6 @@ export default function TravelTest() {
           </motion.div>
         )}
 
-        {/* 결과 */}
         {step === 'result' && result && (
           <motion.div
             key="result"
@@ -286,6 +281,31 @@ export default function TravelTest() {
               </div>
               {/* description에 <br> 포함되므로 html로 렌더 */}
               <div className="text-base text-gray-700" dangerouslySetInnerHTML={{ __html: result.description }} />
+            </div>
+            {/* Best/Worst match */}
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center mt-10 mb-3">
+              {bestMatch && (
+                <div className="bg-blue-50 rounded-xl p-4 flex flex-col items-center border-2 border-blue-200 shadow">
+                  <div className="text-xs font-semibold text-blue-600 mb-1">🙆‍♀️환상의 여행메이트</div>
+                  <img
+                    src={bestMatch.image}
+                    alt={bestMatch.name}
+                    className="w-16 h-16 rounded-xl mb-2 border-2 border-blue-300 shadow"
+                  />
+                  <div className="font-bold text-blue-700 text-sm">{bestMatch.name}</div>
+                </div>
+              )}
+              {worstMatch && (
+                <div className="bg-red-50 rounded-xl p-4 flex flex-col items-center border-2 border-red-200 shadow">
+                  <div className="text-xs font-semibold text-red-600 mb-1">🤦‍♂️환장의 여행메이트</div>
+                  <img
+                    src={worstMatch.image}
+                    alt={worstMatch.name}
+                    className="w-16 h-16 rounded-xl mb-2 border-2 border-red-300 shadow"
+                  />
+                  <div className="font-bold text-red-700 text-sm">{worstMatch.name}</div>
+                </div>
+              )}
             </div>
             <button
               onClick={restart}
