@@ -75,7 +75,7 @@ export default function FacismTestResultPage() {
               }
             </div>
           </div>
-          <div className="bg-[#17223b]/90 rounded-xl shadow-inner px-5 py-4 mx-auto w-full mb-6 border-l-2 border-cyan-800 text-cyan-200 text-base font-semibold">
+          <div className="bg-[#17223b]/90 rounded-xl shadow-inner px-5 py-4 mx-auto max-w-lg mb-6 border-l-2 border-cyan-800 text-cyan-200 text-base font-semibold">
             {Array.isArray(result.message)
               ? result.message.map((line, idx) => (
                   <span key={idx}>

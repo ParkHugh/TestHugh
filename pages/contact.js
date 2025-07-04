@@ -12,7 +12,7 @@ export default function Contact() {
         hughparkhere@gmail.com
       </a>
       <div className="mt-8 text-sm text-gray-400">
-        빠르게 답변드릴 수 있도록 노력하겠습니다 :)
+        😆 빠르게 답변드릴 수 있도록 노력하겠습니다 :)
       </div>
     </div>
   );

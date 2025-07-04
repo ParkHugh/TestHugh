@@ -36,7 +36,7 @@ export default function SocioTestResultPage() {
       <Head>
         <title>{desc.name} | 직장 소시오패스 테스트 | Test 休</title>
         <meta name="description" content={desc.description} />
-        <meta property="og:title" content={`[${desc.name}] 직장 소시오패스 테스트 | Test 休`} />
+        <meta property="og:title" content={`[${desc.name}] 소시오패스 테스트 | Test 休`} />
         <meta property="og:description" content={desc.description} />
         <meta property="og:image" content={resultImgUrl} />
         <meta property="og:url" content={resultUrl} />

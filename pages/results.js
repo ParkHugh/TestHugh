@@ -25,6 +25,9 @@ import flirttestResults from '@/tests/flirttest/result';
 import facismMeta from '@/tests/facismtest/meta';
 import facismResults from '@/tests/facismtest/result';
 
+import booktestMeta from '@/tests/booktest/meta';
+import booktestResults from '@/tests/booktest/result';
+
 const testResultSets = [
   {
     meta: tetotestMeta,
@@ -48,7 +51,7 @@ const testResultSets = [
     images: null,
     isObject: false,
     description: '낭만 vs 현실 밸런스게임의 나의 결과와 설명을 볼 수 있습니다.',
-    accent: 'pink',
+    accent: 'amber',
   },
   {
     meta: travelMeta,
@@ -80,7 +83,15 @@ const testResultSets = [
     images: null, // image가 results 내장!
     isObject: false,
     description: '파시스트 성향 테스트의 결과별 해설과 대표 이미지를 한눈에!',
-    accent: 'blue',
+    accent: 'slate',
+  },
+  {
+    meta: booktestMeta, // ✅
+    results: booktestResults, // ✅
+    images: null,
+    isObject: false,
+    description: '독서 성향 테스트의 8가지 유형별 특징과 궁합, 어울리는 독서법까지 확인!',
+    accent: 'yellow', // ✅ 노랑계열 accent 추가
   },
 ];
 
@@ -88,9 +99,12 @@ const color = (accent, type = 'text') => {
   const colors = {
     red: { bg: 'bg-red-50', text: 'text-red-500' },
     pink: { bg: 'bg-pink-50', text: 'text-pink-400' },
-    blue: { bg: 'bg-blue-50', text: 'text-blue-500' },
+    blue: { bg: 'bg-blue-100', text: 'text-blue-500' },
     emerald: { bg: 'bg-emerald-50', text: 'text-emerald-700' },
     rose: { bg: 'bg-rose-50', text: 'text-rose-500' },
+    yellow: { bg: 'bg-yellow-50', text: 'text-yellow-700' },
+    slate:  { bg: 'bg-slate-300', text: 'text-slate-900'},
+    amber:  { bg: 'bg-amber-50', text: 'text-amber-500'},
   };
   return colors[accent]?.[type] || '';
 };
@@ -183,21 +197,21 @@ export default function TestsResults() {
                 <div className="grid gap-6">
                   {isObject
                     ? Object.entries(results).map(([key, res]) => (
-                        <ObjectResultItem
-                          key={key}
-                          keyName={key}
-                          res={res}
-                          image={images?.[key]}
-                        />
-                      ))
+                      <ObjectResultItem
+                        key={key}
+                        keyName={key}
+                        res={res}
+                        image={images?.[key]}
+                      />
+                    ))
                     : results.map((res, idx) => (
-                        <ArrayResultItem
-                          key={res.id || res.name || res.type}
-                          res={res}
-                          image={images?.[idx]} // 이미지 import형이면 여기서, 아니면 undefined
-                          accent={accent}
-                        />
-                      ))}
+                      <ArrayResultItem
+                        key={res.id || res.name || res.type}
+                        res={res}
+                        image={images?.[idx]} // 이미지 import형이면 여기서, 아니면 undefined
+                        accent={accent}
+                      />
+                    ))}
                 </div>
               </div>
             )}
