@@ -18,12 +18,16 @@ import travelResults from '@/tests/traveltest/result';
 import runnerMeta from '@/tests/runnertest/meta';
 import runnerResults from '@/tests/runnertest/result';
 
+// 플러팅 등 image 내장형 테스트 추가
+import flirttestMeta from '@/tests/flirttest/meta';
+import flirttestResults from '@/tests/flirttest/result';
+
 const testResultSets = [
   {
     meta: tetotestMeta,
     results: tetotestResults,
     images: tetotestImages,
-    isObject: true,
+    isObject: true, // key-value object
     description: '호르몬 유형 테스트의 다양한 결과와 상세 특성을 확인할 수 있습니다.',
     accent: 'emerald',
   },
@@ -31,7 +35,7 @@ const testResultSets = [
     meta: sociopathMeta,
     results: sociopathResults,
     images: sociopathImages,
-    isObject: false,
+    isObject: false, // array
     description: '직장인 소시오패스 테스트의 결과별 해설과 이미지를 한 눈에!',
     accent: 'red',
   },
@@ -58,6 +62,14 @@ const testResultSets = [
     isObject: false,
     description: '러닝 성향 테스트의 8가지 유형별 특징과 매칭 궁합까지 한 눈에!',
     accent: 'pink',
+  },
+  {
+    meta: flirttestMeta,
+    results: flirttestResults,
+    images: null, // image가 results 내장!
+    isObject: false,
+    description: '플러팅 유형 테스트 결과별 해설과 이미지를 한눈에!',
+    accent: 'rose',
   },
 ];
 
@@ -101,6 +113,7 @@ const ObjectResultItem = ({ keyName, res, image }) => (
 
 const ArrayResultItem = ({ res, image, accent }) => (
   <div className="flex items-center gap-4 border-b py-3 last:border-b-0">
+    {/* 1순위: images 배열(legacy), 2순위: result의 image 필드 */}
     {image && (
       <img
         src={image}
@@ -148,10 +161,20 @@ export default function TestsResults() {
                 <div className="grid gap-6">
                   {isObject
                     ? Object.entries(results).map(([key, res]) => (
-                        <ObjectResultItem key={key} keyName={key} res={res} image={images?.[key]} />
+                        <ObjectResultItem
+                          key={key}
+                          keyName={key}
+                          res={res}
+                          image={images?.[key]}
+                        />
                       ))
                     : results.map((res, idx) => (
-                        <ArrayResultItem key={res.id || res.name} res={res} image={images?.[idx]} accent={accent} />
+                        <ArrayResultItem
+                          key={res.id || res.name}
+                          res={res}
+                          image={images?.[idx]} // 이미지 import형이면 여기서, 아니면 undefined
+                          accent={accent}
+                        />
                       ))}
                 </div>
               </div>
