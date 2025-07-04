@@ -73,4 +73,14 @@
   <url><loc>https://test-hugh.co.kr/facismtest/result/3</loc></url>
   <url><loc>https://test-hugh.co.kr/facismtest/result/4</loc></url>
 
+    <!-- 독서성향 테스트 -->
+  <url><loc>https://test-hugh.co.kr/booktest</loc></url>
+  <url><loc>https://test-hugh.co.kr/booktest/result/INP</loc></url>
+  <url><loc>https://test-hugh.co.kr/booktest/result/INJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/booktest/result/ISP</loc></url>
+  <url><loc>https://test-hugh.co.kr/booktest/result/ISJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/booktest/result/ENP</loc></url>
+  <url><loc>https://test-hugh.co.kr/booktest/result/ENJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/booktest/result/ESP</loc></url>
+  <url><loc>https://test-hugh.co.kr/booktest/result/ESJ</loc></url>
 </urlset>
