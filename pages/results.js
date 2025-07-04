@@ -18,9 +18,12 @@ import travelResults from '@/tests/traveltest/result';
 import runnerMeta from '@/tests/runnertest/meta';
 import runnerResults from '@/tests/runnertest/result';
 
-// 플러팅 등 image 내장형 테스트 추가
+// image 내장형 테스트
 import flirttestMeta from '@/tests/flirttest/meta';
 import flirttestResults from '@/tests/flirttest/result';
+
+import facismMeta from '@/tests/facismtest/meta';
+import facismResults from '@/tests/facismtest/result';
 
 const testResultSets = [
   {
@@ -71,6 +74,14 @@ const testResultSets = [
     description: '플러팅 유형 테스트 결과별 해설과 이미지를 한눈에!',
     accent: 'rose',
   },
+  {
+    meta: facismMeta,
+    results: facismResults,
+    images: null, // image가 results 내장!
+    isObject: false,
+    description: '파시스트 성향 테스트의 결과별 해설과 대표 이미지를 한눈에!',
+    accent: 'blue',
+  },
 ];
 
 const color = (accent, type = 'text') => {
@@ -117,20 +128,31 @@ const ArrayResultItem = ({ res, image, accent }) => (
     {image && (
       <img
         src={image}
-        alt={res.name}
+        alt={res.name || res.type}
         className="w-16 h-16 object-cover rounded-xl border border-red-100 bg-gray-50"
       />
     )}
     {!image && res.image && (
       <img
         src={res.image}
-        alt={res.name}
+        alt={res.name || res.type}
         className="w-16 h-16 object-cover rounded-xl border border-blue-100 bg-blue-50"
       />
     )}
     <div>
-      <div className={`font-bold text-base mb-1 ${color(accent)}`}>{res.name}</div>
-      <div className="text-gray-700 text-xs" dangerouslySetInnerHTML={{ __html: res.description }} />
+      <div className={`font-bold text-base mb-1 ${color(accent)}`}>
+        {res.name || res.type}
+      </div>
+      {/* description이 배열이면 줄바꿈, 아니면 그냥 출력 */}
+      {Array.isArray(res.description) ? (
+        <div className="text-gray-700 text-xs">
+          {res.description.map((line, i) => (
+            <div key={i}>{line}</div>
+          ))}
+        </div>
+      ) : (
+        <div className="text-gray-700 text-xs" dangerouslySetInnerHTML={{ __html: res.description }} />
+      )}
     </div>
   </div>
 );
@@ -170,7 +192,7 @@ export default function TestsResults() {
                       ))
                     : results.map((res, idx) => (
                         <ArrayResultItem
-                          key={res.id || res.name}
+                          key={res.id || res.name || res.type}
                           res={res}
                           image={images?.[idx]} // 이미지 import형이면 여기서, 아니면 undefined
                           accent={accent}
