@@ -53,4 +53,16 @@
   <url><loc>https://test-hugh.co.kr/romantictest/result/2</loc></url>
   <url><loc>https://test-hugh.co.kr/romantictest/result/3</loc></url>
   <url><loc>https://test-hugh.co.kr/romantictest/result/4</loc></url>
+
+    <!-- 플러팅 테스트 -->
+  <url><loc>https://test-hugh.co.kr/flirttest</loc></url>
+  <url><loc>https://test-hugh.co.kr/flirttest/result/INP</loc></url>
+  <url><loc>https://test-hugh.co.kr/flirttest/result/INJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/flirttest/result/ISP</loc></url>
+  <url><loc>https://test-hugh.co.kr/flirttest/result/ISJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/flirttest/result/ENP</loc></url>
+  <url><loc>https://test-hugh.co.kr/flirttest/result/ENJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/flirttest/result/ESP</loc></url>
+  <url><loc>https://test-hugh.co.kr/flirttest/result/ESJ</loc></url>
+
 </urlset>
