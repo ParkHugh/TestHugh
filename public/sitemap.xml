@@ -27,14 +27,13 @@
 
   <!-- 호르몬 유형 테스트 -->
   <url><loc>https://test-hugh.co.kr/tetotest</loc></url>
-  <url><loc>https://test-hugh.co.kr/tetotest/result/INP</loc></url>
-  <url><loc>https://test-hugh.co.kr/tetotest/result/INJ</loc></url>
-  <url><loc>https://test-hugh.co.kr/tetotest/result/ISP</loc></url>
-  <url><loc>https://test-hugh.co.kr/tetotest/result/ISJ</loc></url>
-  <url><loc>https://test-hugh.co.kr/tetotest/result/ENP</loc></url>
-  <url><loc>https://test-hugh.co.kr/tetotest/result/ENJ</loc></url>
-  <url><loc>https://test-hugh.co.kr/tetotest/result/ESP</loc></url>
-  <url><loc>https://test-hugh.co.kr/tetotest/result/ESJ</loc></url>
+  <url><loc>https://test-hugh.co.kr/tetotest/result/테토남</loc></url>
+  <url><loc>https://test-hugh.co.kr/tetotest/result/테겐남</loc></url>
+  <url><loc>https://test-hugh.co.kr/tetotest/result/에겐남</loc></url>
+  <url><loc>https://test-hugh.co.kr/tetotest/result/테토녀</loc></url>
+  <url><loc>https://test-hugh.co.kr/tetotest/result/테겐녀</loc></url>
+  <url><loc>https://test-hugh.co.kr/tetotest/result/에겐녀</loc></url>
+
 
   <!-- 여행 테스트 -->
   <url><loc>https://test-hugh.co.kr/traveltest</loc></url>

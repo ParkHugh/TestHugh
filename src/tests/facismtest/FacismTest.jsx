@@ -102,13 +102,14 @@ export default function FacismTest() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-[#121c2b] via-[#191c24] to-black flex flex-col items-center justify-center px-4 py-2">
             <Head>
-                <title>{meta.title} | Test 休</title>
-                <meta name="description" content={meta.description} />
-                <meta property="og:title" content={meta.title + " | Test 休"} />
-                <meta property="og:description" content={meta.description} />
-                <meta property="og:image" content={meta.image} />
-                <meta property="og:url" content={`https://test-hugh.co.kr${meta.path}`} />
+                <title>파시스트 성향 테스트 | Test 休</title>
+                <meta name="description" content="12가지 질문으로 알아보는 나의 파시스트 성향! 나의 정치적 유형을 가볍게 테스트해보세요." />
+                <meta property="og:title" content="파시스트 성향 테스트 | Test 休" />
+                <meta property="og:description" content="12가지 질문으로 당신의 파시스트 파시즘 경향을 진단해보세요!" />
+                <meta property="og:image" content="https://test-hugh.co.kr/images/facismtest/main.png" />
+                <meta property="og:url" content="https://test-hugh.co.kr/facismtest" />
             </Head>
+
 
             <AnimatePresence mode="wait">
                 {/* 인트로 화면 */}
