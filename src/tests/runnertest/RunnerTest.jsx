@@ -26,7 +26,7 @@ function getRunnerType(userAnswers) {
   });
   const ie = E >= I ? 'E' : 'I';
   const ns = N >= S ? 'N' : 'S';
-  const pj = P >= J ? 'P' : 'J'; g
+  const pj = P >= J ? 'P' : 'J';
   return ie + ns + pj;
 }
 
