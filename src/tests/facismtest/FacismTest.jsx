@@ -150,6 +150,16 @@ export default function FacismTest() {
                         </button>
                     </motion.div>
                 )}
+                <div style={{ display: 'none' }}>
+                    <h3>Q1. 사회가 혼란스러울 때 어떤 방식이 더 효과적이라고 생각하나요?</h3>
+                    <p>1) 강력한 리더십과 질서 중심의 통제가 필요하다.</p>
+                    <p>2) 다양한 목소리와 토론을 통해 문제를 해결해야 한다.</p>
+
+                    <h3>Q2. 소수자나 사회적 약자에 대한 정책에 대해 어떻게 생각하나요?</h3>
+                    <p>1) 국가 전체의 안정과 효율을 우선해야 한다.</p>
+                    <p>2) 약자를 보호하는 것이 민주 사회의 기본이다.</p>
+                </div>
+
 
                 {/* 질문 */}
                 {step === 'question' && questions[currentQuestion] && (

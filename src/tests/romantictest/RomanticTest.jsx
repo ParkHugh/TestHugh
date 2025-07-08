@@ -134,6 +134,19 @@ export default function RomanticTest() {
                 )}
 
                 {/* 질문 */}
+
+                <div style={{ display: 'none' }}>
+                    <h3>Q1. 세상을 바라보는 당신의 태도는?</h3>
+                    <p>1) 명예, 성공, 좋은 평판을 얻고 싶은 욕망이 크다.</p>
+                    <p>2) 소소한 행복과 안정감을 더 중요하게 생각한다.</p>
+
+                    <h3>Q2. 일이 잘 안 풀릴 때 당신의 반응은?</h3>
+                    <p>1) 안되면 말지, 죽기밖에 더 하겠냐는 마인드로 넘긴다.</p>
+                    <p>2) 복잡한 생각이 머리를 휘감고 절망에 빠지는 편이다.</p>
+                </div>
+
+
+
                 {step === 'question' && questions[currentQuestion] && (
                     <motion.div
                         key={currentQuestion}
@@ -283,7 +296,7 @@ export default function RomanticTest() {
                             onClick={handleShare}
                             className="bg-gradient-to-r from-pink-400 via-yellow-300 to-yellow-400 hover:from-pink-500 hover:to-yellow-400 text-white py-2 px-6 rounded-xl font-bold ml-2 mt-3 shadow-md"
                         >
-                           결과 공유하기
+                            결과 공유하기
                         </button>
                         <button
                             onClick={() => window.location.href = '/'}

@@ -181,6 +181,16 @@ export default function TetoTest() {
           )}
 
           {/* 질문 */}
+          <div style={{ display: 'none' }}>
+            <h3>Q1. 감정이 격해지는 상황에서 나의 반응은?</h3>
+            <p>1) 흥분하거나 욱하는 일이 많고, 감정 표현이 격하다.</p>
+            <p>2) 감정을 잘 조절하고, 겉으로 드러내지 않는다.</p>
+
+            <h3>Q2. 경쟁 상황에 놓였을 때 당신은?</h3>
+            <p>1) 이겨야 직성이 풀리고, 승부욕이 매우 강한 편이다.</p>
+            <p>2) 꼭 이기지 않아도 되며, 협력이 더 중요하다고 생각한다.</p>
+          </div>
+
           {step === 'question' && questions[currentQuestion] && (
             <motion.div
               key={currentQuestion}

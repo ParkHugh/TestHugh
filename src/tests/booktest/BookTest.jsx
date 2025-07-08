@@ -63,7 +63,7 @@ export default function BookTest() {
         const ref = doc(db, 'testCounts', 'bookTest');
         const snap = await getDoc(ref);
         if (snap.exists()) setCount(INITIAL_COUNT + (snap.data().count || 0));
-      } catch (e) {}
+      } catch (e) { }
     }
     fetchCount();
   }, []);
@@ -72,7 +72,7 @@ export default function BookTest() {
     try {
       const ref = doc(db, 'testCounts', 'bookTest');
       await updateDoc(ref, { count: increment(1) });
-    } catch (e) {}
+    } catch (e) { }
     setStep('question');
   };
 
@@ -115,7 +115,7 @@ export default function BookTest() {
         title: "독서 성향 테스트 결과",
         text: "나의 독서 성향은? 너도 해봐! 📚",
         url: shareUrl
-      }).catch(() => {});
+      }).catch(() => { });
     } else if (shareUrl) {
       navigator.clipboard.writeText(shareUrl);
       setCopied(true);
@@ -173,6 +173,16 @@ export default function BookTest() {
             </button>
           </motion.div>
         )}
+        <div style={{ display: 'none' }}>
+          <h3>Q1. 책을 고를 때 당신의 기준은?</h3>
+          <p>1) 실용적이고 요약이 잘 된 책 위주로 고른다.</p>
+          <p>2) 분위기나 문체, 감성적인 요소를 중요하게 여긴다.</p>
+
+          <h3>Q2. 독서하는 장소로 더 선호하는 곳은?</h3>
+          <p>1) 조용하고 혼자만의 공간에서 집중해서 읽는 것을 좋아한다.</p>
+          <p>2) 북카페나 야외 같은 분위기 있는 곳에서 여유롭게 읽는 것을 좋아한다.</p>
+        </div>
+
 
         {/* 질문 */}
         {step === 'question' && questions[currentQuestion] && (

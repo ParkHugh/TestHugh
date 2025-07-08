@@ -47,7 +47,7 @@ export default function FlirtTest() {
         const ref = doc(db, 'testCounts', 'flirtTest');
         const snap = await getDoc(ref);
         if (snap.exists()) setCount(INITIAL_COUNT + (snap.data().count || 0));
-      } catch (e) {}
+      } catch (e) { }
     }
     fetchCount();
   }, []);
@@ -56,7 +56,7 @@ export default function FlirtTest() {
     try {
       const ref = doc(db, 'testCounts', 'flirtTest');
       await updateDoc(ref, { count: increment(1) });
-    } catch (e) {}
+    } catch (e) { }
     setStep('question');
   };
 
@@ -99,7 +99,7 @@ export default function FlirtTest() {
         title: "플러팅 성향 테스트 결과",
         text: "나의 플러팅 스타일은? 너도 해봐! 💘",
         url: shareUrl
-      }).catch(() => {});
+      }).catch(() => { });
     } else if (shareUrl) {
       navigator.clipboard.writeText(shareUrl);
       setCopied(true);
@@ -157,6 +157,16 @@ export default function FlirtTest() {
             </button>
           </motion.div>
         )}
+        <div style={{ display: 'none' }}>
+          <h3>Q1. 좋아하는 사람이 생겼을 때 나의 행동은?</h3>
+          <p>1) 마음에 들면 뚝딱이더라도 먼저 말걸고 직진한다.</p>
+          <p>2) 인사하고 카톡하는 것만으로도 플러팅이라고 생각한다.</p>
+
+          <h3>Q2. 향기에 대한 나의 취향은?</h3>
+          <p>1) 빨래할 때 피죤이면 충분하다.</p>
+          <p>2) 다양한 향기를 좋아하고 향수를 자주 뿌린다.</p>
+        </div>
+
 
         {/* 질문 */}
         {step === 'question' && questions[currentQuestion] && (

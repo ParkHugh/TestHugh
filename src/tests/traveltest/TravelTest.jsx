@@ -105,9 +105,9 @@ export default function TravelTest() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-yellow-50 to-green-100 flex flex-col items-center justify-center px-4 py-2">
       <Head>
         <title>여행 성향 테스트 | Test 休</title>
-        <meta name="description" content="나는 여행갈 때 어떤 타입? 12가지 질문으로 알아보는 나의 여행 스타일!" />
+        <meta name="description" content="나는 여행갈 때 어떤 타입? 12가지 질문으로 알아보는 나의 여행 스타일! 추천 여행지" />
         <meta property="og:title" content="여행 성향 테스트 | Test 休" />
-        <meta property="og:description" content="12문항으로 알아보는 여행 MBTI, 당신의 여행 유형은?" />
+        <meta property="og:description" content="12문항으로 알아보는 여행 MBTI, 당신의 여행 유형은? 추천 여행지" />
         <meta property="og:image" content="https://test-hugh.co.kr/images/traveltest/main.png" />
         <meta property="og:url" content="https://test-hugh.co.kr/traveltest" />
       </Head>
@@ -150,6 +150,14 @@ export default function TravelTest() {
             </button>
           </motion.div>
         )}
+        <div style={{ display: 'none' }}>
+                    <h3>Q1. 다음 중 당신의 여행 스타일에 가장 가까운 것은?</h3>
+                    <p>1) 철저한 계획형 – 여행 전 모든 일정을 미리 준비한다.</p>
+                    <p>2) 즉흥 탐험형 – 그때그때 기분 따라 움직인다.</p>
+                    <h3>Q2. 여행지에서 가장 중요하게 생각하는 것은?</h3>
+                    <p>1) 맛집과 명소 위주 일정</p>
+                    <p>2) 현지인처럼 살아보기</p>
+                </div>
 
         {step === 'question' && questions[currentQuestion] && (
           <motion.div

@@ -39,7 +39,7 @@ export default function SocioTest() {
         if (snap.exists()) {
           setCount(INITIAL_COUNT + (snap.data().count || 0));
         }
-      } catch (e) {}
+      } catch (e) { }
     }
     fetchCount();
   }, []);
@@ -49,7 +49,7 @@ export default function SocioTest() {
     try {
       const ref = doc(db, 'testCounts', 'sociopathTest');
       await updateDoc(ref, { count: increment(1) });
-    } catch (e) {}
+    } catch (e) { }
     setStep('question');
   };
 
@@ -91,7 +91,7 @@ export default function SocioTest() {
           text: '나는 직장에서 이런 사람이래... 너도 해봐 😈',
           url: shareUrl,
         })
-        .catch(() => {});
+        .catch(() => { });
     } else if (shareUrl) {
       navigator.clipboard.writeText(shareUrl);
       setCopied(true);
@@ -151,6 +151,16 @@ export default function SocioTest() {
         )}
 
         {/* 질문 */}
+        <div style={{ display: 'none' }}>
+          <h3>Q1. 다른 사람이 다치거나 손해 보는 상황을 보면 어떤 감정을 느끼나요?</h3>
+          <p>1) 안타깝지만 별다른 감정은 없다.</p>
+          <p>2) 그 상황에 공감하며 마음이 불편해진다.</p>
+
+          <h3>Q2. 거짓말을 하거나 규칙을 어기는 것에 대해 어떻게 생각하나요?</h3>
+          <p>1) 필요하다면 거짓말도 문제없다고 생각한다.</p>
+          <p>2) 규칙은 지켜야 하며, 거짓말은 웬만하면 하지 않는다.</p>
+        </div>
+
         {step === 'question' && questions[currentQuestion] && (
           <motion.div
             key={currentQuestion}
@@ -186,10 +196,9 @@ export default function SocioTest() {
                   className={`
                     w-full py-3 rounded-xl font-bold text-lg 
                     transition-all duration-200 shadow-xl
-                    ${
-                      idx === 0
-                        ? 'bg-red-600 text-white hover:bg-red-700'
-                        : idx === 1
+                    ${idx === 0
+                      ? 'bg-red-600 text-white hover:bg-red-700'
+                      : idx === 1
                         ? 'bg-gray-700 text-white hover:bg-gray-800'
                         : 'bg-gray-900 text-gray-300 border border-gray-600'
                     }

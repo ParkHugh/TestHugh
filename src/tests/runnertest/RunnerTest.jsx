@@ -26,7 +26,7 @@ function getRunnerType(userAnswers) {
   });
   const ie = E >= I ? 'E' : 'I';
   const ns = N >= S ? 'N' : 'S';
-  const pj = P >= J ? 'P' : 'J';g
+  const pj = P >= J ? 'P' : 'J'; g
   return ie + ns + pj;
 }
 
@@ -45,7 +45,7 @@ export default function RunnerTest() {
         const ref = doc(db, 'testCounts', 'runnerTest');
         const snap = await getDoc(ref);
         if (snap.exists()) setCount(INITIAL_COUNT + (snap.data().count || 0));
-      } catch (e) {}
+      } catch (e) { }
     }
     fetchCount();
   }, []);
@@ -54,7 +54,7 @@ export default function RunnerTest() {
     try {
       const ref = doc(db, 'testCounts', 'runnerTest');
       await updateDoc(ref, { count: increment(1) });
-    } catch (e) {}
+    } catch (e) { }
     setStep('question');
   };
 
@@ -150,6 +150,16 @@ export default function RunnerTest() {
             </button>
           </motion.div>
         )}
+        <div style={{ display: 'none' }}>
+          <h3>Q1. 달리기를 시작하게 된 이유는?</h3>
+          <p>1) 체력 향상과 기록 달성을 목표로 한다.</p>
+          <p>2) 스트레스 해소나 감정 정리를 위해 달린다.</p>
+
+          <h3>Q2. 평소 달리는 스타일은?</h3>
+          <p>1) 목표 거리와 페이스를 정해두고 계획적으로 달린다.</p>
+          <p>2) 그날의 기분과 분위기에 따라 자유롭게 달린다.</p>
+        </div>
+
 
         {/* 질문 */}
         {step === 'question' && questions[currentQuestion] && (
