@@ -137,7 +137,10 @@ export default function FacismTest() {
                         </h2>
                         <p className="mb-8 text-gray-200 text-lg text-center font-medium max-w-xl shadow-inner">
                             혹시 나도 모르게 파시스트적 사고가 스며들어 있는 건 아닐까? <br />
-                            일상과 사회에서 드러나는 내 숨은 경향을 알아보세요.
+                            일상과 사회에서 드러나는 내 숨은 경향을 알아보세요. <br />
+                            <span class="text-blue-700 font-bold">파시즘이란? </span><br />
+                            <span className="text-gray-500 font-bold">집단과 권위, 질서를 강조하며 개인의 자유를 제한하는 극단적 사고방식이에요. <br />
+                            “강한 리더, 집단, 규율! 개인 자유보단 모두가 똑같이 움직이는 걸 중요시해요.”</span>
                         </p>
                         <p className="mb-6 text-blue-300 text-sm font-semibold">
                             🧩 {count.toLocaleString()}명이 참여했어요

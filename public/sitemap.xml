@@ -85,4 +85,12 @@
 
   <url><loc>https://test-hugh.co.kr/favicon.ico</loc></url>
 
+ <!--성인 ADHD 테스트 -->
+<url><loc>https://test-hugh.co.kr/adhdtest</loc></url>
+<url><loc>https://test-hugh.co.kr/adhdtest/result/low_ia_low_hi</loc></url>
+<url><loc>https://test-hugh.co.kr/adhdtest/result/high_ia_low_hi</loc></url>
+<url><loc>https://test-hugh.co.kr/adhdtest/result/low_ia_high_hi</loc></url>
+<url><loc>https://test-hugh.co.kr/adhdtest/result/mid_ia_mid_hi</loc></url>
+<url><loc>https://test-hugh.co.kr/adhdtest/result/high_ia_high_hi</loc></url>
+
 </urlset>

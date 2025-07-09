@@ -144,7 +144,17 @@ export default function FlirtTest() {
             </h2>
             <p className="mb-2 text-red-500 text-lg text-center font-medium max-w-xl shadow-inner">
               설레는 첫마디부터 내 스타일 플러팅까지!<br />
-              12가지 질문으로 플러팅 DNA를 찾아보세요!
+              12가지 질문으로 플러팅 DNA를 찾아보세요!<br />
+              <span className="text-pink-500 font-bold">
+                오늘의 내 플러팅은 달콤? 시크? 센스만점?<br />
+              </span>
+              <span className="text-rose-600 font-semibold">
+                나도 몰랐던 썸 능력치, 지금 바로 확인!<br />
+              </span>
+              <span className="text-fuchsia-400 font-bold">
+                상대방과 케미 폭발하는 플러팅 궁합도 확인하세요!
+              </span>
+
             </p>
             <p className="mb-6 text-pink-400 text-sm font-semibold">
               💘 {count.toLocaleString()}명이 참여했어요

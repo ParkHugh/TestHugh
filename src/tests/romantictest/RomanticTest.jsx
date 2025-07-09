@@ -119,7 +119,14 @@ export default function RomanticTest() {
                         </h2>
                         <p className="mb-2 text-pink-500 text-lg text-center font-medium max-w-xl shadow-inner">
                             나는 낭만파일까, 현실파일까?<br />
-                            12가지 인생 선택!<br /> 당신의 인생 밸런스를 테스트해보세요.
+                            12가지 인생 선택!<br />
+                            당신의 인생 밸런스를 테스트해보세요.<br />
+                            <span className="text-blue-300 font-semibold">
+                                여행, 사랑, 일상, 꿈...<br />
+                                어떤 순간에 더 끌리는 나를 발견해보자<br />
+                                낭만과 현실 사이에서 지금의 나는 어디쯤일까요?
+                            </span>
+
                         </p>
                         <p className="mb-6 text-pink-400 text-sm font-semibold">
                             🔥 {count.toLocaleString()}명이 참여했어요

@@ -136,7 +136,10 @@ export default function SocioTest() {
             </h2>
             <p className="mb-8 text-gray-200 text-lg text-center font-medium max-w-xl shadow-inner">
               회사에서 나는 진짜 천사일까, 혹시 소시오패스...? <br />
-              13가지 현실적인 질문으로 직장 내 민낯을 밝혀보세요.
+              13가지 현실적인 질문으로 직장 내 민낯을 밝혀보세요.<br />
+              <span className="text-red-600 font-bold">소시오패스란?</span><br />
+<span className="text-gray-500">"공감능력이 낮고, 이익을 위해 남을 쉽게 조종하거나 거짓말하는 반사회적 성향"</span>
+
             </p>
             <p className="mb-6 text-red-400 text-sm font-semibold">
               🔥 {count.toLocaleString()}명이 참여했어요

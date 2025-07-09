@@ -137,9 +137,19 @@ export default function RunnerTest() {
             </h2>
             <p className="mb-2 text-green-600 text-lg text-center font-medium max-w-xl shadow-inner">
               나만의 러닝 스타일!<br />
-              12가지 질문으로 러닝 DNA를 찾아보세요!
+              12가지 질문으로 러닝 DNA를 찾아보세요!<br />
+              <span className="text-green-600 font-semibold">
+                오늘은 마라톤 준비생, 내일은 러닝 크루 리더?<br />
+                나도 몰랐던 내 운동 본능을 꺼내보세요.<br />
+              </span>
+              <span className="text-emerald-900 font-bold">
+                트랙 위의 열정파, 꾸준한 페이스 조절러, 즉흥 러너!<br />
+                당신만의 러닝 타입을 진단하고,<br />
+                <span className="text-pink-500">함께 달리면 좋은 궁합 메이트</span>도 추천해드립니다!
+              </span>
+
             </p>
-            <p className="mb-6 text-green-400 text-sm font-semibold">
+            <p className="mb-6 text-green-700 text-sm font-semibold">
               🏃‍♂️ {count.toLocaleString()}명이 참여했어요
             </p>
             <button

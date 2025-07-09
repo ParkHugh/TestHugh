@@ -45,7 +45,7 @@ export default function TravelTest() {
         const ref = doc(db, 'testCounts', 'travelTest');
         const snap = await getDoc(ref);
         if (snap.exists()) setCount(INITIAL_COUNT + (snap.data().count || 0));
-      } catch (e) {}
+      } catch (e) { }
     }
     fetchCount();
   }, []);
@@ -54,7 +54,7 @@ export default function TravelTest() {
     try {
       const ref = doc(db, 'testCounts', 'travelTest');
       await updateDoc(ref, { count: increment(1) });
-    } catch (e) {}
+    } catch (e) { }
     setStep('question');
   };
 
@@ -93,7 +93,7 @@ export default function TravelTest() {
         title: "여행 성향 테스트 결과",
         text: "나의 여행 성향은? 너도 해봐! 🌍",
         url: shareUrl
-      }).catch(() => {});
+      }).catch(() => { });
     } else if (shareUrl) {
       navigator.clipboard.writeText(shareUrl);
       setCopied(true);
@@ -137,7 +137,14 @@ export default function TravelTest() {
             </h2>
             <p className="mb-2 text-blue-600 text-lg text-center font-medium max-w-xl shadow-inner">
               나는 어떤 여행자일까?<br />
-              12가지 질문으로 여행 스타일을 진단해보세요!
+              12가지 질문으로 나만의 여행 스타일을 진단해보세요!<br />
+              <span className="text-blue-800 font-semibold">
+                배낭여행 마니아, 맛집 사냥꾼, 계획형, 즉흥형…<br />
+                내 안의 숨은 여행 DNA를 발견하고<br />
+                나에게 딱 맞는 여행지까지 추천받을 수 있어요!<br />
+                이번엔 어디로 떠나볼까요?
+              </span>
+
             </p>
             <p className="mb-6 text-blue-400 text-sm font-semibold">
               🔥 {count.toLocaleString()}명이 참여했어요
@@ -151,13 +158,13 @@ export default function TravelTest() {
           </motion.div>
         )}
         <div style={{ display: 'none' }}>
-                    <h3>Q1. 다음 중 당신의 여행 스타일에 가장 가까운 것은?</h3>
-                    <p>1) 철저한 계획형 – 여행 전 모든 일정을 미리 준비한다.</p>
-                    <p>2) 즉흥 탐험형 – 그때그때 기분 따라 움직인다.</p>
-                    <h3>Q2. 여행지에서 가장 중요하게 생각하는 것은?</h3>
-                    <p>1) 맛집과 명소 위주 일정</p>
-                    <p>2) 현지인처럼 살아보기</p>
-                </div>
+          <h3>Q1. 다음 중 당신의 여행 스타일에 가장 가까운 것은?</h3>
+          <p>1) 철저한 계획형 – 여행 전 모든 일정을 미리 준비한다.</p>
+          <p>2) 즉흥 탐험형 – 그때그때 기분 따라 움직인다.</p>
+          <h3>Q2. 여행지에서 가장 중요하게 생각하는 것은?</h3>
+          <p>1) 맛집과 명소 위주 일정</p>
+          <p>2) 현지인처럼 살아보기</p>
+        </div>
 
         {step === 'question' && questions[currentQuestion] && (
           <motion.div

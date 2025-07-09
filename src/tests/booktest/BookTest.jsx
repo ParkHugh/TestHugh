@@ -159,8 +159,16 @@ export default function BookTest() {
               독서 성향 테스트
             </h2>
             <p className="mb-2 text-orange-700 text-lg text-center font-medium max-w-xl shadow-inner">
+              책 읽는 스타일에도 성격이 있다? <span className="text-fuchsia-600 font-bold">🤯</span><br />
               나의 독서 스타일, 어울리는 책과 독서법까지!<br />
-              12문항으로 내 안의 북 DNA를 찾아보세요!
+              12문항으로 내 안의 <span className="text-amber-600 font-semibold">북 DNA</span>를 찾아보세요.<br />
+              <span className="text-orange-700 font-bold">
+                소설을 좋아하는 낭만러, 현실을 꿰뚫는 실천가,
+              </span><br />
+              <span className="text-green-700 font-semibold">
+                당신만을 위한 추천 도서, 독서 습관, 독서 메이트까지 알려드립니다! 📚
+              </span>
+
             </p>
             <p className="mb-6 text-lime-600 text-sm font-semibold">
               📚 {count.toLocaleString()}명이 참여했어요

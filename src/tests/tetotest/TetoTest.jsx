@@ -139,7 +139,18 @@ export default function TetoTest() {
               </h2>
               <p className="mb-3 text-emerald-700 text-lg text-center font-semibold max-w-xl shadow-inner">
                 나의 호르몬 성향을 알아보자!<br />
-                12가지 질문으로 당신의 호르몬 세계를 탐험해요!
+                12가지 질문으로 당신의 호르몬 세계를 탐험해요!<br />
+                <>
+                  <span className="text-blue-600 font-bold">테스토스테론</span>
+                  이 넘치는 <span className="text-blue-500 font-bold">'테토남/녀'</span>,<br />
+                  <span className="text-pink-500 font-bold">에스트로겐</span>
+                  이 매력인 <span className="text-pink-400 font-bold">'에겐남/녀'</span>,<br />
+                  그 사이 어딘가 <span className="text-yellow-500 font-bold">반반매력 '테겐남/녀'</span><br />
+                  <span className="text-red-500 font-bold">
+                    당신의 숨은 호르몬 캐릭터는 무엇일까요?
+                  </span>
+                </>
+
               </p>
               <p className="mb-6 text-emerald-400 text-sm font-semibold">
                 🔥 {count.toLocaleString()}명이 참여했어요

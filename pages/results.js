@@ -28,6 +28,13 @@ import facismResults from '@/tests/facismtest/result';
 import booktestMeta from '@/tests/booktest/meta';
 import booktestResults from '@/tests/booktest/result';
 
+import adhdtestMeta from '@/tests/adhdtest/meta';
+import adhdtestResults from '@/tests/adhdtest/result';
+// 이미지 별도 관리한다면 아래도
+// import adhdtestImages from '@/tests/adhdtest/resultImages'; 
+``
+
+
 const testResultSets = [
   {
     meta: tetotestMeta,
@@ -93,6 +100,15 @@ const testResultSets = [
     description: '독서 성향 테스트의 8가지 유형별 특징과 궁합, 어울리는 독서법까지 확인!',
     accent: 'yellow', // ✅ 노랑계열 accent 추가
   },
+  {
+  meta: adhdtestMeta,
+  results: adhdtestResults,
+  images: null, // 이미지가 results 내부 image로 있으면 null, 별도 파일 있으면 변수로
+  isObject: false,
+  description: '성인 ADHD 테스트의 5가지 유형별 특징과 설명, 귀여운 일러스트 이미지를 한 눈에!',
+  accent: 'fuchsia', // Tailwind 색상명, text-fuchsia-600 등
+},
+
 ];
 
 const color = (accent, type = 'text') => {
@@ -105,6 +121,7 @@ const color = (accent, type = 'text') => {
     yellow: { bg: 'bg-yellow-50', text: 'text-yellow-700' },
     slate:  { bg: 'bg-slate-300', text: 'text-slate-900'},
     amber:  { bg: 'bg-amber-50', text: 'text-amber-500'},
+    fuchsia: { bg: 'bg-fuchsia-50', text: 'text-fuchsia-600' },
   };
   return colors[accent]?.[type] || '';
 };
