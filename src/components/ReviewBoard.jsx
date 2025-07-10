@@ -156,7 +156,7 @@ export default function ReviewBoard() {
                 ) : (
                     <>
                         {reviews.map(r => (
-                            <div key={r.id} className="bg-orange-50 rounded-lg px-4 py-3 shadow flex items-center gap-3">
+                            <div key={r.id} className="bg-orange-50 rounded-lg px-4 py-3 shadow flex items-start gap-3">
                                 <img
                                     src={getTestImage(r.testName)}
                                     alt={r.testName}
@@ -167,15 +167,21 @@ export default function ReviewBoard() {
                                     <div className="flex items-center gap-2">
                                         <span className="font-bold text-orange-800">{r.nickname}</span>
                                         <span className="text-xs text-gray-500">| {r.testName}</span>
-                                        <span className="ml-auto text-yellow-400">
-                                            {Array(r.rating).fill().map((_, i) => <span key={i}>★</span>)}
-                                            {Array(5 - r.rating).fill().map((_, i) => <span key={i} className="text-gray-300">★</span>)}
-                                        </span>
+                                    </div>
+                                    {/* 별점 한 줄, 항상 아래쪽! */}
+                                    <div className="flex items-center gap-1 mt-1 mb-1">
+                                        {[1, 2, 3, 4, 5].map(n => (
+                                            <span
+                                                key={n}
+                                                className={`text-2xl ${r.rating >= n ? "text-yellow-400" : "text-gray-300"}`}
+                                            >★</span>
+                                        ))}
                                     </div>
                                     <div className="text-gray-700">{r.review}</div>
                                 </div>
                             </div>
                         ))}
+
                         <div className="flex justify-between items-center mt-4">
                             <button
                                 className="px-4 py-1 rounded bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold disabled:opacity-50"
