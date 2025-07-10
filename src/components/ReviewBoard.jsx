@@ -152,14 +152,14 @@ export default function ReviewBoard() {
                         {reviews.map(r => (
                             <div
                                 key={r.id}
-                                className="bg-orange-50 rounded-lg px-4 py-3 shadow flex gap-3 items-start"
+                                className="bg-orange-50 rounded-lg px-4 py-3 shadow flex gap-3 items-center"
                             >
                                 {/* 메인 이미지 */}
                                 <img
                                     src={getTestImage(r.testName)}
                                     alt={r.testName}
-                                    className="w-20 h-20 md:w-16 md:h-16 rounded-xl object-contain"
-                                    style={{ minWidth: 120, minHeight: 100 }}
+                                    className="w-20 h-20 md:w-16 md:h-16 rounded-2xl object-center"
+                                    style={{ minWidth: 90, minHeight: 80 }}
                                 />
                                 {/* 본문: 반드시 flex-col! */}
                                 <div className="flex-1 flex flex-col ">
