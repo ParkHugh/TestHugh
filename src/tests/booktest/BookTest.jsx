@@ -147,7 +147,7 @@ export default function BookTest() {
           >
             <img
               src={mainImage}
-              alt="메인"
+              alt="테스트 휴"
               className="w-full max-w-lg h-[36vh] object-contain mb-3 drop-shadow-xl"
               style={{
                 borderRadius: '2rem',

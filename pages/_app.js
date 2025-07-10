@@ -36,7 +36,7 @@ export default function App({ Component, pageProps }) {
       {/* 사이트 최상단에 번역 위젯 삽입 */}
       <div
         id="google_translate_element"
-        style={{ position: "fixed", top: 8, right: 8, zIndex: 9999 }}
+        style={{ position: "fixed", top: 8, left: 12, zIndex: 9999, width: "100px" }}
       />
       <Component {...pageProps} />
     </>
