@@ -48,6 +48,21 @@ export default function MenuDropdown() {
           >
             ℹ️ About
           </Link>
+          <Link
+            href="/faq"
+            onClick={() => setOpen(false)}
+            className="block px-5 py-3 text-orange-600 font-semibold hover:bg-orange-50 transition"
+          >
+            ❓ FAQ
+          </Link>
+          <Link
+            href="/reviews"
+            onClick={() => setOpen(false)}
+            className="block px-5 py-3 text-orange-700 font-semibold hover:bg-orange-50 transition"
+          >
+            🗨️ 후기 게시판
+          </Link>
+
         </div>
       )}
     </div>

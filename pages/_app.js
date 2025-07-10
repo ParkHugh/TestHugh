@@ -1,43 +1,69 @@
 import "@/styles/globals.css";
 import Head from "next/head";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function App({ Component, pageProps }) {
+  const [showTranslate, setShowTranslate] = useState(false);
+
   useEffect(() => {
-    // 구글 번역 위젯 스크립트 동적 추가
+    // 최초 방문 시에만 4초간 위젯 노출
+    if (!localStorage.getItem("translateWidgetShown")) {
+      setShowTranslate(true);
+      localStorage.setItem("translateWidgetShown", "1");
+    }
+
+    // 구글 번역 위젯 스크립트 삽입
     const script = document.createElement("script");
     script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     script.async = true;
     document.body.appendChild(script);
 
-    // 글로벌 콜백 등록
     window.googleTranslateElementInit = function() {
       new window.google.translate.TranslateElement(
         {
           pageLanguage: "ko", // 기본 언어
-          includedLanguages: "en,ko,es", // 지원 언어(원하는 언어 코드 추가)
+          includedLanguages: "en,ko,es", // 지원 언어
           layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
         },
-        "google_translate_element" // 위젯 붙일 id
+        "google_translate_element"
       );
     };
 
     return () => {
-      // 클린업 (안 해도 무방, 메모리 누수 방지)
       delete window.googleTranslateElementInit;
     };
   }, []);
+
+  // 4초 후 자동으로 번역 위젯 숨김
+  useEffect(() => {
+    if (showTranslate) {
+      const timer = setTimeout(() => setShowTranslate(false), 4000); // 4초 후 숨김
+      return () => clearTimeout(timer);
+    }
+  }, [showTranslate]);
 
   return (
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* 사이트 최상단에 번역 위젯 삽입 */}
-      <div
-        id="google_translate_element"
-        style={{ position: "fixed", top: 8, left: 12, zIndex: 9999, width: "100px" }}
-      />
+      {/* 처음 방문에만 4초간 번역 위젯 노출 */}
+      {showTranslate && (
+        <div
+          id="google_translate_element"
+          style={{
+            position: "fixed",
+            top: 12,
+            left: 12,
+            zIndex: 9999,
+            width: "120px",
+            background: "#fff",
+            borderRadius: 8,
+            boxShadow: "0 2px 8px 0 #0002",
+            padding: 4,
+          }}
+        />
+      )}
       <Component {...pageProps} />
     </>
   );

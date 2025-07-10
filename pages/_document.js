@@ -18,6 +18,12 @@ export default function Document() {
           content="심리테스트, 성격테스트, MBTI, 파시스트, 테스트, 소시오패스, 테토녀, 에겐남, 러너유형, 여행 성향, 밸런스게임, 무료 검사"
         />
 
+        <script
+          data-ad-client="ca-pub-6652499377155265"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        ></script>
+
         {/* Favicon & Manifest */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" href="/favicon.png" />

@@ -1,6 +1,16 @@
+import Link from "next/link";
+
 export default function About() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-12">
+      <div className="mb-5">
+        <Link
+          href="/"
+          className="inline-flex items-center px-3 py-1 rounded-xl bg-green-100 hover:bg-green-200 text-green-800 font-semibold text-sm shadow transition"
+        >
+          ← 테스트 메인으로
+        </Link>
+      </div>
       <h2 className="text-3xl font-bold mb-4 text-green-800">TEST 휴(休) 서비스 소개</h2>
       <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-6">
         <p className="text-gray-800 text-lg">
