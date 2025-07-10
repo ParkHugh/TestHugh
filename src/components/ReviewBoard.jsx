@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { db } from "@/firebase";
-import { collection, addDoc, serverTimestamp, query, orderBy, limit, startAfter, endBefore, getDocs } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, query, orderBy, limit, startAfter, getDocs } from "firebase/firestore";
 import { TESTS_INFO } from "@/data/testInfo";
 import Link from "next/link";
-const PAGE_SIZE = 10; // 한 페이지당 보여줄 후기 개수 (10으로 바꿔도 됨)
+const PAGE_SIZE = 10;
 
 export default function ReviewBoard() {
     const [nickname, setNickname] = useState("");
@@ -14,19 +14,17 @@ export default function ReviewBoard() {
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(false);
     const [pageLoading, setPageLoading] = useState(false);
-    const [pageCursors, setPageCursors] = useState([]); // 각 페이지 커서
+    const [pageCursors, setPageCursors] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [isLastPage, setIsLastPage] = useState(false);
 
     const lastVisibleRef = useRef(null);
 
-    // 처음 페이지 불러오기
     useEffect(() => {
         fetchPage(0);
         // eslint-disable-next-line
     }, []);
 
-    // 후기 등록
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!nickname.trim() || !review.trim()) return alert("닉네임과 후기를 입력해주세요!");
@@ -45,11 +43,9 @@ export default function ReviewBoard() {
         setRating(5);
         setTestName(TESTS_INFO[0].name);
         setLoading(false);
-        // 새 글 등록 후 첫 페이지로 이동
         fetchPage(0, true);
     };
 
-    // 페이지별 후기 불러오기
     async function fetchPage(page, forceFirst = false) {
         setPageLoading(true);
         let q;
@@ -60,7 +56,6 @@ export default function ReviewBoard() {
                 limit(PAGE_SIZE)
             );
         } else {
-            // 이전 커서 활용 (이전 페이지 마지막 리뷰 기준)
             const prevCursor = pageCursors[page - 1];
             if (!prevCursor) return;
             q = query(
@@ -73,7 +68,6 @@ export default function ReviewBoard() {
         const snapshot = await getDocs(q);
         const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setReviews(data);
-        // 현재 페이지 마지막 리뷰의 커서를 저장
         if (snapshot.docs.length > 0) {
             const newCursors = [...pageCursors];
             newCursors[page] = snapshot.docs[snapshot.docs.length - 1];
@@ -102,17 +96,17 @@ export default function ReviewBoard() {
             </div>
             <h2 className="text-2xl font-bold mb-4 text-green-800">📝 테스트 후기 게시판</h2>
             <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow p-4 mb-8 space-y-3">
-                <div className="flex gap-2 items-center">
+                <div className="flex flex-col md:flex-row gap-2 items-stretch md:items-center">
                     <input
                         type="text"
-                        className="border rounded px-2 py-1 w-32"
+                        className="border rounded px-2 py-1 w-full md:w-32"
                         maxLength={8}
                         placeholder="닉네임(8자)"
                         value={nickname}
                         onChange={e => setNickname(e.target.value)}
                     />
                     <select
-                        className="border rounded px-2 py-1"
+                        className="border rounded px-2 py-1 w-full md:w-auto"
                         value={testName}
                         onChange={e => setTestName(e.target.value)}
                     >
@@ -156,32 +150,38 @@ export default function ReviewBoard() {
                 ) : (
                     <>
                         {reviews.map(r => (
-                            <div key={r.id} className="bg-orange-50 rounded-lg px-4 py-3 shadow flex items-start gap-3">
+                            <div
+                                key={r.id}
+                                className="bg-orange-50 rounded-lg px-4 py-3 shadow flex gap-3 items-start"
+                            >
+                                {/* 메인 이미지 */}
                                 <img
                                     src={getTestImage(r.testName)}
                                     alt={r.testName}
-                                    className="w-20 h-20 md:w-16 md:h-16 rounded-xl border object-cover"
-                                    style={{ minWidth: 80, minHeight: 80 }}
+                                    className="w-20 h-20 md:w-16 md:h-16 rounded-xl object-contain"
+                                    style={{ minWidth: 120, minHeight: 100 }}
                                 />
-                                <div className="flex-1 flex flex-col gap-1">
+                                {/* 본문: 반드시 flex-col! */}
+                                <div className="flex-1 flex flex-col ">
+                                    {/* 닉네임/테스트명 */}
                                     <div className="flex items-center gap-2">
                                         <span className="font-bold text-orange-800">{r.nickname}</span>
                                         <span className="text-xs text-gray-500">| {r.testName}</span>
                                     </div>
-                                    {/* 별점 한 줄, 항상 아래쪽! */}
-                                    <div className="flex items-center gap-1 mt-1 mb-1">
+                                    {/* 별점은 반드시 flex-col의 새로운 줄! */}
+                                    <div className="flex items-center gap-1 mt-0.5 mb-0.5">
                                         {[1, 2, 3, 4, 5].map(n => (
                                             <span
                                                 key={n}
-                                                className={`text-2xl ${r.rating >= n ? "text-yellow-400" : "text-gray-300"}`}
+                                                className={`text-lg md:text-xl ${r.rating >= n ? "text-yellow-400" : "text-gray-300"}`}
                                             >★</span>
                                         ))}
                                     </div>
+                                    {/* 후기 */}
                                     <div className="text-gray-700">{r.review}</div>
                                 </div>
                             </div>
                         ))}
-
                         <div className="flex justify-between items-center mt-4">
                             <button
                                 className="px-4 py-1 rounded bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold disabled:opacity-50"
