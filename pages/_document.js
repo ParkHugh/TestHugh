@@ -49,10 +49,7 @@ export default function Document() {
           name="google-site-verification"
           content="uMEZwGxIiTzAForBPhkOiGzFOyJLCtYO2xm48DPfF4Q"
         />
-        <meta
-          name="naver-site-verification"
-          content="f001484f78caa886c667a1aa6db2d030e6daebee"
-        />
+        <meta name="naver-site-verification" content="e9aff4baff42825f93f3432aed86370c98b3ac6a" />
 
         {/* Theme */}
         <meta name="theme-color" content="#fcf8ee" />
