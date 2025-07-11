@@ -25,7 +25,7 @@ export default async function handler(req, res) {
           { description: r.review },
           { pubDate },
           { guid: doc.id },
-          { link: `https://www.test-hugh.co.kr/reviews` }
+          { link: `https://test-hugh.co.kr/reviews` }
         ]
       };
     });
@@ -36,7 +36,7 @@ export default async function handler(req, res) {
         {
           channel: [
             { title: "Test 휴 리뷰 최신 피드" },
-            { link: "https://www.test-hugh.co.kr/reviews" },
+            { link: "https://test-hugh.co.kr/reviews" },
             { description: "Test 휴의 유저 후기 최신글 피드입니다." },
             { language: "ko" },
             ...items
