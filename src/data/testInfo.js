@@ -120,5 +120,17 @@ export const TESTS_INFO = [
             { id: "high_ia_high_hi", label: "🌪️ ADHD 잠재력 만렙러", image: "/images/adhdtest/high_ia_high_hi.png" }
         ]
     },
+    {
+    name: "게이 vs 상남자 테스트",
+    id: "gaytest",
+    image: "/images/gaytest/main.png",
+    results: [
+        {id: "real_macho", label: "🦁 레전드 상남자 (순도100%)", image: "/images/gaytest/real_macho.png"},
+        {id: "just_macho", label: "🏋️ 리얼 마초맨", image: "/images/gaytest/just_macho.png"},
+        {id: "balanced", label: "🌈 남자다움+감성 밸런스 테겐남", image: "/images/gaytest/balanced.png"},
+        {id: "soft_gay", label: "💅 게이력 넘치는 감성남", image: "/images/gaytest/soft_gay.png"},
+        {id: "legend_gay", label: "🌸 10레전드 게이", image: "/images/gaytest/legend_gay.png"}
+    ]
+}
 
 ];

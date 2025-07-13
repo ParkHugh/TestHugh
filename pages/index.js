@@ -9,6 +9,8 @@ import flirtMeta from '@/tests/flirttest/meta';
 import facismMeta from '@/tests/facismtest/meta';
 import bookMeta from '@/tests/booktest/meta'; // ✅ booktest meta import!
 import adhdtestMeta from '@/tests/adhdtest/meta';
+import gaytestMeta from '@/tests/gaytest/meta';
+
 import MenuDropdown from '@/components/MenuDropdown';
 
 const tests = [
@@ -20,7 +22,8 @@ const tests = [
   flirtMeta,
   facismMeta,
   bookMeta,
-  adhdtestMeta // ✅ 배열에 booktest 추가!
+  adhdtestMeta,
+  gaytestMeta
 ];
 
 export default function HomePage() {
@@ -28,7 +31,7 @@ export default function HomePage() {
     <div className="bg-[#fcf8ee] min-h-screen flex flex-col">
       <Head>
         <title>Test 休 | 최신 성격/심리테스트, 밸런스게임 모음</title>
-        <meta name="description" content=" 성격유형, 테토 테스트, 소시오패스테테스, 러너 유형, 여행성향, 플러팅, 파시스트, 독서 성향까지 모든 심리테스트를 한 곳에서! Test 休에서 새로운 나를 발견하세요!" />
+        <meta name="description" content=" 성격유형, 테토 테스트, 러너 유형, 여행성향, 플러팅, 파시스트, 독서 성향까지 모든 심리테스트를 한 곳에서! Test 休에서 새로운 나를 발견하세요!" />
         <meta name="keywords" content="성격유형,성격검사, 심리검사, 테토 테스트, 소시오패스테스트, 러너 유형, 여행성향, 플러팅, 파시스트, 독서 성향, 심리 테스트, 무료테스트, 밸런스게임, MBTI, 직장 테스트" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Test 休 | 최신 심리테스트 & 성격유형, 밸런스게임 총집합" />
@@ -114,6 +117,8 @@ function getTestBgClass(id) {
   if (id === 'facismtest') return 'bg-gradient-to-br from-blue-900 via-zinc-900 to-black border-blue-200 hover:from-blue-900 hover:to-zinc-800';
   if (id === 'booktest') return 'bg-gradient-to-br from-yellow-100 via-yellow-200 to-orange-300 border-yellow-200 hover:from-yellow-300 hover:to-orange-300';
   if (id === 'adhdtest') return 'bg-gradient-to-tr from-pink-300 via-yellow-200 via-green-200 via-sky-200 via-blue-400 via-violet-300 to-fuchsia-300 border-pink-300 hover:from-fuchsia-300 hover:to-yellow-300';
+  if (id === 'gaytest') return 'bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 border-indigo-900 hover:from-indigo-800 hover:to-purple-900';
+
 
   return 'bg-white hover:bg-orange-50 border-orange-100';
 }
@@ -124,9 +129,10 @@ function getTitleColor(id) {
   if (id === 'traveltest') return 'text-blue-700';
   if (id === 'runnertest') return 'text-green-700';
   if (id === 'flirttest') return 'text-rose-500 drop-shadow';
-  if (id === 'facismtest') return 'text-blue-400 drop-shadow';
+  if (id === 'facismtest') return 'text-blue-400 drop-shadow-lg';
   if (id === 'booktest') return 'text-orange-600 drop-shadow';
-  if (id === 'adhdtest') return 'text-fuchsia-600 drop-shadow';
+  if (id === 'adhdtest') return 'bg-gradient-to-r from-pink-400 via-yellow-400 to-blue-400 bg-clip-text text-transparent drop-shadow font-extrabold';
+  if (id === 'gaytest') return 'text-fuchsia-100 drop-shadow font-bold';
   return 'text-emerald-700';
 }
 
@@ -137,8 +143,9 @@ function getDescriptionColor(id) {
   if (id === 'runnertest') return 'text-yellow-700 drop-shadow-sm';
   if (id === 'flirttest') return 'text-rose-500';
   if (id === 'facismtest') return 'text-blue-500';
-  if (id === 'booktest') return 'text-yellow-800';
-  if (id === 'adhdtest') return 'text-fuchsia-800 drop-shadow-sm';
+  if (id === 'booktest') return 'text-yellow-800 drop-shadow-sm';
+  if (id === 'adhdtest') return 'bg-gradient-to-r from-pink-400 via-yellow-400 to-blue-400 bg-clip-text text-transparent drop-shadow-sm font-extrabold';
+  if (id === 'gaytest') return 'text-fuchsia-100 drop-shadow font-bold';
   return 'text-emerald-700';
 }
 
@@ -203,6 +210,13 @@ function renderBadge(id) {
     <div className="mb-2">
       <span className="inline-block bg-gradient-to-r from-fuchsia-400 via-yellow-300 to-blue-400 text-white text-xs px-3 py-1 rounded-full shadow font-semibold animate-bounce">
         🧠 NEW! ADHD 유형
+      </span>
+    </div>
+  );
+  if (id === 'gaytest') return (
+    <div className="mb-2">
+      <span className="inline-block bg-gradient-to-r from-fuchsia-400 via-purple-400 to-violet-500 text-white text-xs px-3 py-1 rounded-full shadow font-semibold tracking-wide animate-bounce">
+        🌈 NEW! 게이력 테스트
       </span>
     </div>
   );

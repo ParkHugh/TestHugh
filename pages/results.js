@@ -30,6 +30,10 @@ import booktestResults from '@/tests/booktest/result';
 
 import adhdtestMeta from '@/tests/adhdtest/meta';
 import adhdtestResults from '@/tests/adhdtest/result';
+
+import gaytestMeta from '@/tests/gaytest/meta';
+import gaytestResults from '@/tests/gaytest/result';
+
 // 이미지 별도 관리한다면 아래도
 // import adhdtestImages from '@/tests/adhdtest/resultImages'; 
 ``
@@ -101,13 +105,21 @@ const testResultSets = [
     accent: 'yellow', // ✅ 노랑계열 accent 추가
   },
   {
-  meta: adhdtestMeta,
-  results: adhdtestResults,
-  images: null, // 이미지가 results 내부 image로 있으면 null, 별도 파일 있으면 변수로
-  isObject: false,
-  description: '성인 ADHD 테스트의 5가지 유형별 특징과 설명, 귀여운 일러스트 이미지를 한 눈에!',
-  accent: 'fuchsia', // Tailwind 색상명, text-fuchsia-600 등
-},
+    meta: adhdtestMeta,
+    results: adhdtestResults,
+    images: null, // 이미지가 results 내부 image로 있으면 null, 별도 파일 있으면 변수로
+    isObject: false,
+    description: '성인 ADHD 테스트의 5가지 유형별 특징과 설명, 귀여운 일러스트 이미지를 한 눈에!',
+    accent: 'lightyellow', // Tailwind 색상명, text-fuchsia-600 등
+  },
+  {
+    meta: gaytestMeta,
+    results: gaytestResults,
+    images: null, // results 내부에 image 필드가 있다면 null
+    isObject: false,
+    description: '게이력 테스트의 5가지 유형별 해설과 일러스트, 현실감 넘치는 결과를 한 번에!',
+    accent: 'fuchsia', // 또는 'pink', 'violet', 'purple' 등 원하시는 색상
+  },
 
 ];
 
@@ -119,8 +131,9 @@ const color = (accent, type = 'text') => {
     emerald: { bg: 'bg-emerald-50', text: 'text-emerald-700' },
     rose: { bg: 'bg-rose-50', text: 'text-rose-500' },
     yellow: { bg: 'bg-yellow-50', text: 'text-yellow-700' },
-    slate:  { bg: 'bg-slate-300', text: 'text-slate-900'},
-    amber:  { bg: 'bg-amber-50', text: 'text-amber-500'},
+    slate: { bg: 'bg-slate-300', text: 'text-slate-900' },
+    amber: { bg: 'bg-amber-50', text: 'text-amber-500' },
+    lightyellow: { bg : 'bg-yellow-50', test: 'text-yellow-400'},
     fuchsia: { bg: 'bg-fuchsia-50', text: 'text-fuchsia-600' },
   };
   return colors[accent]?.[type] || '';
