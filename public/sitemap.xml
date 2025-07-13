@@ -95,6 +95,11 @@
 
 <!--Gay테스트 -->
 <url><loc>https://test-hugh.co.kr/gaytest</loc></url>
+<url><loc>https://test-hugh.co.kr/gaytest/result/real_macho</loc></url>
+<url><loc>https://test-hugh.co.kr/gaytest/result/just_macho</loc></url>
+<url><loc>https://test-hugh.co.kr/gaytest/result/balanced</loc></url>
+<url><loc>https://test-hugh.co.kr/gaytest/result/soft_gay</loc></url>
+<url><loc>https://test-hugh.co.kr/gaytest/result/legend_gay</loc></url>
 
 <url><loc>https://test-hugh.co.kr/faq</loc></url>
 <url><loc>https://test-hugh.co.kr/reviews</loc></url>

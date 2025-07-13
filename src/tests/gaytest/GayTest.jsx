@@ -16,10 +16,10 @@ const answerScore = [2, 1, 0];
 
 function getResultIdx(userAnswers) {
   const total = Object.values(userAnswers).reduce((sum, v) => sum + v, 0);
-  if (total <= 5) return 0;
-  if (total <= 10) return 1;
-  if (total <= 15) return 2;
-  if (total <= 20) return 3;
+  if (total <= 4) return 0;
+  if (total <= 9) return 1;
+  if (total <= 14) return 2;
+  if (total <= 19) return 3;
   return 4;
 }
 
