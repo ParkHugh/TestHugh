@@ -89,7 +89,7 @@ export default function RomanticTest() {
                 <meta name="description" content="나는 낭만파일까, 현실파일까? 12가지 인생 선택, 내 안의 밸런스를 지금 테스트하세요!" />
                 <meta property="og:title" content="낭만 vs 현실 밸런스 게임 | Test 休" />
                 <meta property="og:description" content="당신의 선택에는 어떤 밸런스가 있을까? 낭만과 현실의 경계, 12가지 질문으로 진단!" />
-                <meta property="og:image" content="https://test-hugh.co.kr/images/romantictest/main.png" />
+                <meta property="og:image" content="https://test-hugh.co.kr/images/romantictest/main.webp" />
                 <meta property="og:url" content="https://test-hugh.co.kr/romantictest" />
             </Head>
 

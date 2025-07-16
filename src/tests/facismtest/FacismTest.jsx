@@ -106,7 +106,7 @@ export default function FacismTest() {
                 <meta name="description" content="12가지 질문으로 알아보는 나의 파시스트 성향! 나의 정치적 유형을 가볍게 테스트해보세요." />
                 <meta property="og:title" content="파시스트 테스트 | Test 休" />
                 <meta property="og:description" content="12가지 질문으로 당신의 파시스트 파시즘 경향을 진단해보세요!" />
-                <meta property="og:image" content="https://test-hugh.co.kr/images/facismtest/main.png" />
+                <meta property="og:image" content="https://test-hugh.co.kr/images/facismtest/main.webp" />
                 <meta property="og:url" content="https://test-hugh.co.kr/facismtest" />
             </Head>
 

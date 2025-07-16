@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "18": "^0.0.0",
     "firebase": "^11.10.0",
     "framer-motion": "^12.20.5",
     "lucide-react": "^0.525.0",

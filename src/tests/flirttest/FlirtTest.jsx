@@ -114,7 +114,7 @@ export default function FlirtTest() {
         <meta name="description" content="나의 플러팅 스타일, 설레는 첫 인상과 찰떡 케미! 12가지 질문으로 알아보는 플러팅 MBTI" />
         <meta property="og:title" content="플러팅 성향 테스트 | Test 休" />
         <meta property="og:description" content="플러팅 스타일, 당신은 어떤 타입? 설렘주의보 발령! 12문항으로 확인해보세요" />
-        <meta property="og:image" content="https://test-hugh.co.kr/images/flirttest/main.png" />
+        <meta property="og:image" content="https://test-hugh.co.kr/images/flirttest/main.webp" />
         <meta property="og:url" content="https://test-hugh.co.kr/flirttest" />
       </Head>
 

@@ -108,7 +108,7 @@ export default function TravelTest() {
         <meta name="description" content="나는 여행갈 때 어떤 타입? 12가지 질문으로 알아보는 나의 여행 스타일! 추천 여행지" />
         <meta property="og:title" content="여행 성향 테스트 | Test 休" />
         <meta property="og:description" content="12문항으로 알아보는 여행 MBTI, 당신의 여행 유형은? 추천 여행지" />
-        <meta property="og:image" content="https://test-hugh.co.kr/images/traveltest/main.png" />
+        <meta property="og:image" content="https://test-hugh.co.kr/images/traveltest/main.webp" />
         <meta property="og:url" content="https://test-hugh.co.kr/traveltest" />
       </Head>
 

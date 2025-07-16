@@ -2,7 +2,7 @@ const results = [
   {
     id: 'real_macho',
     type: '🦁 레전드 상남자 (순도100%)',
-    image: '/images/gaytest/real_macho.png',
+    image: '/images/gaytest/real_macho.webp',
     description: `
       🦁 세상에서 가장 순수한 상남자!<br/>
       향수, 핸드크림, 쿠션? 그런 건 남자의 인생에 없는 단어. 🚫<br/>
@@ -19,7 +19,7 @@ const results = [
   {
     id: 'just_macho',
     type: '🏋️ 리얼 마초맨 ',
-    image: '/images/gaytest/just_macho.png',
+    image: '/images/gaytest/just_macho.webp',
     description: `
       🏋️ 대체로 투박하고 단순한 걸 선호하지만, 한 번쯤은 감성템 써본 적 있음.<br/>
       선크림? 가끔 엄마/여친이 챙겨주면 바름. 😅 향수는 특별한 날만 뿌림.<br/>
@@ -33,7 +33,7 @@ const results = [
   {
     id: 'balanced',
     type: '🌈 남자다움+감성 밸런스 테겐남',
-    image: '/images/gaytest/balanced.png',
+    image: '/images/gaytest/balanced.webp',
     description: `
       🌈 남자다움과 감성, 두 마리 토끼 모두 잡는 요즘 남자!<br/>
       향수 정도는 쓰고, 가끔 인테리어나 드라마에도 관심 많음. 🕯️📺<br/>
@@ -47,7 +47,7 @@ const results = [
   {
     id: 'soft_gay',
     type: '💅 게이력 넘치는 감성남',
-    image: '/images/gaytest/soft_gay.png',
+    image: '/images/gaytest/soft_gay.webp',
     description: `
       💅 향수, 립밤, 패션 등 기본 관리는 필수!<br/>
       선물도 손편지에 감동템까지 완벽 준비. 💌<br/>
@@ -61,7 +61,7 @@ const results = [
   {
     id: 'legend_gay',
     type: '🌸 10 레전드 게이',
-    image: '/images/gaytest/legend_gay.png',
+    image: '/images/gaytest/legend_gay.webp',
     description: `
       🌸 남자다운 남자? 그건 옛말. <b>현실 세계선 감성 게이력이 곧 매력!</b><br/>
       패션, 관리 루틴, 구르밍, 향수, 감성템, 보정앱, 손편지, SNS 감성 모두 기본 장착. 💄✨<br/>
@@ -73,5 +73,5 @@ const results = [
   }
 ];
 
-export const mainImage = '/images/gaytest/main.png';
+export const mainImage = '/images/gaytest/main.webp';
 export default results;

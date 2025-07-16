@@ -15,7 +15,7 @@ const results = [
       인문학 서적이나 철학책처럼 단순한 줄거리보다 사고를 자극하는 책을 선호하며, 독서를 통해 생각의 지평을 넓히고자 합니다.
       독서 후에는 혼자 생각을 정리하며 글을 남기거나 요점을 정리하는 습관이 있으며, 그 자체가 당신에겐 가장 창조적인 활동이자 쉼이 됩니다.
     `,
-    image: '/images/booktest/int.png',
+    image: '/images/booktest/int.webp',
     bestMatch: 'INF',
     worstMatch: 'EST',
   },
@@ -36,7 +36,7 @@ const results = [
       감동받은 구절은 일기장에 옮겨 적으며, 오래도록 마음에 담아두는 섬세한 감성을 지녔습니다.
       혼자만의 시간을 즐기며, 책은 당신에게 감정과 사유를 동시에 주는 친구 같은 존재입니다.
     `,
-    image: '/images/booktest/inf.png',
+    image: '/images/booktest/inf.webp',
     bestMatch: 'ISF',
     worstMatch: 'ENT',
   },
@@ -56,7 +56,7 @@ const results = [
       실용서나 자기계발서, 경제 관련 책을 즐겨 읽으며, 읽은 내용을 요약하고 메모한 후 일상에 적용해보는 행동 중심적인 성향을 가졌습니다.
       책은 당신에게 있어 도구이자 무기이며, 배운 내용을 삶에 적용하고 성장하는 것이 독서의 본질이라 믿습니다.
     `,
-    image: '/images/booktest/ist.png',
+    image: '/images/booktest/ist.webp',
     bestMatch: 'EST',
     worstMatch: 'ENF',
   },
@@ -77,7 +77,7 @@ const results = [
       음악과 함께 읽거나, 차 한 잔을 곁들이는 습관도 당신의 독서를 더욱 편안하게 만들어줍니다.
       혼자만의 공간에서 책을 통해 조용한 대화를 나누는 그 순간이야말로 당신에겐 최고의 휴식입니다.
     `,
-    image: '/images/booktest/isf.png',
+    image: '/images/booktest/isf.webp',
     bestMatch: 'INF',
     worstMatch: 'EST',
   },
@@ -97,7 +97,7 @@ const results = [
       인문학이나 사회과학처럼 다양한 관점이 존재하는 주제를 좋아하며, 책의 핵심을 정리하고 이를 기반으로 의견을 나누는 활동에서 에너지를 얻습니다.
       당신의 독서는 지적 유희이자 사회적 소통의 도구입니다. 글을 통해 세상과 연결되는 당신은 진정한 지성형 독서가입니다.
     `,
-    image: '/images/booktest/ent.png',
+    image: '/images/booktest/ent.webp',
     bestMatch: 'INT',
     worstMatch: 'ISF',
   },
@@ -117,7 +117,7 @@ const results = [
       책 속 인물의 이야기를 자신의 삶에 대입해보며 따뜻한 공감력을 발휘하고, 좋은 문장을 발견하면 그것을 알리고 싶은 욕구가 강합니다.
       당신에게 독서는 표현이고 연결이며, 나를 넘어서 타인과 함께 감동을 느끼는 하나의 이야기입니다.
     `,
-    image: '/images/booktest/enf.png',
+    image: '/images/booktest/enf.webp',
     bestMatch: 'ESF',
     worstMatch: 'IST',
   },
@@ -138,7 +138,7 @@ const results = [
       또한, 좋은 정보를 주변에 공유하며 영향을 끼치는 것도 당신에게 중요한 가치입니다.
       당신은 독서를 통해 삶의 효율을 높이고, 스스로를 성장시키는 사람입니다.
     `,
-    image: '/images/booktest/est.png',
+    image: '/images/booktest/est.webp',
     bestMatch: 'IST',
     worstMatch: 'INF',
   },
@@ -159,7 +159,7 @@ const results = [
       독서 후에 감상을 나누는 대화, SNS 챌린지 참여, 친구와의 추천 리스트 공유까지 모두 즐기는 당신은,
       독서를 삶의 연결고리로 활용하는 따뜻한 힐러입니다.
     `,
-    image: '/images/booktest/esf.png',
+    image: '/images/booktest/esf.webp',
     bestMatch: 'ENF',
     worstMatch: 'INT',
   },

@@ -106,7 +106,7 @@ export default function SocioTest() {
         <meta name="description" content="나는 직장에서 천사일까, 소시오패스일까? 현실적인 13가지 질문으로 직장 내 민낯을 밝혀보세요." />
         <meta property="og:title" content="소시오패스 테스트 | Test 休" />
         <meta property="og:description" content="13문항으로 알아보는 직장인 소시오패스 진단! 익명으로 빠르게 결과 확인." />
-        <meta property="og:image" content="https://test-hugh.co.kr/images/sociopathtest/main.png" />
+        <meta property="og:image" content="https://test-hugh.co.kr/images/sociopathtest/main.webp" />
         <meta property="og:url" content="https://test-hugh.co.kr/sociopathtest" />
       </Head>
 

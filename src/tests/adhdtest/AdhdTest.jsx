@@ -112,7 +112,7 @@ export default function AdhdTest() {
         <meta name="description" content="12문항으로 알아보는 성인 ADHD 잠재력, 당신의 뇌는 얼마나 정신없는가? (가볍게 즐기는 테스트, 실제 진단 아님!)" />
         <meta property="og:title" content="성인 ADHD 테스트 | Test 休" />
         <meta property="og:description" content="12문항으로 나의 산만/충동/집중력 스타일 분석! 무지개 정신사나운 결과, 진짜 ADHD 검사는 병원에서 받으세요!" />
-        <meta property="og:image" content="https://test-hugh.co.kr/images/adhdtest/main.png" />
+        <meta property="og:image" content="https://test-hugh.co.kr/images/adhdtest/main.webp" />
         <meta property="og:url" content="https://test-hugh.co.kr/adhdtest" />
       </Head>
 

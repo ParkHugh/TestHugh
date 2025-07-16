@@ -25,6 +25,7 @@ export default function Document() {
         ></script>
 
         {/* Favicon & Manifest */}
+        <link rel="shortcut icon" href="https://test-hugh.co.kr/favicon.ico" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="apple-touch-icon" sizes="192x192" href="/favicon192.png" />
@@ -38,7 +39,7 @@ export default function Document() {
           property="og:description"
           content="최신 성격유형 심리테스트 밸런스게임 결과를 1분 만에!"
         />
-        <meta property="og:image" content="/ogimage.png" />
+        <meta property="og:image" content="/ogimage.webp" />
         <meta property="og:url" content="https://test-hugh.co.kr" />
 
         {/* Search 엔진용 canonical */}

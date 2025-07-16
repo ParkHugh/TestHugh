@@ -112,7 +112,7 @@ export default function GayTest() {
           property="og:description"
           content="12가지 질문으로 감성/상남자 두 마리 토끼를 잡는 나의 숨은 게이력! 유쾌하고 현실감 있는 유형 결과로 친구랑 공유해보세요!"
         />
-        <meta property="og:image" content="https://test-hugh.co.kr/images/gaytest/main.png" />
+        <meta property="og:image" content="https://test-hugh.co.kr/images/gaytest/main.webp" />
         <meta property="og:url" content="https://test-hugh.co.kr/gaytest" />
       </Head>
 

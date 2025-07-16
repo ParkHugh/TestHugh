@@ -107,7 +107,7 @@ export default function RunnerTest() {
         <meta name="description" content="12가지 질문으로 알아보는 나의 러닝 유형! 나만의 러닝 스타일을 찾아보세요." />
         <meta property="og:title" content="러너 성향 테스트 | Test 休" />
         <meta property="og:description" content="12가지 질문으로 나의 러닝 성향을 진단해보세요!" />
-        <meta property="og:image" content="https://test-hugh.co.kr/images/runnertest/main.png" />
+        <meta property="og:image" content="https://test-hugh.co.kr/images/runnertest/main.webp" />
         <meta property="og:url" content="https://test-hugh.co.kr/runnertest" />
       </Head>
 

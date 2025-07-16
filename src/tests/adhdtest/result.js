@@ -2,7 +2,7 @@ const results = [
   {
     id: 'low_ia_low_hi',
     type: '🧘 안정된 집중러',
-    image: '/images/adhdtest/low_ia_low_hi.png',
+    image: '/images/adhdtest/low_ia_low_hi.webp',
     description: `
       당신은 집중력도 좋고, 충동도 잘 조절하는 ‘안정된 집중러’ 유형이에요.  
       책상에 앉으면 제 시간에 일 끝내는 건 기본! 청소하다가 딴짓에 빠질 일도 거의 없죠.  
@@ -14,7 +14,7 @@ const results = [
   {
     id: 'high_ia_low_hi',
     type: '🔍 산만한 호기심러',
-    image: '/images/adhdtest/high_ia_low_hi.png',
+    image: '/images/adhdtest/high_ia_low_hi.webp',
     description: `
       머릿속은 늘 호기심과 아이디어로 가득한 ‘산만한 호기심러’ 유형입니다!  
       문제는 시작했는데 마무리는 잘 안 되고, 집중하려다 갑자기 다른 주제로 튀는 일이 많죠.  
@@ -26,7 +26,7 @@ const results = [
   {
     id: 'low_ia_high_hi',
     type: '🏃 충동적인 실천가',
-    image: '/images/adhdtest/low_ia_high_hi.png',
+    image: '/images/adhdtest/low_ia_high_hi.webp',
     description: `
       집중력은 괜찮은데, 가만히 있기가 너무 힘든 ‘충동적인 실천가’ 유형이에요!  
       머릿속으로 계획을 세우는 것보다 일단 몸이 먼저 반응하죠.  
@@ -38,7 +38,7 @@ const results = [
   {
     id: 'mid_ia_mid_hi',
     type: '🎲 카오스 에너지 폭발러',
-    image: '/images/adhdtest/mid_ia_mid_hi.png',
+    image: '/images/adhdtest/mid_ia_mid_hi.webp',
     description: `
       당신은 충동성과 산만함 사이에서 매일 모험을 떠나는 ‘카오스 에너지 폭발러’!  
       집중이 될 땐 엄청난 몰입력, 근데 그게 오래 가지는 않죠.  
@@ -50,7 +50,7 @@ const results = [
   {
     id: 'high_ia_high_hi',
     type: '🌈 ADHD 잠재력 만렙러',
-    image: '/images/adhdtest/high_ia_high_hi.png',
+    image: '/images/adhdtest/high_ia_high_hi.webp',
     description: `
       당신은 진정한 ADHD 슈퍼스타, '잠재력 만렙러'입니다!  
       머리는 수천 개의 생각이 넘쳐나고, 행동은 끊임없이 바쁘며, 감정은 롤러코스터🎢!  

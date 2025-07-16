@@ -10,7 +10,7 @@ import meta from '@/tests/booktest/meta';
 import { doc, getDoc, updateDoc, increment } from 'firebase/firestore';
 import { db } from '@/firebase';
 
-const mainImage = '/images/booktest/main.png';
+const mainImage = '/images/booktest/main.webp';
 
 // MBTI 동점 랜덤 처리
 function getBookType(userAnswers) {

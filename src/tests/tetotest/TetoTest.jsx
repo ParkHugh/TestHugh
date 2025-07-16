@@ -7,11 +7,15 @@ import questions from './questions';
 import resultImages from './resultImages';
 import resultDescriptions from './resultDescriptions';
 // 이미지는 public 사용 권장
-// import mainImage from './images/main.png';
+// import mainImage from './images/main.webp';
 
 // Firebase 연동
 import { doc, getDoc, updateDoc, increment } from 'firebase/firestore';
 import { db } from '@/firebase'; // src/firebase.js로 경로 맞춰줘
+import { analytics } from '@/firebase';
+import { logEvent } from 'firebase/analytics';
+
+
 
 const calculateResult = (gender, answers) => {
   const aCount = Object.values(answers).filter(v => v === 'a').length;
@@ -33,6 +37,27 @@ export default function TetoTest() {
 
   const router = useRouter();
 
+  useEffect(() => {
+  analytics.then((ga) => {
+    if (ga) logEvent(ga, 'view_tetotest');
+  });
+}, []);
+
+
+useEffect(() => {
+  if (step === 'result' && result && gender) {
+    analytics.then((ga) => {
+      if (ga) {
+        logEvent(ga, 'view_result', {
+          test_name: 'tetotest',
+          result_type: result,
+          gender: gender,
+        });
+      }
+    });
+  }
+}, [step, result, gender]);
+
   // 참여자 수 불러오기
   useEffect(() => {
     async function fetchCount() {
@@ -49,6 +74,11 @@ export default function TetoTest() {
   const startTest = async () => {
     const ref = doc(db, 'testCounts', 'tetoTest');
     await updateDoc(ref, { count: increment(1) });
+
+    analytics.then((ga) => {
+    if (ga) logEvent(ga, 'start_tetotest');
+  });
+
     setStep('gender');
   };
 
@@ -83,6 +113,17 @@ export default function TetoTest() {
   const handleShare = () => {
     if (typeof window === 'undefined') return;
     const shareUrl = `${window.location.origin}/tetotest/result/${encodeURIComponent(result)}`;
+
+    analytics.then((ga) => {
+    if (ga) {
+      logEvent(ga, 'share_result', {
+        test_name: 'tetotest',
+        result_type: result,
+        method: navigator.share ? 'webshare' : 'copy',
+      });
+    }
+  });
+
     if (navigator.share) {
       navigator.share({
         title: "나의 테토/테겐/에겐 테스트 결과",
@@ -108,7 +149,7 @@ export default function TetoTest() {
         <meta name="description" content="나의 호르몬 성향을 12문항으로 알아보는 테토/테겐/에겐 테스트. 당신의 성향을 쉽고 빠르게 확인하세요!" />
         <meta property="og:title" content="테토남 에겐녀 테겐남 테스트 | Test 休" />
         <meta property="og:description" content="나의 호르몬 유형이 궁금하다면? 1분만에 결과 확인! 재미와 통찰을 동시에." />
-        <meta property="og:image" content="https://test-hugh.co.kr/images/tetotest/main.png" />
+        <meta property="og:image" content="https://test-hugh.co.kr/images/tetotest/main.webp" />
         <meta property="og:url" content="https://test-hugh.co.kr/tetotest" />
       </Head>
 
@@ -125,7 +166,7 @@ export default function TetoTest() {
               style={{ minHeight: '80vh' }}
             >
               <img
-                src="/images/tetotest/main.png"
+                src="/images/tetotest/main.webp"
                 alt="메인"
                 className="w-full max-w-lg h-[36vh] object-contain mb-4 drop-shadow-xl"
                 style={{

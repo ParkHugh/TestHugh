@@ -12,7 +12,7 @@ const results = [
       사람이 북적이지 않는 조용한 공간을 선호하며, 잔잔한 풍경에 감정이 흔들리는 섬세한 감수성을 지녔습니다.<br/>
       여행은 당신에게 있어 감정과 내면을 정리하는 시간이며, 잊지 못할 감성적 장면들을 남기는 일입니다.
     `,
-    image: '/images/traveltest/inp.png',
+    image: '/images/traveltest/inp.webp',
     bestMatch: 'ISP',
     worstMatch: 'ENJ'
   },
@@ -29,7 +29,7 @@ const results = [
       디테일한 계획 아래 여행지 곳곳을 돌아보며 스스로를 깊이 성찰하는 시간이 됩니다.<br/>
       관광보다는 고요한 풍경과 자신만의 리듬으로 채워지는 시간이 더 중요합니다.
     `,
-    image: '/images/traveltest/inj.png',
+    image: '/images/traveltest/inj.webp',
     bestMatch: 'ISJ',
     worstMatch: 'ESP'
   },
@@ -46,7 +46,7 @@ const results = [
       북적이는 도시보다 조용한 시골, 사람보단 자연과의 교감을 통해 진정한 휴식을 추구합니다.<br/>
       디지털 디톡스와 자연 속 정적이 최고의 여행 포인트로 작용합니다.
     `,
-    image: '/images/traveltest/isp.png',
+    image: '/images/traveltest/isp.webp',
     bestMatch: 'INP',
     worstMatch: 'ESJ'
   },
@@ -63,7 +63,7 @@ const results = [
       낯선 상황이 주는 불안감보단 예측 가능한 루틴에서 편안함을 느끼는 성향입니다.<br/>
       혼행에서조차도 자신만의 시간표와 규칙이 있는 안정적 스타일입니다.
     `,
-    image: '/images/traveltest/isj.png',
+    image: '/images/traveltest/isj.webp',
     bestMatch: 'INJ',
     worstMatch: 'ENP'
   },
@@ -80,7 +80,7 @@ const results = [
       계획보다는 현장에서의 감각과 기분에 따라 움직이며 여행의 짜릿함을 만끽합니다.<br/>
       현지 사람들과 쉽게 어울리며, 강한 인상을 남기는 생기 넘치는 여행자입니다.
     `,
-    image: '/images/traveltest/enp.png',
+    image: '/images/traveltest/enp.webp',
     bestMatch: 'ESP',
     worstMatch: 'ISJ'
   },
@@ -97,7 +97,7 @@ const results = [
       항상 최적의 선택지를 추구하며, 실패 없는 여행을 위해 밤새 자료를 수집합니다.<br/>
       여행 후 친구들에게 '이 여행은 네 덕분이야'라는 말을 듣는 게 최고의 보람이죠.
     `,
-    image: '/images/traveltest/enj.png',
+    image: '/images/traveltest/enj.webp',
     bestMatch: 'ESJ',
     worstMatch: 'INP'
   },
@@ -114,7 +114,7 @@ const results = [
       스스로 계획보단 현지에서 우연히 마주치는 즐거움을 중요시합니다.<br/>
       즉흥적인 일정에도 능숙하고, 흥미로운 체험을 찾아 끊임없이 움직이는 타입입니다.
     `,
-    image: '/images/traveltest/esp.png',
+    image: '/images/traveltest/esp.webp',
     bestMatch: 'ENP',
     worstMatch: 'INJ'
   },
@@ -131,11 +131,11 @@ const results = [
       여러 사람의 성향을 배려한 일정을 세우고, 갈등을 줄이기 위한 지혜로운 조율이 가능합니다.<br/>
       가족여행, 친구들과의 단체여행 등 다양한 상황에서 진가를 발휘하는 실용적 여행가입니다.
     `,
-    image: '/images/traveltest/esj.png',
+    image: '/images/traveltest/esj.webp',
     bestMatch: 'ENJ',
     worstMatch: 'ISP'
   }
 ];
 
-export const mainImage = '/images/traveltest/main.png';
+export const mainImage = '/images/traveltest/main.webp';
 export default results;

@@ -13,7 +13,7 @@ const results = [
       🧊 때론 조금 차갑다는 말을 들을 수도 있지만, 누구보다 현실을 꿰뚫는 당신의 관점은<br/>
       🤝 많은 사람들에게 든든한 조언이 되기도 합니다.
     `,
-    image: '/images/romantictest/real.png'
+    image: '/images/romantictest/real.webp'
   },
   {
     id: '2',
@@ -29,7 +29,7 @@ const results = [
       🛠️ 자신만의 방식으로 소소한 낭만을 지켜내려 노력합니다.<br/>
       💡 철저한 현실주의자는 아니지만, 감성에 휘둘리기도 쉽지 않은 절묘한 균형의 혼종형!
     `,
-    image: '/images/romantictest/realroman.png'
+    image: '/images/romantictest/realroman.webp'
   },
   {
     id: '3',
@@ -45,7 +45,7 @@ const results = [
       🎨 그 경계에서 당신만의 방식으로 삶을 즐깁니다.<br/>
       ⚡ 균형을 잘 잡은 플렉스형 낭만 실용주의자!
     `,
-    image: '/images/romantictest/romanreal.png'
+    image: '/images/romantictest/romanreal.webp'
   },
   {
     id: '4',
@@ -61,9 +61,9 @@ const results = [
       💖 세상이 삭막하게 느껴질 때, 당신의 시선은 모두에게 위로가 됩니다.<br/>
       🦋 삶을 멋지고 특별하게 만드는 건 결국 당신 같은 사람!
     `,
-    image: '/images/romantictest/romantic.png'
+    image: '/images/romantictest/romantic.webp'
   }
 ];
 
-export const mainImage = '/images/romantictest/main.png';
+export const mainImage = '/images/romantictest/main.webp';
 export default results;
