@@ -37,26 +37,7 @@ export default function TetoTest() {
 
   const router = useRouter();
 
-  useEffect(() => {
-  analytics.then((ga) => {
-    if (ga) logEvent(ga, 'view_tetotest');
-  });
-}, []);
 
-
-useEffect(() => {
-  if (step === 'result' && result && gender) {
-    analytics.then((ga) => {
-      if (ga) {
-        logEvent(ga, 'view_result', {
-          test_name: 'tetotest',
-          result_type: result,
-          gender: gender,
-        });
-      }
-    });
-  }
-}, [step, result, gender]);
 
   // 참여자 수 불러오기
   useEffect(() => {
@@ -74,10 +55,6 @@ useEffect(() => {
   const startTest = async () => {
     const ref = doc(db, 'testCounts', 'tetoTest');
     await updateDoc(ref, { count: increment(1) });
-
-    analytics.then((ga) => {
-    if (ga) logEvent(ga, 'start_tetotest');
-  });
 
     setStep('gender');
   };
@@ -114,15 +91,6 @@ useEffect(() => {
     if (typeof window === 'undefined') return;
     const shareUrl = `${window.location.origin}/tetotest/result/${encodeURIComponent(result)}`;
 
-    analytics.then((ga) => {
-    if (ga) {
-      logEvent(ga, 'share_result', {
-        test_name: 'tetotest',
-        result_type: result,
-        method: navigator.share ? 'webshare' : 'copy',
-      });
-    }
-  });
 
     if (navigator.share) {
       navigator.share({
