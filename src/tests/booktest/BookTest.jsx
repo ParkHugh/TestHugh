@@ -58,20 +58,7 @@ export default function BookTest() {
   const [count, setCount] = useState(INITIAL_COUNT);
 
   const router = useRouter();
-
-  useEffect(() => {
-    if (step === 'result' && result) {
-      analytics.then((ga) => {
-        if (ga) {
-          logEvent(ga, 'view_result', {
-            test_id: 'booktest',
-            result_id: result.id,
-          });
-        }
-      });
-    }
-  }, [step, result]);
-
+  
 
   useEffect(() => {
     async function fetchCount() {
@@ -135,18 +122,6 @@ export default function BookTest() {
     const shareUrl = typeof window !== 'undefined'
       ? `${window.location.origin}/booktest/result/${result.id}`
       : '';
-
-    // GA4: 공유 이벤트 기록
-    analytics.then((ga) => {
-      if (ga) {
-        logEvent(ga, 'click_share', {
-          test_id: 'booktest',
-          result_id: result.id,
-          method: navigator.share ? 'native' : 'clipboard',
-        });
-      }
-    });
-
     if (navigator.share) {
       navigator.share({
         title: "독서 성향 테스트 결과",
@@ -159,7 +134,6 @@ export default function BookTest() {
       setTimeout(() => setCopied(false), 1500);
     }
   };
-
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-yellow-200 to-orange-400 flex flex-col items-center justify-center px-4 py-2">
