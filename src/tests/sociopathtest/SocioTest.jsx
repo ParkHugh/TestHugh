@@ -11,6 +11,10 @@ import resultImages, { mainImage } from '@/tests/sociopathtest/resultImages';
 import { doc, getDoc, updateDoc, increment } from 'firebase/firestore';
 import { db } from '@/firebase';
 
+import { analytics } from '@/firebase';
+import { logEvent } from 'firebase/analytics';
+
+
 function calculateResultIdx(userAnswers) {
   const total = Object.values(userAnswers).reduce((sum, v) => sum + v, 0);
   if (total <= 5) return 0;
@@ -29,6 +33,22 @@ export default function SocioTest() {
   const [count, setCount] = useState(INITIAL_COUNT);
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (step === 'result') {
+      const resultIdx = calculateResultIdx(userAnswers);
+
+      analytics.then((ga) => {
+        if (ga) {
+          logEvent(ga, 'view_result', {
+            test_id: 'sociopathtest',
+            result_id: resultIdx,
+          });
+        }
+      });
+    }
+  }, [step]);
+
 
   // 참여자 수 불러오기
   useEffect(() => {
@@ -49,9 +69,16 @@ export default function SocioTest() {
     try {
       const ref = doc(db, 'testCounts', 'sociopathTest');
       await updateDoc(ref, { count: increment(1) });
+
+      // 👇 GA4 커스텀 이벤트: 테스트 시작
+      analytics.then((ga) => {
+        if (ga) logEvent(ga, 'start_test', { test_id: 'sociopathtest' });
+      });
     } catch (e) { }
+
     setStep('question');
   };
+
 
   // 답변 처리
   const handleAnswer = (value) => {
@@ -138,7 +165,7 @@ export default function SocioTest() {
               회사에서 나는 진짜 천사일까, 혹시 소시오패스...? <br />
               13가지 현실적인 질문으로 직장 내 민낯을 밝혀보세요.<br />
               <span className="text-red-600 font-bold">소시오패스란?</span><br />
-<span className="text-gray-500">"공감능력이 낮고, 이익을 위해 남을 쉽게 조종하거나 거짓말하는 반사회적 성향"</span>
+              <span className="text-gray-500">"공감능력이 낮고, 이익을 위해 남을 쉽게 조종하거나 거짓말하는 반사회적 성향"</span>
 
             </p>
             <p className="mb-6 text-red-400 text-sm font-semibold">
