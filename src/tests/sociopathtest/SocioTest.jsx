@@ -111,6 +111,16 @@ export default function SocioTest() {
       typeof window !== 'undefined'
         ? `${window.location.origin}/sociopathtest/result/${resultIdx}`
         : '';
+
+    // 👇 GA4 이벤트: 공유 시작
+    analytics.then((ga) => {
+      if (ga) {
+        logEvent(ga, 'click_share', {
+          test_id: 'sociopathtest',
+          method: navigator.share ? 'native' : 'clipboard',
+        });
+      }
+    });
     if (navigator.share) {
       navigator
         .share({
