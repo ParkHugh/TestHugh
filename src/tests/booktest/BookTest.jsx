@@ -59,20 +59,6 @@ export default function BookTest() {
 
   const router = useRouter();
 
-  useEffect(() => {
-    if (step === 'result' && result?.id) {
-      analytics.then((ga) => {
-        if (ga) {
-          logEvent(ga, 'view_result', {
-            test_id: 'booktest',
-            result_id: result.id,
-          });
-        }
-      });
-    }
-  }, [step, result]);
-
-
 
   useEffect(() => {
     async function fetchCount() {
