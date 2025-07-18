@@ -9,6 +9,8 @@ import meta from '@/tests/booktest/meta';
 
 import { doc, getDoc, updateDoc, increment } from 'firebase/firestore';
 import { db } from '@/firebase';
+import { analytics } from '@/firebase';
+import { logEvent } from 'firebase/analytics';
 
 const mainImage = '/images/booktest/main.webp';
 
@@ -58,6 +60,20 @@ export default function BookTest() {
   const router = useRouter();
 
   useEffect(() => {
+    if (step === 'result' && result) {
+      analytics.then((ga) => {
+        if (ga) {
+          logEvent(ga, 'view_result', {
+            test_id: 'booktest',
+            result_id: result.id,
+          });
+        }
+      });
+    }
+  }, [step, result]);
+
+
+  useEffect(() => {
     async function fetchCount() {
       try {
         const ref = doc(db, 'testCounts', 'bookTest');
@@ -72,9 +88,18 @@ export default function BookTest() {
     try {
       const ref = doc(db, 'testCounts', 'bookTest');
       await updateDoc(ref, { count: increment(1) });
+
+      // GA4 커스텀 이벤트: 테스트 시작
+      analytics.then((ga) => {
+        if (ga) {
+          logEvent(ga, 'start_test', { test_id: 'booktest' });
+        }
+      });
     } catch (e) { }
+
     setStep('question');
   };
+
 
   const handleAnswer = (value) => {
     const qid = questions[currentQuestion].id;
@@ -110,6 +135,18 @@ export default function BookTest() {
     const shareUrl = typeof window !== 'undefined'
       ? `${window.location.origin}/booktest/result/${result.id}`
       : '';
+
+    // GA4: 공유 이벤트 기록
+    analytics.then((ga) => {
+      if (ga) {
+        logEvent(ga, 'click_share', {
+          test_id: 'booktest',
+          result_id: result.id,
+          method: navigator.share ? 'native' : 'clipboard',
+        });
+      }
+    });
+
     if (navigator.share) {
       navigator.share({
         title: "독서 성향 테스트 결과",
@@ -122,6 +159,7 @@ export default function BookTest() {
       setTimeout(() => setCopied(false), 1500);
     }
   };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-yellow-200 to-orange-400 flex flex-col items-center justify-center px-4 py-2">
