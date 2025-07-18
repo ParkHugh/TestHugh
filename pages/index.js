@@ -39,7 +39,7 @@ export default function HomePage() {
   return (
     <div className="bg-[#fcf8ee] min-h-screen flex flex-col">
       <Head>
-        <title>Test 休 | 최신 성격/심리테스트, 밸런스게임 모음</title>
+        <title>최신 무료 성격유형 심리테스트 공간 | Test 休 </title>
         <meta name="description" content=" 성격유형, 심리테스트, 러너 유형, 여행, 독서 성향까지 모든 테스트를 한 곳에서! Test 休에서 새로운 나를 발견하세요!" />
         <meta name="keywords" content="성격유형, 심리검사, 테토 테스트, 소시오패스테스트, 러너 유형, 여행성향, 플러팅, 파시스트, 독서 성향, 심리 테스트, 무료테스트, 밸런스게임, MBTI, 직장 테스트" />
         <meta property="og:type" content="website" />
