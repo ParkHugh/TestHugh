@@ -57,6 +57,9 @@ export default function Document() {
         <meta name="theme-color" content="#fcf8ee" />
 
         {/* 폰트 */}
+        {/* 🔥 폰트 로딩 최적화 */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Serif+KR:wght@700;900&display=swap"
           rel="stylesheet"
