@@ -13,6 +13,7 @@ import { db } from '@/firebase';
 // MBTI 로직
 function getRunnerType(userAnswers) {
   let E = 0, I = 0, N = 0, S = 0, P = 0, J = 0;
+
   Object.entries(userAnswers).forEach(([qid, v]) => {
     const q = questions.find(q => q.id === qid);
     if (!q) return;
@@ -24,11 +25,14 @@ function getRunnerType(userAnswers) {
     if (choice.type === 'P') P++;
     if (choice.type === 'J') J++;
   });
-  const ie = E >= I ? 'E' : 'I';
-  const ns = N >= S ? 'N' : 'S';
-  const pj = P >= J ? 'P' : 'J';
+
+  const ie = E === I ? (Math.random() < 0.5 ? 'E' : 'I') : (E > I ? 'E' : 'I');
+  const ns = N === S ? (Math.random() < 0.5 ? 'N' : 'S') : (N > S ? 'N' : 'S');
+  const pj = P === J ? (Math.random() < 0.5 ? 'P' : 'J') : (P > J ? 'P' : 'J');
+
   return ie + ns + pj;
 }
+
 
 export default function RunnerTest() {
   const INITIAL_COUNT = 10210;
@@ -198,15 +202,10 @@ export default function RunnerTest() {
               </div>
             </div>
             <div className="flex items-center justify-center gap-2 mb-6">
-              <span className="flex-1 text-right font-bold text-base md:text-lg text-green-600 pr-2 break-keep">
-                {questions[currentQuestion].a.label}
+              <span className="flex-1 font-bold text-base md:text-lg text-green-600 pr-2 break-keep">
+                {questions[currentQuestion].text}
               </span>
-              <span className="text-lg md:text-2xl font-black text-yellow-500 px-2 select-none drop-shadow animate-pulse">
-                vs
-              </span>
-              <span className="flex-1 text-left font-bold text-base md:text-lg text-blue-400 pl-2 break-keep">
-                {questions[currentQuestion].b.label}
-              </span>
+            
             </div>
             <div className="space-y-3">
               <button
@@ -353,7 +352,7 @@ export default function RunnerTest() {
               onClick={() => router.push('/results')}
               className="bg-yellow-300 hover:bg-yellow-500 text-green-500 py-2 px-6 rounded-xl font-bold ml-2 mt-3 shadow-md"
             >
-              결과 설명 보기
+              다른 유형 설명 보기
             </button>
             {copied && (
               <div className="mt-2 text-sm text-green-500 animate-fade-in">

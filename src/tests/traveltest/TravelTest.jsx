@@ -194,13 +194,13 @@ export default function TravelTest() {
             {/* vs 분할 렌더링 */}
             <div className="flex items-center justify-center gap-2 mb-6">
               <span className="flex-1 text-right font-bold text-base md:text-lg text-blue-500 pr-2 break-keep">
-                {questions[currentQuestion].a.label}
+                {questions[currentQuestion].text.split(' vs ')[0]}
               </span>
               <span className="text-lg md:text-2xl font-black text-yellow-500 px-2 select-none drop-shadow animate-pulse">
                 vs
               </span>
               <span className="flex-1 text-left font-bold text-base md:text-lg text-green-600 pl-2 break-keep">
-                {questions[currentQuestion].b.label}
+                {questions[currentQuestion].text.split(' vs ')[1]}
               </span>
             </div>
             <div className="space-y-3">
