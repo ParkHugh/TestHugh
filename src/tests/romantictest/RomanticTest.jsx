@@ -291,7 +291,10 @@ export default function RomanticTest() {
                             <div className="text-lg font-bold text-pink-400 mb-2">
                                 {result.name}
                             </div>
-                            <div className="text-base text-gray-700">{result.description}</div>
+                            <div
+                                className="text-base text-gray-700"
+                                dangerouslySetInnerHTML={{ __html: result.description }}
+                            />
                         </div>
                         <button
                             onClick={restart}
