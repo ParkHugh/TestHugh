@@ -2,18 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 구글 번역 배너, 로고 제거 */
-.goog-te-banner-frame.skiptranslate,
-.goog-logo-link,
-.goog-te-gadget span,
-.goog-te-gadget-simple img {
-  display: none !important;
+/* 구글 번역 위젯 크기/폰트 줄이기 */
+#google_translate_element {
+  overflow: hidden;
+  width: 75px !important;
+  height: 22px !important;
 }
 
 .goog-te-gadget {
-  font-size: 0 !important;
+  font-size: 11px !important;
+  height: 22px !important;
+  padding: 2px !important;
+}
+.goog-te-gadget-simple {
+  font-size: 11px !important;
+  padding: 2px 4px !important;
+  border-radius: 6px !important;
+  background: rgba(255,255,255,0.8) !important; /* 살짝 투명한 흰 배경 */
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.05) !important;
 }
 
-body {
-  top: 0 !important;
+.goog-te-combo {
+  font-size: 10px !important;
+  height: 20px !important;
+  min-width: 50px !important;
+  max-width: 70px !important;
+  padding: 0 2px !important;
+  margin: 0 !important;
 }
