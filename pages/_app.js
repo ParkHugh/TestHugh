@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
     // 구글 번역 스크립트 로드
     const script = document.createElement("script");
     script.src =
-      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     script.async = true;
     document.body.appendChild(script);
 
@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }) {
       new window.google.translate.TranslateElement(
         {
           pageLanguage: "ko",
-          includedLanguages: "ko,en,ja",
+          includedLanguages: "ko,en,es",
           layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
         },
         "google_translate_element"
@@ -58,8 +58,13 @@ export default function App({ Component, pageProps }) {
         id="google_translate_element"
         style={{
           position: "fixed",
-          top: "-1000px",
+          bottom: 0,
           left: 0,
+          width: 1,
+          height: 1,
+          opacity: 0.01,
+          pointerEvents: "none",
+          zIndex: -1,
         }}
       />
 
