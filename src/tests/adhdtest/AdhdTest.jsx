@@ -22,8 +22,8 @@ function getAdhdType(userAnswers) {
 
   // 결과 매칭
   if (IA <= 2 && HI <= 2) return 'low_ia_low_hi';
-  if ((IA === 3 || IA === 4) && HI <= 2) return 'mid_ia_low_hi';
-  if (IA <= 2 && (HI === 3 || HI === 4)) return 'low_ia_mid_hi';
+  if ((IA === 3 || IA === 4 || IA === 5) && HI <= 2) return 'mid_ia_low_hi';
+  if (IA <= 2 && (HI === 3 || HI === 4 || HI === 5)) return 'low_ia_mid_hi';
   if ((IA === 3 || IA === 4) && (HI === 3 || HI === 4)) return 'mid_ia_mid_hi';
   if (IA >= 5 && HI >= 5) return 'high_ia_high_hi';
   // 기타 경우는 중간으로

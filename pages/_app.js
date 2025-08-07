@@ -1,69 +1,66 @@
+// pages/_app.js
+
 import "@/styles/globals.css";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function App({ Component, pageProps }) {
-  const [showTranslate, setShowTranslate] = useState(false);
-
   useEffect(() => {
-    // 최초 방문 시에만 4초간 위젯 노출
-    if (!localStorage.getItem("translateWidgetShown")) {
-      setShowTranslate(true);
-      localStorage.setItem("translateWidgetShown", "1");
-    }
-
-    // 구글 번역 위젯 스크립트 삽입
     const script = document.createElement("script");
-    script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    script.src =
+      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     script.async = true;
     document.body.appendChild(script);
 
-    window.googleTranslateElementInit = function() {
+    window.googleTranslateElementInit = function () {
       new window.google.translate.TranslateElement(
         {
-          pageLanguage: "ko", // 기본 언어
-          includedLanguages: "en,ko,es", // 지원 언어
+          pageLanguage: "ko",
+          includedLanguages: "ko,en,es", // 원하는 언어 추가
           layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
         },
         "google_translate_element"
       );
     };
-
-    return () => {
-      delete window.googleTranslateElementInit;
-    };
   }, []);
 
-  // 4초 후 자동으로 번역 위젯 숨김
-  useEffect(() => {
-    if (showTranslate) {
-      const timer = setTimeout(() => setShowTranslate(false), 4000); // 4초 후 숨김
-      return () => clearTimeout(timer);
+  const triggerTranslate = () => {
+    const select = document.querySelector("#google_translate_element select");
+    if (select) {
+      select.focus();
+      select.click(); // 드롭다운 열기
     }
-  }, [showTranslate]);
+  };
 
   return (
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* 처음 방문에만 4초간 번역 위젯 노출 */}
-      {showTranslate && (
-        <div
-          id="google_translate_element"
-          style={{
-            position: "fixed",
-            top: 12,
-            left: 12,
-            zIndex: 9999,
-            width: "120px",
-            background: "#fff",
-            borderRadius: 8,
-            boxShadow: "0 2px 8px 0 #0002",
-            padding: 4,
-          }}
-        />
-      )}
+
+      {/* 구글 번역 위젯 (숨김 처리) */}
+      <div id="google_translate_element" style={{ display: "none" }} />
+
+      {/* 깔끔한 커스텀 버튼 */}
+      <div
+        style={{
+          position: "fixed",
+          top: 16,
+          left: 16,
+          padding: "6px 14px",
+          backgroundColor: "#1e1e1e",
+          color: "#fff",
+          borderRadius: "8px",
+          boxShadow: "0 2px 6px #0003",
+          fontSize: "14px",
+          cursor: "pointer",
+          zIndex: 9999,
+        }}
+        onClick={triggerTranslate}
+      >
+        🌐 언어 변경
+      </div>
+
       <Component {...pageProps} />
     </>
   );
