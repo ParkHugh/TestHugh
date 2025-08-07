@@ -6,33 +6,35 @@ export default function App({ Component, pageProps }) {
   const [isTranslateReady, setIsTranslateReady] = useState(false);
 
   useEffect(() => {
-    // 구글 번역 스크립트 로드
-    const script = document.createElement("script");
-    script.src =
-      "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-    script.async = true;
-    document.body.appendChild(script);
-
-    // 콜백 함수 전역에 등록
+    // ✅ 콜백 먼저 전역 등록 (스크립트보다 먼저!)
     window.googleTranslateElementInit = function () {
       new window.google.translate.TranslateElement(
         {
           pageLanguage: "ko",
           includedLanguages: "ko,en,es",
           layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false,
         },
         "google_translate_element"
       );
     };
 
-    // ✅ 드롭다운 로딩 완료 기다리기
+    // ✅ script 태그 생성 (https 명시!)
+    const script = document.createElement("script");
+    script.src =
+      "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+
+    // ✅ 드롭다운 로딩 확인
     const interval = setInterval(() => {
       const combo = document.querySelector(".goog-te-combo");
       if (combo) {
         setIsTranslateReady(true);
         clearInterval(interval);
       }
-    }, 300); // 0.3초 간격으로 계속 확인
+    }, 300);
 
     return () => clearInterval(interval);
   }, []);
@@ -53,7 +55,7 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* 구글 위젯은 화면 밖에 배치 */}
+      {/* ✅ 위젯: 완전히 숨기지 않고 DOM에 두기 */}
       <div
         id="google_translate_element"
         style={{
@@ -68,7 +70,7 @@ export default function App({ Component, pageProps }) {
         }}
       />
 
-      {/* 🌐 버튼 (로딩 전엔 비활성화) */}
+      {/* ✅ 버튼 */}
       <div
         style={{
           position: "fixed",
