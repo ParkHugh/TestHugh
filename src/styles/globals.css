@@ -2,11 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ✅ 구글 번역 위젯 완전 숨기기 + 배지 제거 */
-#google_translate_element {
-  display: none !important;
-}
-
+/* 구글 번역 배너, 로고 제거 */
 .goog-te-banner-frame.skiptranslate,
 .goog-logo-link,
 .goog-te-gadget span,
