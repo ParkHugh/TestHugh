@@ -1,50 +1,40 @@
 import "@/styles/globals.css";
 import Head from "next/head";
-import { useState } from "react";
 import dynamic from "next/dynamic";
 
-// ✅ Google 번역 위젯을 클라이언트에서만 렌더링
 const GoogleTranslateLoader = dynamic(
   () => import("@/components/GoogleTranslateLoader"),
   { ssr: false }
 );
 
 export default function App({ Component, pageProps }) {
-  const [isTranslateReady, setIsTranslateReady] = useState(false);
-
-  const triggerTranslate = () => {
-    const combo = document.querySelector(".goog-te-combo");
-    if (combo) {
-      combo.focus();
-      combo.click();
-    } else {
-      alert("🌐 번역 드롭다운이 아직 준비되지 않았습니다.");
-    }
-  };
-
   return (
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* ✅ 클라이언트에서만 번역 위젯 로딩 */}
-      <GoogleTranslateLoader onReady={() => setIsTranslateReady(true)} />
+      {/* ✅ 번역 위젯 항상 표시 */}
+      <GoogleTranslateLoader />
 
-      {/* ✅ 언어 변경 버튼 */}
+      {/* ✅ 새련된 언어 버튼 (돋보이게 유도용) */}
       <div
         style={{
           position: "fixed",
-          top: 12,
-          left: 12,
-          background: isTranslateReady ? "#1e1e1e" : "#666",
+          top: 16,
+          left: 16,
+          background: "#1e1e1e",
           color: "#fff",
-          padding: "6px 14px",
-          borderRadius: "8px",
+          padding: "8px 14px",
+          borderRadius: "20px",
           cursor: "pointer",
           zIndex: 9999,
+          fontSize: "14px",
         }}
-        onClick={triggerTranslate}
+        onClick={() => {
+          const combo = document.querySelector(".goog-te-combo");
+          if (combo) combo.focus();
+        }}
       >
         🌐 언어 변경
       </div>
