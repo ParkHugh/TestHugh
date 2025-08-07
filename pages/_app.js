@@ -1,35 +1,49 @@
 import "@/styles/globals.css";
 import Head from "next/head";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function App({ Component, pageProps }) {
+  const [isTranslateReady, setIsTranslateReady] = useState(false);
+
   useEffect(() => {
+    // 구글 번역 스크립트 로드
     const script = document.createElement("script");
     script.src =
       "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     script.async = true;
     document.body.appendChild(script);
 
+    // 콜백 함수 전역에 등록
     window.googleTranslateElementInit = function () {
       new window.google.translate.TranslateElement(
         {
           pageLanguage: "ko",
-          includedLanguages: "ko,en,es",
+          includedLanguages: "ko,en,ja",
           layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false,
         },
         "google_translate_element"
       );
     };
+
+    // ✅ 드롭다운 로딩 완료 기다리기
+    const interval = setInterval(() => {
+      const combo = document.querySelector(".goog-te-combo");
+      if (combo) {
+        setIsTranslateReady(true);
+        clearInterval(interval);
+      }
+    }, 300); // 0.3초 간격으로 계속 확인
+
+    return () => clearInterval(interval);
   }, []);
 
   const triggerTranslate = () => {
     const combo = document.querySelector(".goog-te-combo");
     if (combo) {
       combo.focus();
-      combo.click(); // 사용자가 선택 가능하게 포커싱
+      combo.click();
     } else {
-      alert("번역 위젯이 아직 로딩되지 않았습니다. 잠시 후 다시 시도해 주세요.");
+      alert("번역 위젯이 아직 로딩되지 않았습니다. 잠시 후 다시 시도해주세요.");
     }
   };
 
@@ -39,32 +53,32 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* ✅ 구글 번역 요소는 숨기지 않고 화면 밖으로 */}
+      {/* 구글 위젯은 화면 밖에 배치 */}
       <div
         id="google_translate_element"
         style={{
           position: "fixed",
-          top: "-1000px", // 화면 밖으로 숨김
-          left: "0",
+          top: "-1000px",
+          left: 0,
         }}
       />
 
-      {/* ✅ 커스텀 버튼 */}
+      {/* 🌐 버튼 (로딩 전엔 비활성화) */}
       <div
         style={{
           position: "fixed",
           top: 12,
           left: 12,
-          background: "#1e1e1e",
+          background: isTranslateReady ? "#1e1e1e" : "#666",
           color: "#fff",
           padding: "6px 14px",
           borderRadius: "8px",
-          cursor: "pointer",
+          cursor: isTranslateReady ? "pointer" : "not-allowed",
           zIndex: 9999,
         }}
-        onClick={triggerTranslate}
+        onClick={isTranslateReady ? triggerTranslate : null}
       >
-        🌍 Language
+        🌐 언어 변경
       </div>
 
       <Component {...pageProps} />
