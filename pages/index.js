@@ -14,6 +14,7 @@ import facismMeta from '@/tests/facismtest/meta';
 import bookMeta from '@/tests/booktest/meta'; // ✅ booktest meta import!
 import adhdtestMeta from '@/tests/adhdtest/meta';
 import gaytestMeta from '@/tests/gaytest/meta';
+import attachmenttestMeta from '@/tests/attachmenttest/meta'; 
 
 import MenuDropdown from '@/components/MenuDropdown';
 
@@ -27,7 +28,8 @@ const tests = [
   facismMeta,
   bookMeta,
   adhdtestMeta,
-  gaytestMeta
+  gaytestMeta,
+  attachmenttestMeta,
 ];
 
 export default function HomePage() {
@@ -127,7 +129,9 @@ function getTestBgClass(id) {
   if (id === 'booktest') return 'bg-gradient-to-br from-yellow-100 via-yellow-200 to-orange-300 border-yellow-200 hover:from-yellow-300 hover:to-orange-300';
   if (id === 'adhdtest') return 'bg-gradient-to-tr from-pink-300 via-yellow-200 via-green-200 via-sky-200 via-blue-400 via-violet-300 to-fuchsia-300 border-pink-300 hover:from-fuchsia-300 hover:to-yellow-300';
   if (id === 'gaytest') return 'bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 border-indigo-900 hover:from-indigo-800 hover:to-purple-900';
-
+  
+  // 🌸 연노랑 + 연핑크 그라데이션
+  if (id === 'attachmenttest') return 'bg-gradient-to-br from-yellow-50 via-pink-50 to-pink-100 border-pink-100 hover:from-yellow-100 hover:to-pink-200';
 
   return 'bg-white hover:bg-orange-50 border-orange-100';
 }
@@ -142,6 +146,10 @@ function getTitleColor(id) {
   if (id === 'booktest') return 'text-orange-600 drop-shadow';
   if (id === 'adhdtest') return 'bg-gradient-to-r from-pink-400 via-yellow-400 to-blue-400 bg-clip-text text-transparent drop-shadow font-extrabold';
   if (id === 'gaytest') return 'text-fuchsia-100 drop-shadow font-bold';
+  
+  // 💖 타이틀도 부드러운 연핑크 톤
+  if (id === 'attachmenttest') return 'text-pink-400 drop-shadow font-bold';
+
   return 'text-emerald-700';
 }
 
@@ -155,6 +163,10 @@ function getDescriptionColor(id) {
   if (id === 'booktest') return 'text-yellow-800 drop-shadow-sm';
   if (id === 'adhdtest') return 'bg-gradient-to-r from-pink-400 via-yellow-400 to-blue-400 bg-clip-text text-transparent drop-shadow-sm font-extrabold';
   if (id === 'gaytest') return 'text-fuchsia-100 drop-shadow font-bold';
+  
+  // 🌼 설명 텍스트는 연노랑 + 연핑크 어울리는 색
+  if (id === 'attachmenttest') return 'text-pink-500';
+
   return 'text-emerald-700';
 }
 
@@ -229,5 +241,15 @@ function renderBadge(id) {
       </span>
     </div>
   );
+  
+  // 🎀 배지도 연노랑+연핑크로 변경
+  if (id === 'attachmenttest') return (
+    <div className="mb-2">
+      <span className="inline-block bg-gradient-to-r from-yellow-300 via-pink-300 to-pink-400 text-white text-xs px-3 py-1 rounded-full shadow font-semibold animate-bounce">
+        💖 NEW! 애착 유형 테스트
+      </span>
+    </div>
+  );
+  
   return null;
 }
