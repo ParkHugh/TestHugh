@@ -104,4 +104,19 @@
 <url><loc>https://test-hugh.co.kr/faq</loc></url>
 <url><loc>https://test-hugh.co.kr/reviews</loc></url>
 
+  <!-- 애착 유형 테스트 -->
+  <url><loc>https://test-hugh.co.kr/attachmenttest</loc></url>
+  <url><loc>https://test-hugh.co.kr/attachmenttest/result/secure</loc></url>
+  <url><loc>https://test-hugh.co.kr/attachmenttest/result/avoidant</loc></url>
+  <url><loc>https://test-hugh.co.kr/attachmenttest/result/anxious</loc></url>
+  <url><loc>https://test-hugh.co.kr/attachmenttest/result/disorganized</loc></url>
+
+  <!-- 나르시즘 테스트 -->
+  <url><loc>https://test-hugh.co.kr/narcismtest</loc></url>
+  <url><loc>https://test-hugh.co.kr/narcismtest/result/star</loc></url>
+  <url><loc>https://test-hugh.co.kr/narcismtest/result/hidden</loc></url>
+  <url><loc>https://test-hugh.co.kr/narcismtest/result/approval</loc></url>
+  <url><loc>https://test-hugh.co.kr/narcismtest/result/fragile</loc></url>
+  <url><loc>https://test-hugh.co.kr/narcismtest/result/healthy</loc></url>
+
 </urlset>
