@@ -11,10 +11,13 @@ import travelMeta from '@/tests/traveltest/meta';
 import runnerMeta from '@/tests/runnertest/meta';
 import flirtMeta from '@/tests/flirttest/meta';
 import facismMeta from '@/tests/facismtest/meta';
-import bookMeta from '@/tests/booktest/meta'; // ✅ booktest meta import!
+import bookMeta from '@/tests/booktest/meta';
 import adhdtestMeta from '@/tests/adhdtest/meta';
 import gaytestMeta from '@/tests/gaytest/meta';
-import attachmenttestMeta from '@/tests/attachmenttest/meta'; 
+import attachmenttestMeta from '@/tests/attachmenttest/meta';
+
+// ✅ NEW: Narcism Test
+import narcismMeta from '@/tests/narcismtest/meta';
 
 import MenuDropdown from '@/components/MenuDropdown';
 
@@ -30,6 +33,8 @@ const tests = [
   adhdtestMeta,
   gaytestMeta,
   attachmenttestMeta,
+  // ✅ NEW: 홈 목록에 추가
+  narcismMeta,
 ];
 
 export default function HomePage() {
@@ -117,7 +122,7 @@ export default function HomePage() {
 }
 
 // ----------------------
-// 아래 유틸 함수들 booktest 추가!
+// 아래 유틸 함수들: narcismtest 스타일 추가
 function getTestBgClass(id) {
   if (id === 'sociopathtest') return 'bg-gradient-to-br from-gray-900 via-gray-800 to-red-900 border-red-200 hover:from-gray-950 hover:to-red-800';
   if (id === 'tetotest') return 'bg-gradient-to-br from-emerald-100 via-yellow-50 to-yellow-100 border-emerald-100 hover:from-emerald-200 hover:to-yellow-200';
@@ -129,9 +134,11 @@ function getTestBgClass(id) {
   if (id === 'booktest') return 'bg-gradient-to-br from-yellow-100 via-yellow-200 to-orange-300 border-yellow-200 hover:from-yellow-300 hover:to-orange-300';
   if (id === 'adhdtest') return 'bg-gradient-to-tr from-pink-300 via-yellow-200 via-green-200 via-sky-200 via-blue-400 via-violet-300 to-fuchsia-300 border-pink-300 hover:from-fuchsia-300 hover:to-yellow-300';
   if (id === 'gaytest') return 'bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 border-indigo-900 hover:from-indigo-800 hover:to-purple-900';
-  
-  // 🌸 연노랑 + 연핑크 그라데이션
   if (id === 'attachmenttest') return 'bg-gradient-to-br from-yellow-50 via-pink-50 to-pink-100 border-pink-100 hover:from-yellow-100 hover:to-pink-200';
+
+  // ✅ NEW: Narcism Test 카드 그라데이션
+  if (id === 'narcismtest')
+    return 'bg-gradient-to-br from-black via-[#0b0f0c] to-[#0b1a12] border-emerald-700 hover:from-black hover:to-[#0b1a12]';
 
   return 'bg-white hover:bg-orange-50 border-orange-100';
 }
@@ -146,9 +153,10 @@ function getTitleColor(id) {
   if (id === 'booktest') return 'text-orange-600 drop-shadow';
   if (id === 'adhdtest') return 'bg-gradient-to-r from-pink-400 via-yellow-400 to-blue-400 bg-clip-text text-transparent drop-shadow font-extrabold';
   if (id === 'gaytest') return 'text-fuchsia-100 drop-shadow font-bold';
-  
-  // 💖 타이틀도 부드러운 연핑크 톤
   if (id === 'attachmenttest') return 'text-pink-400 drop-shadow font-bold';
+
+  // ✅ NEW: Narcism Test
+  if (id === 'narcismtest') return 'text-emerald-300 drop-shadow font-extrabold';
 
   return 'text-emerald-700';
 }
@@ -163,9 +171,10 @@ function getDescriptionColor(id) {
   if (id === 'booktest') return 'text-yellow-800 drop-shadow-sm';
   if (id === 'adhdtest') return 'bg-gradient-to-r from-pink-400 via-yellow-400 to-blue-400 bg-clip-text text-transparent drop-shadow-sm font-extrabold';
   if (id === 'gaytest') return 'text-fuchsia-100 drop-shadow font-bold';
-  
-  // 🌼 설명 텍스트는 연노랑 + 연핑크 어울리는 색
   if (id === 'attachmenttest') return 'text-pink-500';
+
+  // ✅ NEW: Narcism Test
+  if (id === 'narcismtest') return 'text-emerald-200/90';
 
   return 'text-emerald-700';
 }
@@ -241,8 +250,6 @@ function renderBadge(id) {
       </span>
     </div>
   );
-  
-  // 🎀 배지도 연노랑+연핑크로 변경
   if (id === 'attachmenttest') return (
     <div className="mb-2">
       <span className="inline-block bg-gradient-to-r from-yellow-300 via-pink-300 to-pink-400 text-white text-xs px-3 py-1 rounded-full shadow font-semibold animate-bounce">
@@ -250,6 +257,15 @@ function renderBadge(id) {
       </span>
     </div>
   );
-  
+
+  // ✅ NEW: Narcism Test
+  if (id === 'narcismtest') return (
+    <div className="mb-2">
+      <span className="inline-block bg-gradient-to-r from-emerald-700 via-emerald-600 to-teal-600 text-white text-xs px-3 py-1 rounded-full shadow font-semibold animate-bounce">
+        🧿 NEW! 나르시스트 성향
+      </span>
+    </div>
+  );
+
   return null;
 }
